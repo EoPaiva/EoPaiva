@@ -34,10 +34,3 @@ Atualmente, estou cursando analise e desenvolvimento de sistemas na Sociedade de
   
 
 
-### :bar_chart: GitHub stats
-
-[i got this from a github repo: anuraghazra/github-readme-stats it was nice actually big shoutout to him]: #
-
-[![Shaunak's GitHub stats](https://github-readme-stats.vercel.app/api?username=EoPaiva&count_private=true&show_icons=true&theme=dark)](https://github.com/EoPaiva/github-readme-stats)
-
-![Top Languages Used](https://github-readme-stats.vercel.app/api/top-langs/?username=EoPaiva&show_icons=true&theme=dark)
