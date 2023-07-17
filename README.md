@@ -24,7 +24,7 @@
 </div>
 
 
-### Hi there 👋🎉
+### Olá 👋🎉
 
 Meu nome é **Mateus Paiva** e seja bem-vindo ao meu perfil!.
 
@@ -38,12 +38,6 @@ Atualmente, estou cursando analise e desenvolvimento de sistemas na Sociedade de
 
 [i got this from a github repo: anuraghazra/github-readme-stats it was nice actually big shoutout to him]: #
 
-[![Shaunak's GitHub stats](https://github-readme-stats.vercel.app/api?username=Kingsky1t&count_private=true&show_icons=true&theme=dark)](https://github.com/Kingsky1t/github-readme-stats)
+[![Shaunak's GitHub stats](https://github-readme-stats.vercel.app/api?username=EoPaiva&count_private=true&show_icons=true&theme=dark)](https://github.com/EoPaiva/github-readme-stats)
 
-![Top Languages Used](https://github-readme-stats.vercel.app/api/top-langs/?username=Kingsky1t&show_icons=true&theme=dark)
-
- 
-</div>
-------
-Credits:[Kingsky1t](https://github.com/Kingsky1t)
-Last Edited:05/04/23
+![Top Languages Used](https://github-readme-stats.vercel.app/api/top-langs/?username=EoPaiva&show_icons=true&theme=dark)
