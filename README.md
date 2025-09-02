@@ -3,9 +3,9 @@
 ## Sobre mim
 
 - 🤔 Explorando novas tecnologias e desenvolvendo soluções de software.
-- 🎓 Estudando {seu curso} no {faculdade}.
-- 💼 Trabalhando como {stack em que você trabalhar} na {empresa}.
-- 🌱 Aprendendo mais sobre {tecnologias que você está aprendendo}.
+- 🎓 Estudando Desenvolvimento Full Stack na Alura.
+- 💼 Atualmente, estou focado nos estudos, mas aberto à avaliação de novas oportunidades.
+- 🌱 Aprendendo mais sobre Java.
 
 ## Minhas Skills
 
