@@ -45,12 +45,12 @@
 
 <br/>
 
-<a href="https://github.com/iuricode" title="Perfil do Iuri">
+<a href="https://github.com/EoPaiva" title="Perfil do EoPaiva">
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=EoPaiva&theme=dracula&show_icons=true" />
 </a>
 
 ## Onde me encontrar
 
-[![Linkedin](https://img.shields.io/badge/-username-blue?style=flat-square&logo=Linkedin&logoColor=white&link=mateus-paiva-19804b284)](https://www.linkedin.com/in/mateus-paiva-19804b284/)
-[![Gmail Badge](https://img.shields.io/badge/-seuemail@email.com-006bed?style=flat-square&logo=Gmail&logoColor=white&link=mailto:mpaiiva21@gmail.com)](mailto:mpaiiva21@gmail.com)
+[![Linkedin](https://img.shields.io/badge/-mateus-paiva-19804b284-blue?style=flat-square&logo=Linkedin&logoColor=white&link=mateus-paiva-19804b284)](https://www.linkedin.com/in/mateus-paiva-19804b284/)
+[![Gmail Badge](https://img.shields.io/badge/-mpaiiva21@gmail.com-006bed?style=flat-square&logo=Gmail&logoColor=white&link=mailto:mpaiiva21@gmail.com)](mailto:mpaiiva21@gmail.com)
 [![GitHub](https://img.shields.io/github/followers/EoPaiva?label=follow&style=social)]((https://github.com/EoPaiva))
