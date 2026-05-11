@@ -11,7 +11,7 @@ const INCLUDE_ARCHIVED = process.env.INCLUDE_ARCHIVED === "true";
 const ROOT_DIR = process.cwd();
 const TEMP_DIR = path.join(ROOT_DIR, ".tmp-code-dashboard");
 const ASSETS_DIR = path.join(ROOT_DIR, "assets");
-const OUTPUT_FILE = path.join(ASSETS_DIR, "github-code-dashboard.svg");
+const OUTPUT_FILE = path.join(ASSETS_DIR, "github-code-dashboard-live.svg");
 
 const IGNORED_DIRS = new Set([
   ".git",
