@@ -1,0 +1,49 @@
+name: Atualizar painel de código em produção
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: code-dashboard
+  cancel-in-progress: true
+
+jobs:
+  update-code-dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório do perfil
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Gerar painel automático
+        env:
+          GITHUB_USERNAME: EoPaiva
+          GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
+          INCLUDE_PRIVATE: "false"
+          INCLUDE_FORKS: "false"
+          INCLUDE_ARCHIVED: "false"
+        run: node scripts/generate-code-dashboard.mjs
+
+      - name: Salvar SVG atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/github-code-dashboard.svg
+
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração para salvar."
+          else
+            git commit -m "chore: update production code dashboard"
+            git push
+          fi
