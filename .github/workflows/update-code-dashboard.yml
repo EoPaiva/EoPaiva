@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Gerar painel automático
+      - name: Gerar painel automático e atualizar README
         env:
           GITHUB_USERNAME: EoPaiva
           GH_STATS_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
@@ -34,12 +34,12 @@ jobs:
           INCLUDE_ARCHIVED: "false"
         run: node scripts/generate-code-dashboard.mjs
 
-      - name: Salvar SVG atualizado
+      - name: Salvar SVG e README atualizados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add assets/github-code-dashboard.svg
+          git add README.md assets/github-code-dashboard.svg assets/github-code-dashboard-*.svg
 
           if git diff --cached --quiet; then
             echo "Nenhuma alteração para salvar."
