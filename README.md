@@ -279,19 +279,19 @@ People Analytics • Business Partner • Liderança estratégica • Gestão de
 ---
 
 
-## 🛰️ `codigo_em_producao = {`
+## 🧬 `codigo_em_producao = {`
 
 <p align="center">
   <img
     width="100%"
-    src="./assets/github-code-dashboard-live.svg"
-    alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
+    src="https://raw.githubusercontent.com/EoPaiva/EoPaiva/main/assets/github-code-dashboard.svg"
+    alt="Painel automático de código em produção"
   />
 </p>
 
-<sub>
-Painel gerado automaticamente com base nos repositórios públicos do GitHub, contabilizando linhas, palavras, arquivos analisados e principais tecnologias em uso.
-</sub>
+<p align="center">
+  <sub>Painel gerado automaticamente com base nos repositórios públicos do GitHub, contabilizando linhas, palavras, arquivos analisados e principais tecnologias em uso.</sub>
+</p>
 
 `}`
 
