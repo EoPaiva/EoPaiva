@@ -278,6 +278,25 @@ People Analytics • Business Partner • Liderança estratégica • Gestão de
 
 ---
 
+
+## 🛰️ `codigo_em_producao = {`
+
+<p align="center">
+  <img
+    width="100%"
+    src="./assets/github-code-dashboard.svg"
+    alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
+  />
+</p>
+
+<sub>
+Painel gerado automaticamente com base nos repositórios públicos do GitHub, contabilizando linhas, palavras, arquivos analisados e principais tecnologias em uso.
+</sub>
+
+`}`
+
+---
+
 ## 📊 `telemetria_do_github`
 
 <p align="center">
