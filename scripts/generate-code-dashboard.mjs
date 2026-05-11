@@ -11,7 +11,13 @@ const INCLUDE_ARCHIVED = process.env.INCLUDE_ARCHIVED === "true";
 const ROOT_DIR = process.cwd();
 const TEMP_DIR = path.join(ROOT_DIR, ".tmp-code-dashboard");
 const ASSETS_DIR = path.join(ROOT_DIR, "assets");
-const OUTPUT_FILE = path.join(ASSETS_DIR, "github-code-dashboard-live.svg");
+const README_FILE = path.join(ROOT_DIR, "README.md");
+
+const STABLE_DASHBOARD_FILE = "github-code-dashboard.svg";
+const STABLE_OUTPUT_FILE = path.join(ASSETS_DIR, STABLE_DASHBOARD_FILE);
+
+const START_MARKER = "<!-- CODE_DASHBOARD:START -->";
+const END_MARKER = "<!-- CODE_DASHBOARD:END -->";
 
 const IGNORED_DIRS = new Set([
   ".git",
@@ -112,6 +118,80 @@ function nowInBrazil() {
   }).format(new Date());
 }
 
+function timestampForFileName() {
+  return new Date()
+    .toISOString()
+    .replaceAll("-", "")
+    .replaceAll(":", "")
+    .replaceAll(".", "")
+    .replace("T", "")
+    .replace("Z", "")
+    .slice(0, 14);
+}
+
+function dashboardBlock(fileName) {
+  return `${START_MARKER}
+<p align="center">
+  <img
+    width="100%"
+    src="./assets/${fileName}"
+    alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
+  />
+</p>
+${END_MARKER}`;
+}
+
+function updateReadmeDashboardReference(fileName) {
+  if (!fs.existsSync(README_FILE)) return;
+
+  let readme = fs.readFileSync(README_FILE, "utf8");
+  const nextBlock = dashboardBlock(fileName);
+  const markerRegex = new RegExp(`${START_MARKER}[\\s\\S]*?${END_MARKER}`, "m");
+
+  if (markerRegex.test(readme)) {
+    readme = readme.replace(markerRegex, nextBlock);
+    fs.writeFileSync(README_FILE, readme, "utf8");
+    return;
+  }
+
+  const section = `
+---
+
+## 🛰️ \`codigo_em_producao = {\`
+
+${nextBlock}
+
+<p align="center">
+  <sub>Painel gerado automaticamente com base nos repositórios públicos do GitHub, contabilizando linhas, palavras, arquivos analisados e principais tecnologias em uso.</sub>
+</p>
+
+\`}\`
+
+`;
+
+  const telemetryTitle = "## 📊 `telemetria_do_github`";
+
+  if (readme.includes(telemetryTitle)) {
+    readme = readme.replace(telemetryTitle, `${section}${telemetryTitle}`);
+  } else {
+    readme += section;
+  }
+
+  fs.writeFileSync(README_FILE, readme, "utf8");
+}
+
+function cleanOldGeneratedDashboards(currentFileName) {
+  if (!fs.existsSync(ASSETS_DIR)) return;
+
+  for (const file of fs.readdirSync(ASSETS_DIR)) {
+    const isGeneratedDashboard = /^github-code-dashboard-\d{14}\.svg$/.test(file);
+
+    if (isGeneratedDashboard && file !== currentFileName) {
+      fs.rmSync(path.join(ASSETS_DIR, file), { force: true });
+    }
+  }
+}
+
 async function githubRequest(url) {
   const headers = {
     Accept: "application/vnd.github+json",
@@ -175,6 +255,12 @@ function authenticatedCloneUrl(repo) {
   );
 }
 
+function isIgnoredFile(fileName) {
+  if (IGNORED_FILES.has(fileName)) return true;
+  if (/^github-code-dashboard(?:-\d{14})?\.svg$/.test(fileName)) return true;
+  return false;
+}
+
 function getAllFiles(directory) {
   const files = [];
 
@@ -191,7 +277,7 @@ function getAllFiles(directory) {
         continue;
       }
 
-      if (entry.isFile() && !IGNORED_FILES.has(entry.name)) {
+      if (entry.isFile() && !isIgnoredFile(entry.name)) {
         files.push(fullPath);
       }
     }
@@ -277,7 +363,13 @@ function generateSvg(stats) {
   } = stats;
 
   const languageValues = [...languageLines.values()].sort((a, b) => b - a).slice(0, 18);
-  const sparkline = compactSparkline(languageValues.length ? languageValues : [2, 6, 4, 9, 7, 12, 8], 90, 360, 820, 42);
+  const sparkline = compactSparkline(
+    languageValues.length ? languageValues : [2, 6, 4, 9, 7, 12, 8],
+    90,
+    360,
+    820,
+    42
+  );
 
   const repositoryLabel = INCLUDE_PRIVATE ? "repositórios analisados" : "repositórios públicos";
   const updatedAt = nowInBrazil();
@@ -415,11 +507,21 @@ async function main() {
     languageLines,
   });
 
-  fs.writeFileSync(OUTPUT_FILE, svg, "utf8");
+  const timestampedFileName = `github-code-dashboard-${timestampForFileName()}.svg`;
+  const timestampedOutputFile = path.join(ASSETS_DIR, timestampedFileName);
+
+  fs.writeFileSync(STABLE_OUTPUT_FILE, svg, "utf8");
+  fs.writeFileSync(timestampedOutputFile, svg, "utf8");
+
+  updateReadmeDashboardReference(timestampedFileName);
+  cleanOldGeneratedDashboards(timestampedFileName);
 
   fs.rmSync(TEMP_DIR, { recursive: true, force: true });
 
-  console.log(`Código em produção atualizado: ${formatNumber(totalLines)} linhas, ${formatNumber(totalWords)} palavras, ${formatNumber(analyzedRepos)} repositórios.`);
+  console.log(
+    `Código em produção atualizado: ${formatNumber(totalLines)} linhas, ${formatNumber(totalWords)} palavras, ${formatNumber(analyzedRepos)} repositórios.`
+  );
+  console.log(`README atualizado para usar: assets/${timestampedFileName}`);
 }
 
 main().catch((error) => {
