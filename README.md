@@ -284,7 +284,7 @@ People Analytics • Business Partner • Liderança estratégica • Gestão de
 <p align="center">
   <img
     width="100%"
-    src="./assets/github-code-dashboard-20260512041027.svg"
+    src="./assets/github-code-dashboard-20260512091510.svg"
     alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
   />
 </p>
