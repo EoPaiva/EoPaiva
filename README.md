@@ -1,24 +1,37 @@
-<div align="center">
-
-  <img src="https://komarev.com/ghpvc/?username=eopaiva&label=Acessos+ao+Perfil&color=10b981&style=for-the-badge" alt="Acessos ao perfil" />
-
-</div>
-
-<br>
-
-<h1 align="center">
-  <samp>&gt; [ SISTEMA_ATIVO ]: M PAIVA_</samp>
-</h1>
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  M PAIVA — GitHub Profile README                              ║
+     ║  Desenvolvimento Web • IA Aplicada • Automação • SaaS         ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
 
 <p align="center">
-  <b>Desenvolvimento Web • IA Aplicada • Automação • Soluções Digitais</b>
-  <br>
-  <i>Construindo interfaces, sistemas e experiências digitais com estratégia, performance e propósito.</i>
+  <img src="https://capsule-render.vercel.app/api?type=venom&color=0:0a0a0a,50:1e293b,100:10b981&height=200&section=header&text=M%20PAIVA&fontColor=ffffff&fontSize=72&fontAlignY=50&animation=fadeIn" alt="header" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/EoPaiva">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=720&lines=%3E+Mateus+Paiva%2C+dev+em+S%C3%A3o+Jos%C3%A9+dos+Campos;%3E+Construindo+SaaS%2C+IA+aplicada+e+produto+digital;%3E+Conectando+c%C3%B3digo%2C+estrat%C3%A9gia+e+pessoas" alt="typing animation" />
+  </a>
 </p>
 
 <div align="center">
 
-[![Portfólio](https://img.shields.io/badge/Portfólio-upaiva.dev-ffffff?style=for-the-badge&logo=vercel&logoColor=black)](https://upaiva.dev/)
+  <img src="https://komarev.com/ghpvc/?username=eopaiva&label=Acessos+ao+Perfil&color=10b981&style=for-the-badge" alt="Acessos ao perfil" />
+  <img src="https://img.shields.io/github/followers/EoPaiva?label=Followers&style=for-the-badge&color=10b981&labelColor=0a0a0a" alt="followers" />
+  <img src="https://img.shields.io/github/stars/EoPaiva?label=Stars&style=for-the-badge&color=fbbf24&labelColor=0a0a0a" alt="stars" />
+
+</div>
+
+<h2 align="center">
+  <samp>&gt; M_PAIVA_</samp>
+</h2>
+
+<p align="center">
+  <i>Construindo interfaces, sistemas e produtos digitais com estratégia, performance e propósito.</i>
+</p>
+
+<div align="center">
+
+[![Portfólio](https://img.shields.io/badge/Portfólio-upaiva.dev-10b981?style=for-the-badge&logo=vercel&logoColor=white)](https://upaiva.dev/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Mateus%20Paiva-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mateus-paiva-19804b284)
 [![Email](https://img.shields.io/badge/Email-mpaiiva21%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mpaiiva21@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-EoPaiva-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EoPaiva)
@@ -27,258 +40,332 @@
 
 ---
 
-## 💻 `const sobre_mim = {`
-
-Meu nome é **Mateus Paiva** e atuo na criação de soluções digitais com foco em **desenvolvimento web, inteligência artificial aplicada, automação, dados, gestão estratégica, experiência do usuário, produtos SaaS e presença profissional digital**.
-
-Tenho um perfil híbrido entre **tecnologia, produto, processos e pessoas**, unindo visão técnica com pensamento estratégico para transformar ideias em interfaces, sistemas, plataformas e soluções funcionais.
+## `whoami.json`
 
 ```js
 const mateusPaiva = {
-  perfil: "Desenvolvedor Web | IA Aplicada | Automação | Soluções Digitais",
-
-  foco: [
-    "Desenvolvimento Web",
-    "IA Aplicada",
-    "Automação",
-    "Interfaces Estratégicas",
-    "Dados",
-    "Experiência do Usuário",
-    "Produtos SaaS",
-    "Arquitetura de Sistemas"
-  ],
-
-  diferencial:
-    "Unir tecnologia, estratégia e experiência para criar soluções digitais claras, modernas, funcionais e com visão de produto.",
-
-  objetivo:
-    "Transformar ideias em projetos profissionais, úteis, escaláveis e bem estruturados."
+  nome:        "Mateus Paiva",
+  funcao:      "Desenvolvedor Web • IA Aplicada • Produto Digital",
+  baseado:     "São José dos Campos — SP",
+  foco:        ["Web Development", "SaaS", "Automação", "UX Estratégica"],
+  diferencial: "Tecnologia + estratégia + experiência em soluções claras e escaláveis",
+  objetivo:    "Transformar ideias em produtos profissionais, úteis e bem estruturados."
 };
 ```
 
-`}`
+Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na criação de interfaces, sistemas, plataformas SaaS e soluções digitais — unindo visão técnica com pensamento estratégico para entregar produtos com clareza, performance e propósito.
 
 ---
 
-## ⚙️ `modos_de_atuacao = {`
+## `projetos_em_destaque = [`
+
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/upaiva-dev.svg" width="28" align="center" alt="upaiva.dev" /> upaiva.dev</h3>
+      <p><sub>Portfólio profissional — vitrine digital, branding e posicionamento.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
+        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+        <img src="https://img.shields.io/badge/Framer-0055FF?style=flat-square&logo=framer&logoColor=white" />
+      </p>
+      <a href="https://upaiva.dev/">→ ver projeto</a>
+    </td>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/agendapro.svg" width="28" align="center" alt="AgendaPro" /> AgendaPro</h3>
+      <p><sub>SaaS de agendamento multiempresa — checkout, planos e implantação assistida.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
+        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
+      </p>
+      <a href="https://github.com/EoPaiva">→ em desenvolvimento</a>
+    </td>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/studio-jmarq.svg" width="28" align="center" alt="Studio JMarq" /> Studio JMarq</h3>
+      <p><sub>Site comercial premium — landing page, identidade visual e microinterações.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react" />
+        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+        <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logoColor=white" />
+      </p>
+      <a href="https://github.com/EoPaiva">→ ver projeto</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/fitpro.svg" width="28" align="center" alt="FitPro" /> FitPro</h3>
+      <p><sub>SaaS de gestão fitness — treinos, alunos, planos e acompanhamento de evolução.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
+        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+      </p>
+      <a href="https://github.com/EoPaiva">→ em desenvolvimento</a>
+    </td>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/nao-seguidores.svg" width="28" align="center" alt="Não Seguidores uPaiva" /> Não Seguidores uPaiva</h3>
+      <p>
+        <img src="https://img.shields.io/badge/REPO%20PRIVADO-fbbf24?style=flat-square&logo=lock&logoColor=0a0a0a&labelColor=0a0a0a" alt="Repositório privado" />
+        <img src="https://img.shields.io/badge/Em%20Produ%C3%A7%C3%A3o-10b981?style=flat-square&labelColor=0a0a0a" alt="Em produção" />
+      </p>
+      <p><sub>Extensão Chrome (MV3) <b>freemium</b> para análise e limpeza inteligente de seguidores no Instagram. Detecta quem não te segue de volta, classifica perfis (Pessoa / Página / Criador), faz unfollow em lote com delays randômicos seguros e mantém lista branca local. Premium via <b>PIX</b> com licença anti-fraude.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Manifest%20V3-4285F4?style=flat-square&logo=googlechrome&logoColor=white" />
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
+        <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" />
+        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/PIX-32BCAD?style=flat-square&logo=pix&logoColor=white" />
+      </p>
+      <details>
+        <summary><sub><b>+ detalhes técnicos</b></sub></summary>
+        <sub>
+          <br>
+          ▸ Popup com 4 abas (Capturar / Análise / Lista / Config)<br>
+          ▸ Content script integrado à API interna do Instagram via cookies de sessão<br>
+          ▸ Auto-injeção via <code>chrome.scripting.executeScript</code><br>
+          ▸ Unfollow bulk com delay aleatório 5–11s + limite por sessão (anti-detecção)<br>
+          ▸ Lista branca + ignorados persistentes<br>
+          ▸ Backend Node.js com Supabase/PostgreSQL + RLS + Mercado Pago<br>
+          ▸ Licença vinculada a e-mail · até 2 dispositivos ativos · device token<br>
+          ▸ Rate limit, CORS restrito, logs de auditoria
+        </sub>
+      </details>
+    </td>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/cidadeos-ai.svg" width="28" align="center" alt="CidadeOS AI" /> CidadeOS AI</h3>
+      <p><sub>Plataforma govtech de atendimento, protocolo e inteligência urbana para pequenas cidades.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react" />
+        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/WhatsApp%20API-25D366?style=flat-square&logo=whatsapp&logoColor=white" />
+      </p>
+      <a href="https://github.com/EoPaiva/CidadeOS-AI">→ ver projeto</a>
+    </td>
+  </tr>
+</table>
+
+`]`
+
+---
+
+## `stack.config.ts`
+
+```ts
+const proficiency = {
+  "🟢 production" : "usado em projetos reais entregues — base diária",
+  "🟡 fluent"     : "domínio sólido aplicável em produção quando preciso",
+  "🔵 expanding"  : "em aprendizado / próxima iteração técnica"
+};
+```
+
+### `[ Frontend / Interface ]`
+
+<p>
+  <strong>🟢</strong>&nbsp;
+  <img src="https://img.shields.io/badge/HTML5-10b981?style=flat-square&logo=html5&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/CSS3-10b981?style=flat-square&logo=css3&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/JavaScript-10b981?style=flat-square&logo=javascript&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/TypeScript-10b981?style=flat-square&logo=typescript&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/React-10b981?style=flat-square&logo=react&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Next.js-10b981?style=flat-square&logo=nextdotjs&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Tailwind-10b981?style=flat-square&logo=tailwindcss&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-10b981?style=flat-square&logo=framer&logoColor=ffffff" />
+</p>
+<p>
+  <strong>🟡</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Sass-1e293b?style=flat-square&logo=sass&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/GSAP-1e293b?style=flat-square&logo=greensock&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/shadcn%2Fui-1e293b?style=flat-square&logo=shadcnui&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Radix%20UI-1e293b?style=flat-square&logo=radixui&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Vite-1e293b?style=flat-square&logo=vite&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Webpack-1e293b?style=flat-square&logo=webpack&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Figma-1e293b?style=flat-square&logo=figma&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Lucide-1e293b?style=flat-square&logo=lucide&logoColor=fbbf24" />
+</p>
+<p>
+  <strong>🔵</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Astro-0a0a0a?style=flat-square&logo=astro&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Remix-0a0a0a?style=flat-square&logo=remix&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Three.js-0a0a0a?style=flat-square&logo=threedotjs&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/React%20Native-0a0a0a?style=flat-square&logo=react&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Lottie-0a0a0a?style=flat-square&logo=lottiefiles&logoColor=64748b" />
+</p>
+
+<sub>Interfaces responsivas • Dark mode premium • Microinterações • Componentização • Design system • UX estratégica aplicada</sub>
+
+---
+
+### `[ Backend / Dados ]`
+
+<p>
+  <strong>🟢</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Node.js-10b981?style=flat-square&logo=nodedotjs&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Supabase-10b981?style=flat-square&logo=supabase&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/PostgreSQL-10b981?style=flat-square&logo=postgresql&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/REST%20APIs-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Row%20Level%20Security-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Webhooks-10b981?style=flat-square&logo=webhooks&logoColor=ffffff" />
+</p>
+<p>
+  <strong>🟡</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Python-1e293b?style=flat-square&logo=python&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/MongoDB-1e293b?style=flat-square&logo=mongodb&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/MySQL-1e293b?style=flat-square&logo=mysql&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Firebase-1e293b?style=flat-square&logo=firebase&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Prisma-1e293b?style=flat-square&logo=prisma&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/JWT-1e293b?style=flat-square&logo=jsonwebtokens&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/OAuth-1e293b?style=flat-square&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Express-1e293b?style=flat-square&logo=express&logoColor=fbbf24" />
+</p>
+<p>
+  <strong>🔵</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Drizzle%20ORM-0a0a0a?style=flat-square&logo=drizzle&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/tRPC-0a0a0a?style=flat-square&logo=trpc&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Hono-0a0a0a?style=flat-square&logo=hono&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Bun-0a0a0a?style=flat-square&logo=bun&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/GraphQL-0a0a0a?style=flat-square&logo=graphql&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/NestJS-0a0a0a?style=flat-square&logo=nestjs&logoColor=64748b" />
+</p>
+
+<sub>APIs REST • Autenticação • RBAC • Row Level Security • Storage • Multi-tenant • Variáveis de ambiente • Rate limiting</sub>
+
+---
+
+### `[ AI / Automação ]`
+
+<p>
+  <strong>🟢</strong>&nbsp;
+  <img src="https://img.shields.io/badge/OpenAI-10b981?style=flat-square&logo=openai&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/GitHub%20Copilot-10b981?style=flat-square&logo=githubcopilot&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/WhatsApp%20API-10b981?style=flat-square&logo=whatsapp&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Mercado%20Pago-10b981?style=flat-square&logo=mercadopago&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Prompts%20Estratégicos-10b981?style=flat-square&logoColor=ffffff" />
+</p>
+<p>
+  <strong>🟡</strong>&nbsp;
+  <img src="https://img.shields.io/badge/n8n-1e293b?style=flat-square&logo=n8n&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Make-1e293b?style=flat-square&logo=make&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Zapier-1e293b?style=flat-square&logo=zapier&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Google%20Calendar%20API-1e293b?style=flat-square&logo=googlecalendar&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Sentry-1e293b?style=flat-square&logo=sentry&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/PWA-1e293b?style=flat-square&logo=pwa&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Push%20Notifications-1e293b?style=flat-square&logoColor=fbbf24" />
+</p>
+<p>
+  <strong>🔵</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Anthropic%20Claude-0a0a0a?style=flat-square&logo=anthropic&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/LangChain-0a0a0a?style=flat-square&logo=langchain&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Vercel%20AI%20SDK-0a0a0a?style=flat-square&logo=vercel&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Vector%20DBs-0a0a0a?style=flat-square&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/RAG-0a0a0a?style=flat-square&logoColor=64748b" />
+</p>
+
+<sub>IA aplicada • Agentes inteligentes • Prompts estratégicos • Automação de fluxos • Integrações externas • Monitoramento de erros</sub>
+
+---
+
+### `[ DevOps / Tooling ]`
+
+<p>
+  <strong>🟢</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Vercel-10b981?style=flat-square&logo=vercel&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Railway-10b981?style=flat-square&logo=railway&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Git-10b981?style=flat-square&logo=git&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/GitHub-10b981?style=flat-square&logo=github&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/GitHub%20Actions-10b981?style=flat-square&logo=githubactions&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/VS%20Code-10b981?style=flat-square&logo=visualstudiocode&logoColor=ffffff" />
+</p>
+<p>
+  <strong>🟡</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Netlify-1e293b?style=flat-square&logo=netlify&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Cloudflare-1e293b?style=flat-square&logo=cloudflare&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Docker-1e293b?style=flat-square&logo=docker&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Bash-1e293b?style=flat-square&logo=gnubash&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/PowerShell-1e293b?style=flat-square&logo=powershell&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Linux-1e293b?style=flat-square&logo=linux&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Postman-1e293b?style=flat-square&logo=postman&logoColor=fbbf24" />
+</p>
+<p>
+  <strong>🔵</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Cloudflare%20Workers-0a0a0a?style=flat-square&logo=cloudflareworkers&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/AWS%20Lambda-0a0a0a?style=flat-square&logo=awslambda&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Terraform-0a0a0a?style=flat-square&logo=terraform&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Edge%20Functions-0a0a0a?style=flat-square&logoColor=64748b" />
+</p>
+
+<sub>CI/CD • Hospedagem serverless • Domínios personalizados • Versionamento • Ambientes de produção • Workflows automatizados</sub>
+
+---
+
+### `[ Produto / Estratégia ]`
+
+<p>
+  <strong>🟢</strong>&nbsp;
+  <img src="https://img.shields.io/badge/SaaS%20Architecture-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Multi--tenant-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Onboarding-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Checkout%20PIX-10b981?style=flat-square&logo=pix&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Implantação%20Assistida-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Audit%20Logs-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Manifest%20V3-10b981?style=flat-square&logo=googlechrome&logoColor=ffffff" />
+</p>
+<p>
+  <strong>🟡</strong>&nbsp;
+  <img src="https://img.shields.io/badge/People%20Analytics-1e293b?style=flat-square&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Business%20Partner-1e293b?style=flat-square&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Gestão%20Estratégica-1e293b?style=flat-square&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Experiência%20do%20Cliente-1e293b?style=flat-square&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Health%20Score-1e293b?style=flat-square&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Notion-1e293b?style=flat-square&logo=notion&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Trello-1e293b?style=flat-square&logo=trello&logoColor=fbbf24" />
+</p>
+<p>
+  <strong>🔵</strong>&nbsp;
+  <img src="https://img.shields.io/badge/Stripe-0a0a0a?style=flat-square&logo=stripe&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Feature%20Flags-0a0a0a?style=flat-square&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/A%2FB%20Testing-0a0a0a?style=flat-square&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/PostHog-0a0a0a?style=flat-square&logo=posthog&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Mixpanel-0a0a0a?style=flat-square&logo=mixpanel&logoColor=64748b" />
+</p>
+
+<sub>Arquitetura SaaS • Multiempresa • Permissões por função • Logs de auditoria • Operação escalável • Modelo comercial • Visão de produto</sub>
+
+---
+
+### `[ // delivered ]`
+
+```ts
+const projects_shipped = [
+  "upaiva.dev",      // Next.js · Tailwind · Framer Motion
+  "AgendaPro",       // Next.js · Supabase · PostgreSQL · Checkout
+  "Studio JMarq",    // React · Tailwind · GSAP
+  "FitPro",          // Next.js · Supabase · Tailwind
+  "Não Seguidores",  // Manifest V3 · Node.js · Supabase · PIX
+  "CidadeOS AI"      // React · Supabase · WhatsApp API
+];
+// → 6 produtos entregues · 4 stacks distintas · 100% TypeScript-first
+```
+
+---
+
+## `modos_de_atuacao`
 
 <p align="center">
-  <img src="./assets/modos-de-atuacao.png" alt="Modos de atuação — tecnologia, estratégia e resultado" width="100%" />
+  <img src="./assets/modos-de-atuacao.svg" alt="Modos de atuação — tecnologia, estratégia e resultado" width="100%" />
 </p>
-
-`}`
 
 ---
 
-## 🛠️ `competencias_e_ferramentas = {`
-
-> Tecnologias, ferramentas e ecossistemas que utilizo, estudo ou consigo aplicar em projetos web, automação, IA, produtos SaaS e soluções digitais.
-
----
-
-### `[ Linguagens_e_Tecnologias ]`
-
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img height="42" src="https://skillicons.dev/icons?i=html,css,js,ts,python,nodejs,react,nextjs,php,markdown,bash,powershell,git,github,linux&theme=dark&perline=15" alt="Linguagens e tecnologias" />
-  </a>
-</p>
-
-<p align="left">
-  <img height="24" src="https://img.shields.io/badge/HTML5-111111?style=for-the-badge&logo=html5" alt="HTML5" />
-  <img height="24" src="https://img.shields.io/badge/CSS3-111111?style=for-the-badge&logo=css3&logoColor=1572B6" alt="CSS3" />
-  <img height="24" src="https://img.shields.io/badge/JavaScript-111111?style=for-the-badge&logo=javascript" alt="JavaScript" />
-  <img height="24" src="https://img.shields.io/badge/TypeScript-111111?style=for-the-badge&logo=typescript" alt="TypeScript" />
-  <img height="24" src="https://img.shields.io/badge/Python-111111?style=for-the-badge&logo=python" alt="Python" />
-  <img height="24" src="https://img.shields.io/badge/Node.js-111111?style=for-the-badge&logo=nodedotjs" alt="Node.js" />
-  <img height="24" src="https://img.shields.io/badge/React-111111?style=for-the-badge&logo=react" alt="React" />
-  <img height="24" src="https://img.shields.io/badge/Next.js-111111?style=for-the-badge&logo=nextdotjs" alt="Next.js" />
-  <img height="24" src="https://img.shields.io/badge/SQL-111111?style=for-the-badge" alt="SQL" />
-  <img height="24" src="https://img.shields.io/badge/JSON-111111?style=for-the-badge&logo=json" alt="JSON" />
-  <img height="24" src="https://img.shields.io/badge/Markdown-111111?style=for-the-badge&logo=markdown" alt="Markdown" />
-  <img height="24" src="https://img.shields.io/badge/Regex-111111?style=for-the-badge" alt="Regex" />
-  <img height="24" src="https://img.shields.io/badge/Shell%20Script-111111?style=for-the-badge&logo=gnubash" alt="Shell Script" />
-  <img height="24" src="https://img.shields.io/badge/PowerShell-111111?style=for-the-badge&logo=powershell" alt="PowerShell" />
-  <img height="24" src="https://img.shields.io/badge/PHP%20Básico-111111?style=for-the-badge&logo=php" alt="PHP Básico" />
-</p>
-
-<sub>
-HTML5 • CSS3 • JavaScript • TypeScript • Python • Node.js • React • Next.js • SQL • JSON • Markdown • Regex • Shell Script • PowerShell • PHP básico
-</sub>
-
----
-
-### `[ Utilitarios_de_Interface ]`
-
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img height="42" src="https://skillicons.dev/icons?i=tailwind,bootstrap,sass,vite,webpack,figma,materialui,react,nextjs,npm,pnpm,yarn&theme=dark&perline=12" alt="Utilitários de interface" />
-  </a>
-</p>
-
-<p align="left">
-  <img height="24" src="https://img.shields.io/badge/TailwindCSS-111111?style=for-the-badge&logo=tailwindcss" alt="TailwindCSS" />
-  <img height="24" src="https://img.shields.io/badge/Bootstrap-111111?style=for-the-badge&logo=bootstrap" alt="Bootstrap" />
-  <img height="24" src="https://img.shields.io/badge/Sass-111111?style=for-the-badge&logo=sass" alt="Sass" />
-  <img height="24" src="https://img.shields.io/badge/Vite-111111?style=for-the-badge&logo=vite" alt="Vite" />
-  <img height="24" src="https://img.shields.io/badge/Webpack-111111?style=for-the-badge&logo=webpack" alt="Webpack" />
-  <img height="24" src="https://img.shields.io/badge/Framer%20Motion-111111?style=for-the-badge&logo=framer" alt="Framer Motion" />
-  <img height="24" src="https://img.shields.io/badge/GSAP-111111?style=for-the-badge" alt="GSAP" />
-  <img height="24" src="https://img.shields.io/badge/Swiper.js-111111?style=for-the-badge" alt="Swiper.js" />
-  <img height="24" src="https://img.shields.io/badge/Lucide%20Icons-111111?style=for-the-badge" alt="Lucide Icons" />
-  <img height="24" src="https://img.shields.io/badge/shadcn%2Fui-111111?style=for-the-badge" alt="shadcn/ui" />
-  <img height="24" src="https://img.shields.io/badge/Radix%20UI-111111?style=for-the-badge" alt="Radix UI" />
-  <img height="24" src="https://img.shields.io/badge/Headless%20UI-111111?style=for-the-badge" alt="Headless UI" />
-  <img height="24" src="https://img.shields.io/badge/DaisyUI-111111?style=for-the-badge" alt="DaisyUI" />
-  <img height="24" src="https://img.shields.io/badge/Material%20UI-111111?style=for-the-badge&logo=mui" alt="Material UI" />
-  <img height="24" src="https://img.shields.io/badge/Chart.js-111111?style=for-the-badge&logo=chartdotjs" alt="Chart.js" />
-  <img height="24" src="https://img.shields.io/badge/Recharts-111111?style=for-the-badge" alt="Recharts" />
-  <img height="24" src="https://img.shields.io/badge/AOS%20Animations-111111?style=for-the-badge" alt="AOS Animations" />
-  <img height="24" src="https://img.shields.io/badge/Figma-111111?style=for-the-badge&logo=figma" alt="Figma" />
-</p>
-
-<sub>
-Interfaces responsivas • Dark mode premium • Componentização visual • Microinterações • Animações • Cards estratégicos • Dashboards • Carrosséis • Landing pages • Design system básico • UX/UI aplicada • Layout moderno • Experiência visual • Fluxos comerciais • Onboarding visual • Experiência SaaS
-</sub>
-
----
-
-### `[ Dados_Autenticacao_e_Deploy ]`
-
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img height="42" src="https://skillicons.dev/icons?i=supabase,firebase,mysql,postgres,sqlite,mongodb,prisma,vercel,netlify,cloudflare,github,git,docker&theme=dark&perline=13" alt="Dados, autenticação e deploy" />
-  </a>
-</p>
-
-<p align="left">
-  <img height="24" src="https://img.shields.io/badge/Supabase-111111?style=for-the-badge&logo=supabase" alt="Supabase" />
-  <img height="24" src="https://img.shields.io/badge/Supabase%20RLS-111111?style=for-the-badge&logo=supabase" alt="Supabase RLS" />
-  <img height="24" src="https://img.shields.io/badge/Supabase%20Storage-111111?style=for-the-badge&logo=supabase" alt="Supabase Storage" />
-  <img height="24" src="https://img.shields.io/badge/Firebase-111111?style=for-the-badge&logo=firebase" alt="Firebase" />
-  <img height="24" src="https://img.shields.io/badge/PostgreSQL-111111?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
-  <img height="24" src="https://img.shields.io/badge/MySQL-111111?style=for-the-badge&logo=mysql" alt="MySQL" />
-  <img height="24" src="https://img.shields.io/badge/SQLite-111111?style=for-the-badge&logo=sqlite" alt="SQLite" />
-  <img height="24" src="https://img.shields.io/badge/MongoDB-111111?style=for-the-badge&logo=mongodb" alt="MongoDB" />
-  <img height="24" src="https://img.shields.io/badge/Prisma-111111?style=for-the-badge&logo=prisma" alt="Prisma" />
-  <img height="24" src="https://img.shields.io/badge/Drizzle%20ORM-111111?style=for-the-badge" alt="Drizzle ORM" />
-  <img height="24" src="https://img.shields.io/badge/Neon-111111?style=for-the-badge" alt="Neon" />
-  <img height="24" src="https://img.shields.io/badge/Auth.js-111111?style=for-the-badge" alt="Auth.js" />
-  <img height="24" src="https://img.shields.io/badge/Clerk-111111?style=for-the-badge" alt="Clerk" />
-  <img height="24" src="https://img.shields.io/badge/JWT-111111?style=for-the-badge&logo=jsonwebtokens" alt="JWT" />
-  <img height="24" src="https://img.shields.io/badge/OAuth-111111?style=for-the-badge" alt="OAuth" />
-  <img height="24" src="https://img.shields.io/badge/RBAC-111111?style=for-the-badge" alt="RBAC" />
-  <img height="24" src="https://img.shields.io/badge/Environment%20Variables-111111?style=for-the-badge" alt="Environment Variables" />
-  <img height="24" src="https://img.shields.io/badge/Vercel-111111?style=for-the-badge&logo=vercel" alt="Vercel" />
-  <img height="24" src="https://img.shields.io/badge/Netlify-111111?style=for-the-badge&logo=netlify" alt="Netlify" />
-  <img height="24" src="https://img.shields.io/badge/Cloudflare-111111?style=for-the-badge&logo=cloudflare" alt="Cloudflare" />
-  <img height="24" src="https://img.shields.io/badge/GitHub%20Pages-111111?style=for-the-badge&logo=github" alt="GitHub Pages" />
-  <img height="24" src="https://img.shields.io/badge/GitHub%20Actions-111111?style=for-the-badge&logo=githubactions" alt="GitHub Actions" />
-  <img height="24" src="https://img.shields.io/badge/Render-111111?style=for-the-badge" alt="Render" />
-  <img height="24" src="https://img.shields.io/badge/Railway-111111?style=for-the-badge" alt="Railway" />
-  <img height="24" src="https://img.shields.io/badge/Docker%20Básico-111111?style=for-the-badge&logo=docker" alt="Docker Básico" />
-</p>
-
-<sub>
-Banco de dados • Autenticação • Login administrativo • Controle de sessão • Variáveis de ambiente • Deploy contínuo • Domínios personalizados • Hospedagem serverless • APIs • Integração com back-end • Painéis administrativos • Upload de arquivos • Controle de acesso • Regras de segurança • Row Level Security • Storage • Ambientes de produção • CI/CD básico
-</sub>
-
----
-
-### `[ SaaS_Produtos_e_Arquitetura ]`
-
-<p align="left">
-  <img height="24" src="https://img.shields.io/badge/SaaS-111111?style=for-the-badge" alt="SaaS" />
-  <img height="24" src="https://img.shields.io/badge/Multi--tenant-111111?style=for-the-badge" alt="Multi-tenant" />
-  <img height="24" src="https://img.shields.io/badge/Multiempresa-111111?style=for-the-badge" alt="Multiempresa" />
-  <img height="24" src="https://img.shields.io/badge/Workspaces-111111?style=for-the-badge" alt="Workspaces" />
-  <img height="24" src="https://img.shields.io/badge/Onboarding-111111?style=for-the-badge" alt="Onboarding" />
-  <img height="24" src="https://img.shields.io/badge/Self--service-111111?style=for-the-badge" alt="Self-service" />
-  <img height="24" src="https://img.shields.io/badge/Implantação%20Assistida-111111?style=for-the-badge" alt="Implantação Assistida" />
-  <img height="24" src="https://img.shields.io/badge/Checkout-111111?style=for-the-badge" alt="Checkout" />
-  <img height="24" src="https://img.shields.io/badge/Mercado%20Pago-111111?style=for-the-badge" alt="Mercado Pago" />
-  <img height="24" src="https://img.shields.io/badge/Pix-111111?style=for-the-badge" alt="Pix" />
-  <img height="24" src="https://img.shields.io/badge/Boleto-111111?style=for-the-badge" alt="Boleto" />
-  <img height="24" src="https://img.shields.io/badge/Cartão-111111?style=for-the-badge" alt="Cartão" />
-  <img height="24" src="https://img.shields.io/badge/Webhooks-111111?style=for-the-badge" alt="Webhooks" />
-  <img height="24" src="https://img.shields.io/badge/Audit%20Logs-111111?style=for-the-badge" alt="Audit Logs" />
-  <img height="24" src="https://img.shields.io/badge/System%20Logs-111111?style=for-the-badge" alt="System Logs" />
-  <img height="24" src="https://img.shields.io/badge/Health%20Score-111111?style=for-the-badge" alt="Health Score" />
-  <img height="24" src="https://img.shields.io/badge/Página%20Pública-111111?style=for-the-badge" alt="Página Pública" />
-  <img height="24" src="https://img.shields.io/badge/Agenda%20Online-111111?style=for-the-badge" alt="Agenda Online" />
-</p>
-
-<sub>
-Arquitetura SaaS • Produto digital • Site comercial • Página pública de agendamento • Multiempresa • Fluxo de contratação • Planos • Pagamentos • Checkout • Implantação assistida • Onboarding guiado • Permissões por função • Logs de auditoria • Logs técnicos • Separação de dados • Experiência do cliente • Operação escalável • Produto vendável
-</sub>
-
----
-
-### `[ Automacao_IA_e_Produtividade ]`
-
-<p align="left">
-  <img height="24" src="https://img.shields.io/badge/OpenAI-111111?style=for-the-badge&logo=openai" alt="OpenAI" />
-  <img height="24" src="https://img.shields.io/badge/ChatGPT-111111?style=for-the-badge&logo=openai" alt="ChatGPT" />
-  <img height="24" src="https://img.shields.io/badge/GitHub%20Copilot-111111?style=for-the-badge&logo=githubcopilot" alt="GitHub Copilot" />
-  <img height="24" src="https://img.shields.io/badge/Codex-111111?style=for-the-badge&logo=openai" alt="Codex" />
-  <img height="24" src="https://img.shields.io/badge/Make-111111?style=for-the-badge" alt="Make" />
-  <img height="24" src="https://img.shields.io/badge/Zapier-111111?style=for-the-badge&logo=zapier" alt="Zapier" />
-  <img height="24" src="https://img.shields.io/badge/n8n-111111?style=for-the-badge&logo=n8n" alt="n8n" />
-  <img height="24" src="https://img.shields.io/badge/Webhooks-111111?style=for-the-badge" alt="Webhooks" />
-  <img height="24" src="https://img.shields.io/badge/WhatsApp%20Business%20API-111111?style=for-the-badge&logo=whatsapp" alt="WhatsApp Business API" />
-  <img height="24" src="https://img.shields.io/badge/Google%20Calendar%20API-111111?style=for-the-badge&logo=googlecalendar" alt="Google Calendar API" />
-  <img height="24" src="https://img.shields.io/badge/Push%20Notifications-111111?style=for-the-badge" alt="Push Notifications" />
-  <img height="24" src="https://img.shields.io/badge/PWA-111111?style=for-the-badge&logo=pwa" alt="PWA" />
-  <img height="24" src="https://img.shields.io/badge/Sentry-111111?style=for-the-badge&logo=sentry" alt="Sentry" />
-  <img height="24" src="https://img.shields.io/badge/Notion-111111?style=for-the-badge&logo=notion" alt="Notion" />
-  <img height="24" src="https://img.shields.io/badge/Trello-111111?style=for-the-badge&logo=trello" alt="Trello" />
-  <img height="24" src="https://img.shields.io/badge/Power%20BI-111111?style=for-the-badge&logo=powerbi" alt="Power BI" />
-  <img height="24" src="https://img.shields.io/badge/Excel%20Estratégico-111111?style=for-the-badge&logo=microsoftexcel" alt="Excel Estratégico" />
-  <img height="24" src="https://img.shields.io/badge/Google%20Sheets-111111?style=for-the-badge&logo=googlesheets" alt="Google Sheets" />
-</p>
-
-<sub>
-IA aplicada • Agentes inteligentes • Prompts estratégicos • Automação de tarefas • Organização operacional • Análise de dados • Dashboards • Produtividade • Fluxos digitais • Webhooks • Integrações externas • Lembretes automáticos • Notificações • Monitoramento de erros • Documentação técnica • Geração de conteúdo profissional • Apoio a desenvolvimento • Estruturação de processos
-</sub>
-
----
-
-### `[ Gestao_Estrategia_e_Operacao ]`
-
-<p align="left">
-  <img height="24" src="https://img.shields.io/badge/People%20Analytics-111111?style=for-the-badge" alt="People Analytics" />
-  <img height="24" src="https://img.shields.io/badge/Business%20Partner-111111?style=for-the-badge" alt="Business Partner" />
-  <img height="24" src="https://img.shields.io/badge/Gestão%20Estratégica-111111?style=for-the-badge" alt="Gestão Estratégica" />
-  <img height="24" src="https://img.shields.io/badge/Operações-111111?style=for-the-badge" alt="Operações" />
-  <img height="24" src="https://img.shields.io/badge/Processos-111111?style=for-the-badge" alt="Processos" />
-  <img height="24" src="https://img.shields.io/badge/Indicadores-111111?style=for-the-badge" alt="Indicadores" />
-  <img height="24" src="https://img.shields.io/badge/Estratégia%20Digital-111111?style=for-the-badge" alt="Estratégia Digital" />
-  <img height="24" src="https://img.shields.io/badge/Experiência%20do%20Cliente-111111?style=for-the-badge" alt="Experiência do Cliente" />
-  <img height="24" src="https://img.shields.io/badge/Produto%20Digital-111111?style=for-the-badge" alt="Produto Digital" />
-  <img height="24" src="https://img.shields.io/badge/Modelo%20Comercial-111111?style=for-the-badge" alt="Modelo Comercial" />
-</p>
-
-<sub>
-People Analytics • Business Partner • Liderança estratégica • Gestão de equipes • Design Organizacional • Prevenção de perdas • Gestão operacional • Processos internos • Indicadores de performance • Tomada de decisão • Comunicação profissional • Estratégia digital • Experiência do cliente • Organização comercial • Produto digital • Jornada do usuário • Implantação • Venda de soluções • Posicionamento profissional
-</sub>
-
----
-
-`}`
-
----
-
-## 🧩 `como_penso_um_projeto = {`
+## `como_penso_um_projeto`
 
 <p align="center">
-  <img src="./assets/como-penso-um-projeto.png" alt="Como penso um projeto — etapas, estratégia e evolução" width="100%" />
+  <img src="./assets/como-penso-um-projeto.svg" alt="Como penso um projeto — etapas, estratégia e evolução" width="100%" />
 </p>
-
-`}`
 
 ---
 
-## 🛰️ `codigo_em_producao = {`
+## `codigo_em_producao`
 
 <!-- CODE_DASHBOARD:START -->
 <p align="center">
@@ -291,83 +378,124 @@ People Analytics • Business Partner • Liderança estratégica • Gestão de
 <!-- CODE_DASHBOARD:END -->
 
 <p align="center">
-  <sub>Painel gerado automaticamente com base nos repositórios públicos do GitHub, contabilizando linhas, palavras, arquivos analisados e principais tecnologias em uso.</sub>
-</p>
-
-`}`
-
----
-
-## 📊 `telemetria_do_github`
-
-<p align="center">
-  <img
-    width="760"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=EoPaiva&amp;theme=github_dark"
-    alt="Resumo de contribuições do GitHub"
-  />
-</p>
-
-<p align="center">
-  <img
-    width="370"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=EoPaiva&amp;theme=github_dark"
-    alt="Estatísticas gerais do GitHub"
-  />
-  <img
-    width="370"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=EoPaiva&amp;theme=github_dark&amp;utcOffset=-3"
-    alt="Horário produtivo no GitHub"
-  />
-</p>
-
-<p align="center">
-  <img
-    width="370"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=EoPaiva&amp;theme=github_dark"
-    alt="Repositórios por linguagem"
-  />
-  <img
-    width="370"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=EoPaiva&amp;theme=github_dark"
-    alt="Linguagens com mais commits"
-  />
+  <sub>Painel gerado automaticamente a partir dos repositórios públicos do GitHub — linhas, palavras, arquivos e principais tecnologias em uso.</sub>
 </p>
 
 ---
 
-## 📌 `status_atual = {`
-
-```txt
-> Desenvolvendo presença profissional através de projetos reais.
-
-> Unindo tecnologia, IA, automação, gestão e estratégia digital.
-
-> Construindo soluções que comunicam valor, organização e resultado.
-
-> Evoluindo projetos como upaiva.dev, Studio JMarq e AgendaPro com foco em interface, performance, experiência, SaaS, produto digital e posicionamento profissional.
-```
-
-`}`
-
----
-
-## 📫 `contato = {`
+## `telemetria_do_github`
 
 <div align="center">
 
-**Mateus Paiva**  
-São José dos Campos — SP  
-Desenvolvimento Web • IA Aplicada • Automação • Soluções Digitais
+### `[ Activity_Graph ]`
 
-[![Site](https://img.shields.io/badge/Site-upaiva.dev-ffffff?style=for-the-badge&logo=googlechrome&logoColor=black)](https://upaiva.dev/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Mateus%20Paiva-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/mateus-paiva-19804b284)
-[![Email](https://img.shields.io/badge/Email-mpaiiva21%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mpaiiva21@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-EoPaiva-181717?style=for-the-badge&logo=github)](https://github.com/EoPaiva)
+<img
+  width="98%"
+  src="https://github-readme-activity-graph.vercel.app/graph?username=EoPaiva&bg_color=0a0a0a&color=10b981&line=10b981&point=fbbf24&area=true&area_color=10b981&hide_border=true&custom_title=Contribui%C3%A7%C3%B5es%20%E2%80%94%20%C3%BAltimos%207%20dias&radius=8&days=7"
+  alt="Activity graph"
+/>
+
+<br><br>
+
+### `[ Stats_&_Streak ]`
+
+<table align="center" border="0" cellpadding="0" cellspacing="6">
+  <tr>
+    <td align="center" valign="middle">
+      <img
+        height="200"
+        src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=EoPaiva&theme=github_dark"
+        alt="GitHub profile details"
+      />
+    </td>
+    <td align="center" valign="middle">
+      <img
+        height="200"
+        src="https://github-readme-streak-stats.herokuapp.com/?user=EoPaiva&background=0a0a0a&stroke=10b981&ring=fbbf24&fire=fbbf24&currStreakLabel=10b981&hide_border=true&sideLabels=e2e8f0&currStreakNum=ffffff&sideNums=ffffff&dates=64748b"
+        alt="GitHub streak"
+      />
+    </td>
+  </tr>
+</table>
+
+<br>
+
+### `[ Top_Languages_&_Trophy ]`
+
+<table align="center" border="0" cellpadding="0" cellspacing="6">
+  <tr>
+    <td align="center" valign="middle">
+      <img
+        height="200"
+        src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=EoPaiva&theme=github_dark"
+        alt="Repos por linguagem"
+      />
+    </td>
+    <td align="center" valign="middle">
+      <img
+        height="200"
+        src="https://github-profile-trophy.vercel.app/?username=EoPaiva&theme=onestar&no-frame=true&no-bg=true&row=2&column=3&margin-w=8&margin-h=8"
+        alt="GitHub trophies"
+      />
+    </td>
+  </tr>
+</table>
+
+<br>
+
+### `[ Productive_Hours ]`
+
+<table align="center" border="0" cellpadding="0" cellspacing="6">
+  <tr>
+    <td align="center" valign="middle">
+      <img
+        height="200"
+        src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=EoPaiva&theme=github_dark&utcOffset=-3"
+        alt="Horário produtivo"
+      />
+    </td>
+    <td align="center" valign="middle">
+      <img
+        height="200"
+        src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=EoPaiva&theme=github_dark"
+        alt="Linguagens com mais commits"
+      />
+    </td>
+  </tr>
+</table>
+
+<br>
+
+### `[ Contribution_Snake ]`
+
+<img src="./assets/snake-custom.svg" width="98%" alt="Snake animation — contribution trail" />
 
 </div>
 
-`}`
+---
+
+## `status_atual`
+
+```txt
+> Construindo presença profissional através de projetos reais.
+> Unindo tecnologia, IA aplicada, automação e estratégia digital.
+> Evoluindo upaiva.dev, AgendaPro e Studio JMarq com foco em produto, SaaS e experiência.
+> Aprendizado contínuo — código, design, gestão e visão de negócio.
+```
+
+---
+
+## `contato`
+
+<div align="center">
+
+**Vamos conversar?**
+
+[![Site](https://img.shields.io/badge/upaiva.dev-10b981?style=for-the-badge&logo=googlechrome&logoColor=white)](https://upaiva.dev/)
+[![LinkedIn](https://img.shields.io/badge/Mateus%20Paiva-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mateus-paiva-19804b284)
+[![Email](https://img.shields.io/badge/mpaiiva21@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mpaiiva21@gmail.com)
+
+</div>
 
 ---
 
@@ -375,11 +503,12 @@ Desenvolvimento Web • IA Aplicada • Automação • Soluções Digitais
   <samp><i>"A tecnologia só atinge seu ápice quando guiada por estratégia clara, execução consistente e pessoas excepcionais."</i></samp>
 </p>
 
+<br>
+
 <p align="center">
-  <strong>M PAIVA_</strong><br>
-  <sub>dev by nature • strategy by vision • automation by purpose</sub>
+  <img src="./assets/brand-signature.svg" width="90%" alt="M PAIVA — brand signature" />
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0F172A&height=120&section=footer" />
+  <img src="https://capsule-render.vercel.app/api?type=venom&color=0:10b981,50:1e293b,100:0a0a0a&height=140&section=footer&animation=fadeIn" alt="footer wave" />
 </p>
