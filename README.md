@@ -63,7 +63,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
   <tr>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/upaiva-dev.svg" width="28" align="center" alt="upaiva.dev" /> upaiva.dev</h3>
-      <p><sub>Portfólio profissional — vitrine digital, branding e posicionamento.</sub></p>
+      <p><sub>Portfólio profissional premium para apresentar trajetória, projetos, competências e posicionamento digital. Reúne identidade visual, vitrine de trabalhos, perfil profissional, tecnologias utilizadas e links estratégicos em uma experiência moderna, responsiva e focada em branding pessoal, autoridade técnica e conversão de oportunidades.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
         <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
@@ -73,7 +73,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
     </td>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/agendapro.svg" width="28" align="center" alt="AgendaPro" /> AgendaPro</h3>
-      <p><sub>SaaS de agendamento multiempresa — checkout, planos e implantação assistida.</sub></p>
+      <p><sub>SaaS de agendamento multiempresa para organizar clientes, serviços, equipe, horários e atendimentos em uma plataforma simples e profissional. Inclui painel administrativo, página pública de agendamento, planos, checkout, implantação assistida e estrutura preparada para negócios que precisam vender, atender e gerenciar agendas com mais eficiência.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
@@ -83,7 +83,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
     </td>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/studio-jmarq.svg" width="28" align="center" alt="Studio JMarq" /> Studio JMarq</h3>
-      <p><sub>Site comercial premium — landing page, identidade visual e microinterações.</sub></p>
+      <p><sub>Site comercial premium para arquitetura e interiores, com foco em identidade visual, apresentação institucional e conversão de clientes. Une landing page elegante, narrativa de marca, portfólio visual, experiência responsiva e estrutura moderna para transmitir sofisticação, confiança e posicionamento profissional no mercado de projetos arquitetônicos.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react" />
         <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
@@ -95,7 +95,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
   <tr>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/fitpro.svg" width="28" align="center" alt="FitPro" /> FitPro</h3>
-      <p><sub>SaaS de gestão fitness — treinos, alunos, planos e acompanhamento de evolução.</sub></p>
+      <p><sub>SaaS fitness para personal trainers gerenciarem alunos, treinos, planos, pagamentos e acompanhamento de evolução em uma plataforma premium. Inclui dashboards por perfil, criação de fichas, biblioteca de exercícios, progresso do aluno, comunidade, WhatsApp, planos pagos e estrutura preparada para operação profissional de personais e alunos.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
@@ -134,7 +134,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
     </td>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/cidadeos-ai.svg" width="28" align="center" alt="CidadeOS AI" /> CidadeOS AI</h3>
-      <p><sub>Plataforma govtech de atendimento, protocolo e inteligência urbana para pequenas cidades.</sub></p>
+      <p><sub>Plataforma govtech para atendimento, protocolo e inteligência urbana em pequenas cidades. Centraliza solicitações da população, organiza demandas por setor, acompanha status de protocolos e usa IA para apoiar triagem, respostas e gestão pública, criando uma experiência mais simples, moderna e eficiente entre cidadão e prefeitura.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react" />
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
