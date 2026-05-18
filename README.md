@@ -63,7 +63,10 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
   <tr>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/upaiva-dev.svg" width="28" align="center" alt="upaiva.dev" /> upaiva.dev</h3>
-      <p><sub>Portfólio profissional premium para apresentar trajetória, projetos, competências e posicionamento digital. Reúne identidade visual, vitrine de trabalhos, perfil profissional, tecnologias utilizadas e links estratégicos em uma experiência moderna, responsiva e focada em branding pessoal, autoridade técnica e conversão de oportunidades.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Em%20Produ%C3%A7%C3%A3o-10b981?style=flat-square&labelColor=0a0a0a" alt="Em produção" />
+      </p>
+      <p><sub>Portfólio profissional — vitrine digital, branding e posicionamento estratégico.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
         <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
@@ -72,34 +75,61 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
       <a href="https://upaiva.dev/">→ ver projeto</a>
     </td>
     <td width="33%" valign="top">
-      <h3><img src="./assets/projects/agendapro.svg" width="28" align="center" alt="AgendaPro" /> AgendaPro</h3>
-      <p><sub>SaaS de agendamento multiempresa para organizar clientes, serviços, equipe, horários e atendimentos em uma plataforma simples e profissional. Inclui painel administrativo, página pública de agendamento, planos, checkout, implantação assistida e estrutura preparada para negócios que precisam vender, atender e gerenciar agendas com mais eficiência.</sub></p>
+      <h3><img src="./assets/projects/instagrowth.svg" width="28" align="center" alt="InstaGrowth IA" /> InstaGrowth IA</h3>
       <p>
-        <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
-        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
-        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
+        <img src="https://img.shields.io/badge/REPO%20PRIVADO-fbbf24?style=flat-square&logo=lock&logoColor=0a0a0a&labelColor=0a0a0a" alt="Repositório privado" />
+        <img src="https://img.shields.io/badge/Em%20Lan%C3%A7amento-10b981?style=flat-square&labelColor=0a0a0a" alt="Em lançamento" />
       </p>
-      <a href="https://github.com/EoPaiva">→ em desenvolvimento</a>
+      <p><sub>Extensão Chrome (MV3) de <b>growth para Instagram com IA BYOK</b>. Captura perfis, descobre nichos, executa follow/unfollow com timing humano e gera conteúdo via Claude/OpenAI/Gemini — usuário traz a própria chave.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Manifest%20V3-4285F4?style=flat-square&logo=googlechrome&logoColor=white" />
+        <img src="https://img.shields.io/badge/esbuild-FFCF00?style=flat-square&logo=esbuild&logoColor=0a0a0a" />
+        <img src="https://img.shields.io/badge/BYOK%20IA-10b981?style=flat-square&logoColor=white" />
+        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/PIX-32BCAD?style=flat-square&logo=pix&logoColor=white" />
+      </p>
+      <details>
+        <summary><sub><b>+ detalhes técnicos</b></sub></summary>
+        <sub>
+          <br>
+          ▸ Build com esbuild gerando IIFE bundles (popup, content, background)<br>
+          ▸ 2 builds: <code>full</code> (sideload com auto-follow) + <code>lite</code> (Chrome Web Store)<br>
+          ▸ BYOK — usuário usa própria API key de Claude, OpenAI ou Gemini<br>
+          ▸ Agente <b>local</b> sem tokens pro card "O Que Fazer Agora?"<br>
+          ▸ Backend Railway compartilhado com cross-app filter (appId)<br>
+          ▸ Automação com timing humano (pacer + safety-guard)<br>
+          ▸ 3 planos: 7 dias · 30 dias · Vitalício (compra única, via PIX)<br>
+          ▸ Captura, descoberta, fila, growth coach, prompt studio
+        </sub>
+      </details>
     </td>
     <td width="33%" valign="top">
-      <h3><img src="./assets/projects/studio-jmarq.svg" width="28" align="center" alt="Studio JMarq" /> Studio JMarq</h3>
-      <p><sub>Site comercial premium para arquitetura e interiores, com foco em identidade visual, apresentação institucional e conversão de clientes. Une landing page elegante, narrativa de marca, portfólio visual, experiência responsiva e estrutura moderna para transmitir sofisticação, confiança e posicionamento profissional no mercado de projetos arquitetônicos.</sub></p>
+      <h3><img src="./assets/projects/calc-impostos.svg" width="28" align="center" alt="Calc Impostos BR" /> Calc Impostos BR</h3>
       <p>
-        <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react" />
-        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
-        <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logoColor=white" />
+        <img src="https://img.shields.io/badge/REPO%20PRIVADO-fbbf24?style=flat-square&logo=lock&logoColor=0a0a0a&labelColor=0a0a0a" alt="Repositório privado" />
+        <img src="https://img.shields.io/badge/Em%20Produ%C3%A7%C3%A3o-10b981?style=flat-square&labelColor=0a0a0a" alt="Em produção" />
       </p>
-      <a href="https://github.com/EoPaiva">→ ver projeto</a>
+      <p><sub>Extensão Chrome (MV3) para cálculo automático de <b>impostos brasileiros</b> — IR, INSS, FGTS, salário líquido, MEI, Simples Nacional. Premium com acesso vitalício via PIX.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Manifest%20V3-4285F4?style=flat-square&logo=googlechrome&logoColor=white" />
+        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
+        <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" />
+        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/PIX-32BCAD?style=flat-square&logo=pix&logoColor=white" />
+      </p>
     </td>
   </tr>
   <tr>
     <td width="33%" valign="top">
-      <h3><img src="./assets/projects/fitpro.svg" width="28" align="center" alt="FitPro" /> FitPro</h3>
-      <p><sub>SaaS fitness para personal trainers gerenciarem alunos, treinos, planos, pagamentos e acompanhamento de evolução em uma plataforma premium. Inclui dashboards por perfil, criação de fichas, biblioteca de exercícios, progresso do aluno, comunidade, WhatsApp, planos pagos e estrutura preparada para operação profissional de personais e alunos.</sub></p>
+      <h3><img src="./assets/projects/agendapro.svg" width="28" align="center" alt="AgendaPro" /> AgendaPro</h3>
+      <p>
+        <img src="https://img.shields.io/badge/Em%20Desenvolvimento-fbbf24?style=flat-square&labelColor=0a0a0a" alt="Em desenvolvimento" />
+      </p>
+      <p><sub>SaaS de agendamento multiempresa — checkout, planos e implantação assistida.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
-        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
       </p>
       <a href="https://github.com/EoPaiva">→ em desenvolvimento</a>
     </td>
@@ -109,7 +139,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/REPO%20PRIVADO-fbbf24?style=flat-square&logo=lock&logoColor=0a0a0a&labelColor=0a0a0a" alt="Repositório privado" />
         <img src="https://img.shields.io/badge/Em%20Produ%C3%A7%C3%A3o-10b981?style=flat-square&labelColor=0a0a0a" alt="Em produção" />
       </p>
-      <p><sub>Extensão Chrome (MV3) <b>freemium</b> para análise e limpeza inteligente de seguidores no Instagram. Detecta quem não te segue de volta, classifica perfis (Pessoa / Página / Criador), faz unfollow em lote com delays randômicos seguros e mantém lista branca local. Premium via <b>PIX</b> com licença anti-fraude.</sub></p>
+      <p><sub>Extensão Chrome (MV3) <b>freemium</b> para análise e limpeza inteligente de seguidores no Instagram. Detecta quem não te segue, classifica perfis e faz unfollow em lote com delays seguros. <b>Publicada na Chrome Web Store</b>.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/Manifest%20V3-4285F4?style=flat-square&logo=googlechrome&logoColor=white" />
         <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
@@ -117,30 +147,78 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
         <img src="https://img.shields.io/badge/PIX-32BCAD?style=flat-square&logo=pix&logoColor=white" />
       </p>
+      <p>
+        <a href="https://chromewebstore.google.com/detail/n%C3%A3o-seguidores-upaiva/pggbblnnnofafnnieccbdopeaaafolin?hl=pt-br">
+          <img src="https://img.shields.io/badge/Instalar%20na%20Chrome%20Web%20Store-10b981?style=flat-square&logo=googlechrome&logoColor=ffffff&labelColor=0a0a0a" alt="Instalar na Chrome Web Store" />
+        </a>
+      </p>
       <details>
         <summary><sub><b>+ detalhes técnicos</b></sub></summary>
         <sub>
           <br>
           ▸ Popup com 4 abas (Capturar / Análise / Lista / Config)<br>
-          ▸ Content script integrado à API interna do Instagram via cookies de sessão<br>
+          ▸ Content script integrado à API interna do Instagram via cookies<br>
           ▸ Auto-injeção via <code>chrome.scripting.executeScript</code><br>
-          ▸ Unfollow bulk com delay aleatório 5–11s + limite por sessão (anti-detecção)<br>
+          ▸ Unfollow bulk com delay aleatório 5–11s (anti-detecção)<br>
           ▸ Lista branca + ignorados persistentes<br>
-          ▸ Backend Node.js com Supabase/PostgreSQL + RLS + Mercado Pago<br>
-          ▸ Licença vinculada a e-mail · até 2 dispositivos ativos · device token<br>
-          ▸ Rate limit, CORS restrito, logs de auditoria
+          ▸ Backend Node.js + Supabase + RLS + Mercado Pago<br>
+          ▸ Licença vinculada a e-mail · 2 devices · device token
         </sub>
       </details>
     </td>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/cidadeos-ai.svg" width="28" align="center" alt="CidadeOS AI" /> CidadeOS AI</h3>
-      <p><sub>Plataforma govtech para atendimento, protocolo e inteligência urbana em pequenas cidades. Centraliza solicitações da população, organiza demandas por setor, acompanha status de protocolos e usa IA para apoiar triagem, respostas e gestão pública, criando uma experiência mais simples, moderna e eficiente entre cidadão e prefeitura.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Em%20Desenvolvimento-fbbf24?style=flat-square&labelColor=0a0a0a" alt="Em desenvolvimento" />
+      </p>
+      <p><sub>Plataforma govtech de atendimento, protocolo e inteligência urbana para pequenas cidades.</sub></p>
       <p>
         <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react" />
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
         <img src="https://img.shields.io/badge/WhatsApp%20API-25D366?style=flat-square&logo=whatsapp&logoColor=white" />
       </p>
       <a href="https://github.com/EoPaiva/CidadeOS-AI">→ ver projeto</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/studio-jmarq.svg" width="28" align="center" alt="Studio JMarq" /> Studio JMarq</h3>
+      <p>
+        <img src="https://img.shields.io/badge/Em%20Produ%C3%A7%C3%A3o-10b981?style=flat-square&labelColor=0a0a0a" alt="Em produção" />
+      </p>
+      <p><sub>Site comercial premium — landing page, identidade visual e microinterações.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react" />
+        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+        <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logoColor=white" />
+      </p>
+      <a href="https://github.com/EoPaiva">→ ver projeto</a>
+    </td>
+    <td width="33%" valign="top">
+      <h3><img src="./assets/projects/fitpro.svg" width="28" align="center" alt="FitPro" /> FitPro</h3>
+      <p>
+        <img src="https://img.shields.io/badge/Planejamento-64748b?style=flat-square&labelColor=0a0a0a" alt="Planejamento" />
+      </p>
+      <p><sub>SaaS de gestão fitness — treinos, alunos, planos e acompanhamento de evolução.</sub></p>
+      <p>
+        <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
+        <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+      </p>
+      <a href="https://github.com/EoPaiva">→ em desenvolvimento</a>
+    </td>
+    <td width="33%" valign="top" align="center">
+      <br>
+      <h3>🚀 &nbsp;Próximo capítulo</h3>
+      <p><sub>Novos produtos digitais, IA aplicada e SaaS em construção contínua.</sub></p>
+      <br>
+      <a href="https://github.com/EoPaiva?tab=repositories">
+        <img src="https://img.shields.io/badge/explorar%20todos%20os%20repos-10b981?style=for-the-badge&logo=github&logoColor=ffffff&labelColor=0a0a0a" alt="Explorar repositórios" />
+      </a>
+      <br><br>
+      <a href="https://upaiva.dev/">
+        <img src="https://img.shields.io/badge/portf%C3%B3lio%20completo-fbbf24?style=for-the-badge&logo=vercel&logoColor=0a0a0a&labelColor=0a0a0a" alt="Portfólio completo" />
+      </a>
     </td>
   </tr>
 </table>
@@ -237,9 +315,14 @@ const proficiency = {
 <p>
   <strong>🟢</strong>&nbsp;
   <img src="https://img.shields.io/badge/OpenAI-10b981?style=flat-square&logo=openai&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Anthropic%20Claude-10b981?style=flat-square&logo=anthropic&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Google%20Gemini-10b981?style=flat-square&logo=googlegemini&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/BYOK%20Pattern-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/AI%20Local%20Agent-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/GitHub%20Copilot-10b981?style=flat-square&logo=githubcopilot&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/WhatsApp%20API-10b981?style=flat-square&logo=whatsapp&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Mercado%20Pago-10b981?style=flat-square&logo=mercadopago&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Humanize%20Timing-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Prompts%20Estratégicos-10b981?style=flat-square&logoColor=ffffff" />
 </p>
 <p>
@@ -254,14 +337,15 @@ const proficiency = {
 </p>
 <p>
   <strong>🔵</strong>&nbsp;
-  <img src="https://img.shields.io/badge/Anthropic%20Claude-0a0a0a?style=flat-square&logo=anthropic&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/MCP-0a0a0a?style=flat-square&logoColor=64748b" />
   <img src="https://img.shields.io/badge/LangChain-0a0a0a?style=flat-square&logo=langchain&logoColor=64748b" />
   <img src="https://img.shields.io/badge/Vercel%20AI%20SDK-0a0a0a?style=flat-square&logo=vercel&logoColor=64748b" />
   <img src="https://img.shields.io/badge/Vector%20DBs-0a0a0a?style=flat-square&logoColor=64748b" />
   <img src="https://img.shields.io/badge/RAG-0a0a0a?style=flat-square&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Agent%20to%20Agent-0a0a0a?style=flat-square&logoColor=64748b" />
 </p>
 
-<sub>IA aplicada • Agentes inteligentes • Prompts estratégicos • Automação de fluxos • Integrações externas • Monitoramento de erros</sub>
+<sub>IA aplicada multi-provider (BYOK) • Agente local sem tokens • Prompts estratégicos • Automação com timing humano • Integrações externas • Monitoramento</sub>
 
 ---
 
@@ -274,7 +358,10 @@ const proficiency = {
   <img src="https://img.shields.io/badge/Git-10b981?style=flat-square&logo=git&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/GitHub-10b981?style=flat-square&logo=github&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/GitHub%20Actions-10b981?style=flat-square&logo=githubactions&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/esbuild-10b981?style=flat-square&logo=esbuild&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Chrome%20Web%20Store-10b981?style=flat-square&logo=chromewebstore&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/VS%20Code-10b981?style=flat-square&logo=visualstudiocode&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Cursor-10b981?style=flat-square&logoColor=ffffff" />
 </p>
 <p>
   <strong>🟡</strong>&nbsp;
@@ -285,6 +372,7 @@ const proficiency = {
   <img src="https://img.shields.io/badge/PowerShell-1e293b?style=flat-square&logo=powershell&logoColor=fbbf24" />
   <img src="https://img.shields.io/badge/Linux-1e293b?style=flat-square&logo=linux&logoColor=fbbf24" />
   <img src="https://img.shields.io/badge/Postman-1e293b?style=flat-square&logo=postman&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Vite-1e293b?style=flat-square&logo=vite&logoColor=fbbf24" />
 </p>
 <p>
   <strong>🔵</strong>&nbsp;
@@ -292,9 +380,10 @@ const proficiency = {
   <img src="https://img.shields.io/badge/AWS%20Lambda-0a0a0a?style=flat-square&logo=awslambda&logoColor=64748b" />
   <img src="https://img.shields.io/badge/Terraform-0a0a0a?style=flat-square&logo=terraform&logoColor=64748b" />
   <img src="https://img.shields.io/badge/Edge%20Functions-0a0a0a?style=flat-square&logoColor=64748b" />
+  <img src="https://img.shields.io/badge/Turborepo-0a0a0a?style=flat-square&logo=turborepo&logoColor=64748b" />
 </p>
 
-<sub>CI/CD • Hospedagem serverless • Domínios personalizados • Versionamento • Ambientes de produção • Workflows automatizados</sub>
+<sub>CI/CD • Hospedagem serverless • Chrome Web Store deploy • Bundle dual-build (full/lite) • Versionamento • Workflows automatizados</sub>
 
 ---
 
@@ -304,11 +393,14 @@ const proficiency = {
   <strong>🟢</strong>&nbsp;
   <img src="https://img.shields.io/badge/SaaS%20Architecture-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Multi--tenant-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Cross--App%20Isolation-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Onboarding-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Checkout%20PIX-10b981?style=flat-square&logo=pix&logoColor=ffffff" />
-  <img src="https://img.shields.io/badge/Implantação%20Assistida-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Compra%20Única-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Anti--Fraude%20License-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Audit%20Logs-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Manifest%20V3-10b981?style=flat-square&logo=googlechrome&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Dual%20Build%20(full%2Flite)-10b981?style=flat-square&logoColor=ffffff" />
 </p>
 <p>
   <strong>🟡</strong>&nbsp;
@@ -317,6 +409,7 @@ const proficiency = {
   <img src="https://img.shields.io/badge/Gestão%20Estratégica-1e293b?style=flat-square&logoColor=fbbf24" />
   <img src="https://img.shields.io/badge/Experiência%20do%20Cliente-1e293b?style=flat-square&logoColor=fbbf24" />
   <img src="https://img.shields.io/badge/Health%20Score-1e293b?style=flat-square&logoColor=fbbf24" />
+  <img src="https://img.shields.io/badge/Implantação%20Assistida-1e293b?style=flat-square&logoColor=fbbf24" />
   <img src="https://img.shields.io/badge/Notion-1e293b?style=flat-square&logo=notion&logoColor=fbbf24" />
   <img src="https://img.shields.io/badge/Trello-1e293b?style=flat-square&logo=trello&logoColor=fbbf24" />
 </p>
@@ -329,7 +422,7 @@ const proficiency = {
   <img src="https://img.shields.io/badge/Mixpanel-0a0a0a?style=flat-square&logo=mixpanel&logoColor=64748b" />
 </p>
 
-<sub>Arquitetura SaaS • Multiempresa • Permissões por função • Logs de auditoria • Operação escalável • Modelo comercial • Visão de produto</sub>
+<sub>Arquitetura SaaS • Multi-tenant • Cross-app isolation (appId) • Compra única • Anti-fraude com device tokens • Operação escalável</sub>
 
 ---
 
@@ -337,14 +430,17 @@ const proficiency = {
 
 ```ts
 const projects_shipped = [
-  "upaiva.dev",      // Next.js · Tailwind · Framer Motion
-  "AgendaPro",       // Next.js · Supabase · PostgreSQL · Checkout
-  "Studio JMarq",    // React · Tailwind · GSAP
-  "FitPro",          // Next.js · Supabase · Tailwind
-  "Não Seguidores",  // Manifest V3 · Node.js · Supabase · PIX
-  "CidadeOS AI"      // React · Supabase · WhatsApp API
+  "upaiva.dev",          // Next.js · Tailwind · Framer Motion
+  "InstaGrowth IA",      // MV3 · esbuild · BYOK (Claude/OpenAI/Gemini) · PIX
+  "Calc Impostos BR",    // MV3 · Node.js · Supabase · PIX vitalício
+  "Não Seguidores",      // MV3 · Node.js · Supabase · PIX freemium
+  "AgendaPro",           // Next.js · Supabase · PostgreSQL · Checkout
+  "Studio JMarq",        // React · Tailwind · GSAP
+  "FitPro",              // Next.js · Supabase · Tailwind
+  "CidadeOS AI"          // React · Supabase · WhatsApp API
 ];
-// → 6 produtos entregues · 4 stacks distintas · 100% TypeScript-first
+// → 8 produtos entregues · 5 stacks distintas · 3 extensões na Chrome Web Store
+// → Backend Railway multi-app compartilhado entre 3 extensões via appId
 ```
 
 ---
@@ -371,7 +467,7 @@ const projects_shipped = [
 <p align="center">
   <img
     width="100%"
-    src="./assets/github-code-dashboard-20260518044632.svg"
+    src="./assets/github-code-dashboard-20260514200652.svg"
     alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
   />
 </p>
