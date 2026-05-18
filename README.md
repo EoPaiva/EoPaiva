@@ -205,7 +205,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
         <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
       </p>
-      <a href="https://www.studiojmarq.com/">→ ver projeto</a>
+      <a href="https://fit-pro-xp7c.vercel.app/">→ ver projeto</a>
     </td>
     <td width="33%" valign="top" align="center">
       <br>
