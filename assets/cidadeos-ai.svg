@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48">
+  <line x1="4" y1="56" x2="60" y2="56" stroke="#10b981" stroke-width="1.5"/>
+  <g fill="#0a0a0a" stroke="#10b981" stroke-width="1.5">
+    <rect x="8" y="32" width="10" height="24"/>
+    <rect x="20" y="22" width="12" height="34"/>
+    <rect x="34" y="16" width="10" height="40"/>
+    <rect x="46" y="28" width="10" height="28"/>
+  </g>
+  <g fill="#fbbf24">
+    <rect x="10" y="36" width="2" height="2">
+      <animate attributeName="opacity" values="1;0.2;1" dur="1.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="14" y="40" width="2" height="2">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="10" y="46" width="2" height="2">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="23" y="28" width="2" height="2">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="28" y="32" width="2" height="2">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="23" y="40" width="2" height="2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.7s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="28" y="46" width="2" height="2">
+      <animate attributeName="opacity" values="1;0.5;1" dur="2.3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="37" y="22" width="2" height="2">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="40" y="28" width="2" height="2">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2.1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="37" y="36" width="2" height="2">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="40" y="44" width="2" height="2">
+      <animate attributeName="opacity" values="1;0.4;1" dur="2.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="48" y="34" width="2" height="2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="52" y="40" width="2" height="2">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="48" y="46" width="2" height="2">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <line x1="39" y1="16" x2="39" y2="8" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="39" cy="8" r="2" fill="#10b981"/>
+  <circle cx="39" cy="8" r="6" fill="none" stroke="#10b981" stroke-width="1" opacity="0">
+    <animate attributeName="r" values="2;10;2" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="39" cy="8" r="6" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0">
+    <animate attributeName="r" values="2;10;2" dur="2s" begin="1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" begin="1s" repeatCount="indefinite"/>
+  </circle>
+</svg>
