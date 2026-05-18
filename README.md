@@ -131,7 +131,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
         <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
       </p>
-      <a href="https://github.com/EoPaiva">→ em desenvolvimento</a>
+      <a href="https://agenda-pro-eta.vercel.app/">→ em desenvolvimento</a>
     </td>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/nao-seguidores.svg" width="28" align="center" alt="Não Seguidores uPaiva" /> Não Seguidores uPaiva</h3>
@@ -177,7 +177,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
         <img src="https://img.shields.io/badge/WhatsApp%20API-25D366?style=flat-square&logo=whatsapp&logoColor=white" />
       </p>
-      <a href="https://github.com/EoPaiva/CidadeOS-AI">→ ver projeto</a>
+      <a href="https://cidade-os-ai.vercel.app/">→ ver projeto</a>
     </td>
   </tr>
   <tr>
@@ -192,7 +192,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
         <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logoColor=white" />
       </p>
-      <a href="https://github.com/EoPaiva">→ ver projeto</a>
+      <a href="https://studiojmarq.com/">→ ver projeto</a>
     </td>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/fitpro.svg" width="28" align="center" alt="FitPro" /> FitPro</h3>
@@ -205,7 +205,7 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
         <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
       </p>
-      <a href="https://github.com/EoPaiva">→ em desenvolvimento</a>
+      <a href="https://www.studiojmarq.com/">→ ver projeto</a>
     </td>
     <td width="33%" valign="top" align="center">
       <br>
