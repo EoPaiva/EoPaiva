@@ -88,6 +88,9 @@ Perfil híbrido entre **tecnologia, produto, processos e pessoas**. Atuo na cria
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
         <img src="https://img.shields.io/badge/PIX-32BCAD?style=flat-square&logo=pix&logoColor=white" />
       </p>
+        <a href="https://chromewebstore.google.com/detail/instagrowth-ia-upaiva/eopaifcdlgkmmpemkpkdklhaddgllbkc?hl=pt-br">
+          <img src="https://img.shields.io/badge/Instalar%20na%20Chrome%20Web%20Store-10b981?style=flat-square&logo=googlechrome&logoColor=ffffff&labelColor=0a0a0a" alt="Instalar na Chrome Web Store" />
+        </a>
       <details>
         <summary><sub><b>+ detalhes técnicos</b></sub></summary>
         <sub>
