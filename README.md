@@ -472,7 +472,7 @@ const projects_shipped = [
 <!-- CODE_DASHBOARD:START -->
 <p align="center">
   <img
-    width="100%"
+    width="80%"
     src="./assets/github-code-dashboard-20260702043356.svg"
     alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
   />
@@ -485,19 +485,6 @@ const projects_shipped = [
 
 ---
 
-## `telemetria_do_github`
-
-<div align="center">
-
-### `[ Activity_Graph ]`
-
-<img
-  width="98%"
-  src="https://github-readme-activity-graph.vercel.app/graph?username=EoPaiva&bg_color=0a0a0a&color=10b981&line=10b981&point=fbbf24&area=true&area_color=10b981&hide_border=true&custom_title=Contribui%C3%A7%C3%B5es%20%E2%80%94%20%C3%BAltimos%207%20dias&radius=8&days=7"
-  alt="Activity graph"
-/>
-
-<br><br>
 
 ### `[ Stats_&_Streak ]`
 
@@ -522,26 +509,7 @@ const projects_shipped = [
 
 <br>
 
-### `[ Top_Languages_&_Trophy ]`
 
-<table align="center" border="0" cellpadding="0" cellspacing="6">
-  <tr>
-    <td align="center" valign="middle">
-      <img
-        height="200"
-        src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=EoPaiva&theme=github_dark"
-        alt="Repos por linguagem"
-      />
-    </td>
-    <td align="center" valign="middle">
-      <img
-        height="200"
-        src="https://github-profile-trophy.vercel.app/?username=EoPaiva&theme=onestar&no-frame=true&no-bg=true&row=2&column=3&margin-w=8&margin-h=8"
-        alt="GitHub trophies"
-      />
-    </td>
-  </tr>
-</table>
 
 <br>
 
@@ -568,11 +536,6 @@ const projects_shipped = [
 
 <br>
 
-### `[ Contribution_Snake ]`
-
-<img src="./assets/snake-custom.svg" width="98%" alt="Snake animation — contribution trail" />
-
-</div>
 
 ---
 
