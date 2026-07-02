@@ -45,7 +45,7 @@
 ```js
 const mateusPaiva = {
   nome:        "Mateus Paiva",
-  funcao:      "Desenvolvedor Web • IA Aplicada • Produto Digital",
+  funcao:      "Desenvolvedor Full Stack • IA Aplicada • Produto Digital",
   baseado:     "São José dos Campos — SP",
   foco:        ["Web Development", "SaaS", "Automação", "UX Estratégica"],
   diferencial: "Tecnologia + estratégia + experiência em soluções claras e escaláveis",
