@@ -473,7 +473,7 @@ const projects_shipped = [
 <p align="center">
   <img
     width="100%"
-    src="./assets/github-code-dashboard-20260708195809.svg"
+    src="./assets/github-code-dashboard-20260709041646.svg"
     alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
   />
 </p>
