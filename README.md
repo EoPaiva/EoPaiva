@@ -221,8 +221,12 @@ const proficiency = {
 <p>
   <strong>🟢</strong>&nbsp;
   <img src="https://img.shields.io/badge/Node.js-10b981?style=flat-square&logo=nodedotjs&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Express-10b981?style=flat-square&logo=express&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Python-10b981?style=flat-square&logo=python&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Supabase-10b981?style=flat-square&logo=supabase&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/PostgreSQL-10b981?style=flat-square&logo=postgresql&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/MySQL-10b981?style=flat-square&logo=mysql&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/MongoDB-10b981?style=flat-square&logo=mongodb&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/REST%20APIs-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Row%20Level%20Security-10b981?style=flat-square&logoColor=ffffff" />
 </p>
@@ -231,13 +235,12 @@ const proficiency = {
   <summary><sub>🟡 fluent · 🔵 expanding</sub></summary>
   <p>
     <strong>🟡</strong>&nbsp;
-    <img src="https://img.shields.io/badge/Python-1e293b?style=flat-square&logo=python&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/MongoDB-1e293b?style=flat-square&logo=mongodb&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/MySQL-1e293b?style=flat-square&logo=mysql&logoColor=fbbf24" />
+    <img src="https://img.shields.io/badge/Java-1e293b?style=flat-square&logo=openjdk&logoColor=fbbf24" />
+    <img src="https://img.shields.io/badge/PHP-1e293b?style=flat-square&logo=php&logoColor=fbbf24" />
+    <img src="https://img.shields.io/badge/C%23-1e293b?style=flat-square&logo=dotnet&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/Firebase-1e293b?style=flat-square&logo=firebase&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/Prisma-1e293b?style=flat-square&logo=prisma&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/JWT-1e293b?style=flat-square&logo=jsonwebtokens&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Express-1e293b?style=flat-square&logo=express&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/NestJS-1e293b?style=flat-square&logo=nestjs&logoColor=fbbf24" />
   </p>
   <p>
