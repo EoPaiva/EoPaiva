@@ -190,22 +190,19 @@ const proficiency = {
   <img src="https://img.shields.io/badge/Next.js-10b981?style=flat-square&logo=nextdotjs&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Tailwind-10b981?style=flat-square&logo=tailwindcss&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Framer%20Motion-10b981?style=flat-square&logo=framer&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Sass-10b981?style=flat-square&logo=sass&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Vite-10b981?style=flat-square&logo=vite&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/TanStack%20Start-10b981?style=flat-square&logo=tanstack&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/GSAP-10b981?style=flat-square&logo=greensock&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/shadcn%2Fui-10b981?style=flat-square&logo=shadcnui&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Radix%20UI-10b981?style=flat-square&logo=radixui&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Webpack-10b981?style=flat-square&logo=webpack&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Figma-10b981?style=flat-square&logo=figma&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Lucide-10b981?style=flat-square&logo=lucide&logoColor=ffffff" />
 </p>
 
 <details>
-  <summary><sub>🟡 fluent · 🔵 expanding</sub></summary>
-  <p>
-    <strong>🟡</strong>&nbsp;
-    <img src="https://img.shields.io/badge/Sass-1e293b?style=flat-square&logo=sass&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/GSAP-1e293b?style=flat-square&logo=greensock&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/shadcn%2Fui-1e293b?style=flat-square&logo=shadcnui&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Radix%20UI-1e293b?style=flat-square&logo=radixui&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Vite-1e293b?style=flat-square&logo=vite&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Webpack-1e293b?style=flat-square&logo=webpack&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Figma-1e293b?style=flat-square&logo=figma&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Lucide-1e293b?style=flat-square&logo=lucide&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/TanStack%20Start-1e293b?style=flat-square&logo=tanstack&logoColor=fbbf24" />
-  </p>
+  <summary><sub>🔵 expanding</sub></summary>
   <p>
     <strong>🔵</strong>&nbsp;
     <img src="https://img.shields.io/badge/Astro-0a0a0a?style=flat-square&logo=astro&logoColor=64748b" />
@@ -229,6 +226,10 @@ const proficiency = {
   <img src="https://img.shields.io/badge/MongoDB-10b981?style=flat-square&logo=mongodb&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/REST%20APIs-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Row%20Level%20Security-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/NestJS-10b981?style=flat-square&logo=nestjs&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Prisma-10b981?style=flat-square&logo=prisma&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/JWT-10b981?style=flat-square&logo=jsonwebtokens&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Firebase-10b981?style=flat-square&logo=firebase&logoColor=ffffff" />
 </p>
 
 <details>
@@ -238,10 +239,6 @@ const proficiency = {
     <img src="https://img.shields.io/badge/Java-1e293b?style=flat-square&logo=openjdk&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/PHP-1e293b?style=flat-square&logo=php&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/C%23-1e293b?style=flat-square&logo=dotnet&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Firebase-1e293b?style=flat-square&logo=firebase&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Prisma-1e293b?style=flat-square&logo=prisma&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/JWT-1e293b?style=flat-square&logo=jsonwebtokens&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/NestJS-1e293b?style=flat-square&logo=nestjs&logoColor=fbbf24" />
   </p>
   <p>
     <strong>🔵</strong>&nbsp;
@@ -263,10 +260,17 @@ const proficiency = {
   <img src="https://img.shields.io/badge/BYOK%20Pattern-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/WhatsApp%20API-10b981?style=flat-square&logo=whatsapp&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Mercado%20Pago-10b981?style=flat-square&logo=mercadopago&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Vercel%20AI%20SDK-10b981?style=flat-square&logo=vercel&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/RAG-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/LangChain-10b981?style=flat-square&logo=langchain&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Vector%20DBs-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/MCP-10b981?style=flat-square&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Discord.js-10b981?style=flat-square&logo=discord&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Riot%20API-10b981?style=flat-square&logo=riotgames&logoColor=ffffff" />
 </p>
 
 <details>
-  <summary><sub>🟡 fluent · 🔵 expanding</sub></summary>
+  <summary><sub>🟡 fluent</sub></summary>
   <p>
     <strong>🟡</strong>&nbsp;
     <img src="https://img.shields.io/badge/n8n-1e293b?style=flat-square&logo=n8n&logoColor=fbbf24" />
@@ -275,16 +279,6 @@ const proficiency = {
     <img src="https://img.shields.io/badge/Google%20Calendar%20API-1e293b?style=flat-square&logo=googlecalendar&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/Sentry-1e293b?style=flat-square&logo=sentry&logoColor=fbbf24" />
     <img src="https://img.shields.io/badge/PWA-1e293b?style=flat-square&logo=pwa&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Discord.js-1e293b?style=flat-square&logo=discord&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Riot%20API-1e293b?style=flat-square&logo=riotgames&logoColor=fbbf24" />
-  </p>
-  <p>
-    <strong>🔵</strong>&nbsp;
-    <img src="https://img.shields.io/badge/MCP-0a0a0a?style=flat-square&logoColor=64748b" />
-    <img src="https://img.shields.io/badge/LangChain-0a0a0a?style=flat-square&logo=langchain&logoColor=64748b" />
-    <img src="https://img.shields.io/badge/Vercel%20AI%20SDK-0a0a0a?style=flat-square&logo=vercel&logoColor=64748b" />
-    <img src="https://img.shields.io/badge/Vector%20DBs-0a0a0a?style=flat-square&logoColor=64748b" />
-    <img src="https://img.shields.io/badge/RAG-0a0a0a?style=flat-square&logoColor=64748b" />
   </p>
 </details>
 
@@ -298,21 +292,18 @@ const proficiency = {
   <img src="https://img.shields.io/badge/GitHub%20Actions-10b981?style=flat-square&logo=githubactions&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/esbuild-10b981?style=flat-square&logo=esbuild&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Chrome%20Web%20Store-10b981?style=flat-square&logo=chromewebstore&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Docker-10b981?style=flat-square&logo=docker&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Linux-10b981?style=flat-square&logo=linux&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Bash-10b981?style=flat-square&logo=gnubash&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/PowerShell-10b981?style=flat-square&logo=powershell&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/pnpm%20workspaces-10b981?style=flat-square&logo=pnpm&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Postman-10b981?style=flat-square&logo=postman&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Netlify-10b981?style=flat-square&logo=netlify&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Cloudflare-10b981?style=flat-square&logo=cloudflare&logoColor=ffffff" />
 </p>
 
 <details>
-  <summary><sub>🟡 fluent · 🔵 expanding</sub></summary>
-  <p>
-    <strong>🟡</strong>&nbsp;
-    <img src="https://img.shields.io/badge/Netlify-1e293b?style=flat-square&logo=netlify&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Cloudflare-1e293b?style=flat-square&logo=cloudflare&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Docker-1e293b?style=flat-square&logo=docker&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Bash-1e293b?style=flat-square&logo=gnubash&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/PowerShell-1e293b?style=flat-square&logo=powershell&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Linux-1e293b?style=flat-square&logo=linux&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Postman-1e293b?style=flat-square&logo=postman&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/pnpm%20workspaces-1e293b?style=flat-square&logo=pnpm&logoColor=fbbf24" />
-  </p>
+  <summary><sub>🔵 expanding</sub></summary>
   <p>
     <strong>🔵</strong>&nbsp;
     <img src="https://img.shields.io/badge/Cloudflare%20Workers-0a0a0a?style=flat-square&logo=cloudflareworkers&logoColor=64748b" />
