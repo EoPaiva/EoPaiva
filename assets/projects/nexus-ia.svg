@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48">
+  <defs>
+    <radialGradient id="nx-glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="32" cy="32" r="28" fill="url(#nx-glow)"/>
+
+  <!-- hexágono hextech -->
+  <polygon points="32,8 52,20 52,44 32,56 12,44 12,20" fill="none" stroke="#10b981" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- mira do coach -->
+  <circle cx="32" cy="32" r="9" fill="none" stroke="#10b981" stroke-width="1.6"/>
+  <line x1="32" y1="18" x2="32" y2="25" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="32" y1="39" x2="32" y2="46" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="18" y1="32" x2="25" y2="32" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="39" y1="32" x2="46" y2="32" stroke="#10b981" stroke-width="1.6" stroke-linecap="round"/>
+
+  <!-- núcleo de IA pulsante -->
+  <circle cx="32" cy="32" r="3" fill="#fbbf24">
+    <animate attributeName="r" values="2.4;3.4;2.4" dur="1.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+</svg>

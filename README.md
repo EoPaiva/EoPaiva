@@ -57,32 +57,18 @@ Perfil híbrido entre **tecnologia, produto e pessoas** — uno visão técnica 
 <table>
   <tr>
     <td width="33%" valign="top">
-      <h3><img src="./assets/projects/instagrowth.svg" width="28" align="center" alt="InstaGrowth IA" /> InstaGrowth IA</h3>
+      <h3><img src="./assets/projects/upaiva-dev.svg" width="28" align="center" alt="upaiva.dev" /> upaiva.dev</h3>
       <p>
-        <img src="https://img.shields.io/badge/REPO%20PRIVADO-fbbf24?style=flat-square&logo=lock&logoColor=0a0a0a&labelColor=0a0a0a" alt="Repositório privado" />
-        <img src="https://img.shields.io/badge/Em%20Lan%C3%A7amento-10b981?style=flat-square&labelColor=0a0a0a" alt="Em lançamento" />
+        <img src="https://img.shields.io/badge/Em%20Produ%C3%A7%C3%A3o-10b981?style=flat-square&labelColor=0a0a0a" alt="Em produção" />
       </p>
-      <p><sub>Extensão Chrome (MV3) de <b>growth para Instagram com IA BYOK</b> — o usuário traz a própria chave (Claude, OpenAI ou Gemini).</sub></p>
+      <p><sub><b>Portfólio profissional interativo</b> — vitrine digital, branding e posicionamento estratégico, com modos Tech, RH e Cliente.</sub></p>
       <p>
-        <img src="https://img.shields.io/badge/Manifest%20V3-4285F4?style=flat-square&logo=googlechrome&logoColor=white" />
-        <img src="https://img.shields.io/badge/esbuild-FFCF00?style=flat-square&logo=esbuild&logoColor=0a0a0a" />
-        <img src="https://img.shields.io/badge/BYOK%20IA-10b981?style=flat-square&logoColor=white" />
+        <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=nextdotjs" />
+        <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+        <img src="https://img.shields.io/badge/Framer-0055FF?style=flat-square&logo=framer&logoColor=white" />
         <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
       </p>
-      <a href="https://chromewebstore.google.com/detail/instagrowth-ia-upaiva/eopaifcdlgkmmpemkpkdklhaddgllbkc?hl=pt-br">
-        <img src="https://img.shields.io/badge/Instalar%20na%20Chrome%20Web%20Store-10b981?style=flat-square&logo=googlechrome&logoColor=ffffff&labelColor=0a0a0a" alt="Instalar na Chrome Web Store" />
-      </a>
-      <details>
-        <summary><sub><b>+ detalhes técnicos</b></sub></summary>
-        <sub>
-          <br>
-          ▸ Build esbuild com bundles IIFE (popup, content, background)<br>
-          ▸ 2 builds: <code>full</code> (sideload) + <code>lite</code> (Chrome Web Store)<br>
-          ▸ BYOK — API key própria de Claude, OpenAI ou Gemini<br>
-          ▸ Automação com timing humano (pacer + safety-guard)<br>
-          ▸ 3 planos: 7 dias · 30 dias · Vitalício (via PIX)
-        </sub>
-      </details>
+      <a href="https://upaiva.dev/">→ ver projeto</a>
     </td>
     <td width="33%" valign="top">
       <h3><img src="./assets/projects/nao-seguidores.svg" width="28" align="center" alt="Não Seguidores uPaiva" /> Não Seguidores uPaiva</h3>
@@ -144,10 +130,10 @@ Perfil híbrido entre **tecnologia, produto e pessoas** — uno visão técnica 
 
 |  | Projeto | Status | Stack | Link |
 |:--:|---------|:------:|-------|:----:|
-| <img src="./assets/projects/upaiva-dev.svg" width="20" alt="" /> | **upaiva.dev** — portfólio, branding e posicionamento | 🟢 produção | Next.js · Tailwind · Framer Motion | [ver →](https://upaiva.dev/) |
+| <img src="./assets/projects/instagrowth.svg" width="20" alt="" /> | **InstaGrowth IA** — growth para Instagram com IA BYOK <sub>(repo privado)</sub> | 🟢 lançamento | MV3 · esbuild · Supabase | [instalar →](https://chromewebstore.google.com/detail/instagrowth-ia-upaiva/eopaifcdlgkmmpemkpkdklhaddgllbkc?hl=pt-br) |
 | <img src="./assets/projects/calc-impostos.svg" width="20" alt="" /> | **Calc Impostos BR** — extensão Chrome de impostos brasileiros (IR, INSS, MEI) | 🟢 produção | MV3 · Node.js · Supabase | [instalar →](https://chromewebstore.google.com/detail/calculadora-de-impostos-b/cifdfcomjlidngiddbdnhmcakecggehh?utm_source=item-share-cb) |
 | <img src="./assets/projects/studio-jmarq.svg" width="20" alt="" /> | **Studio JMarq** — site comercial premium com microinterações | 🟢 produção | React · Tailwind · GSAP | [ver →](https://studiojmarq.com/) |
-| 🤖 | **Nexus IA** — coach de League of Legends com bot Discord e IA <sub>(repo privado)</sub> | 🟡 desenvolvimento | NestJS · Riot API · Gemini | — |
+| <img src="./assets/projects/nexus-ia.svg" width="20" alt="" /> | **Nexus IA** — coach de League of Legends com bot Discord e IA <sub>(repo privado)</sub> | 🟡 desenvolvimento | NestJS · Riot API · Gemini | — |
 | <img src="./assets/projects/agendapro.svg" width="20" alt="" /> | **AgendaPro** — SaaS de agendamento multiempresa | 🟡 desenvolvimento | Next.js · Supabase · PostgreSQL | [ver →](https://agenda-pro-eta.vercel.app/) |
 | <img src="./assets/projects/cidadeos-ai.svg" width="20" alt="" /> | **CidadeOS AI** — govtech de atendimento e inteligência urbana | 🟡 desenvolvimento | React · Supabase · WhatsApp API | [ver →](https://cidade-os-ai.vercel.app/) |
 | <img src="./assets/projects/fitpro.svg" width="20" alt="" /> | **FitPro** — SaaS de gestão fitness | ⚪ planejamento | Next.js · Supabase · Tailwind | [ver →](https://fit-pro-xp7c.vercel.app/) |
@@ -230,16 +216,13 @@ const proficiency = {
   <img src="https://img.shields.io/badge/Prisma-10b981?style=flat-square&logo=prisma&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/JWT-10b981?style=flat-square&logo=jsonwebtokens&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Firebase-10b981?style=flat-square&logo=firebase&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Java-10b981?style=flat-square&logo=openjdk&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/PHP-10b981?style=flat-square&logo=php&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/C%23-10b981?style=flat-square&logo=dotnet&logoColor=ffffff" />
 </p>
 
 <details>
-  <summary><sub>🟡 fluent · 🔵 expanding</sub></summary>
-  <p>
-    <strong>🟡</strong>&nbsp;
-    <img src="https://img.shields.io/badge/Java-1e293b?style=flat-square&logo=openjdk&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/PHP-1e293b?style=flat-square&logo=php&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/C%23-1e293b?style=flat-square&logo=dotnet&logoColor=fbbf24" />
-  </p>
+  <summary><sub>🔵 expanding</sub></summary>
   <p>
     <strong>🔵</strong>&nbsp;
     <img src="https://img.shields.io/badge/Drizzle%20ORM-0a0a0a?style=flat-square&logo=drizzle&logoColor=64748b" />
@@ -267,20 +250,13 @@ const proficiency = {
   <img src="https://img.shields.io/badge/MCP-10b981?style=flat-square&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Discord.js-10b981?style=flat-square&logo=discord&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/Riot%20API-10b981?style=flat-square&logo=riotgames&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/n8n-10b981?style=flat-square&logo=n8n&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Make-10b981?style=flat-square&logo=make&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Zapier-10b981?style=flat-square&logo=zapier&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Google%20Calendar%20API-10b981?style=flat-square&logo=googlecalendar&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Sentry-10b981?style=flat-square&logo=sentry&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/PWA-10b981?style=flat-square&logo=pwa&logoColor=ffffff" />
 </p>
-
-<details>
-  <summary><sub>🟡 fluent</sub></summary>
-  <p>
-    <strong>🟡</strong>&nbsp;
-    <img src="https://img.shields.io/badge/n8n-1e293b?style=flat-square&logo=n8n&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Make-1e293b?style=flat-square&logo=make&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Zapier-1e293b?style=flat-square&logo=zapier&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Google%20Calendar%20API-1e293b?style=flat-square&logo=googlecalendar&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/Sentry-1e293b?style=flat-square&logo=sentry&logoColor=fbbf24" />
-    <img src="https://img.shields.io/badge/PWA-1e293b?style=flat-square&logo=pwa&logoColor=fbbf24" />
-  </p>
-</details>
 
 ### `[ DevOps / Tooling ]`
 
@@ -381,8 +357,8 @@ const proficiency = {
     <td align="center" valign="middle">
       <img
         height="200"
-        src="https://github-readme-stats.vercel.app/api/top-langs/?username=EoPaiva&layout=donut&bg_color=0a0a0a&title_color=10b981&text_color=e2e8f0&hide_border=true&langs_count=8&locale=pt-br"
-        alt="Linguagens mais usadas"
+        src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=EoPaiva&theme=github_dark"
+        alt="Linguagens com mais commits"
       />
     </td>
   </tr>
