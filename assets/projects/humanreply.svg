@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48">
+  <defs>
+    <radialGradient id="hr-glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="32" cy="30" r="26" fill="url(#hr-glow)"/>
+
+  <!-- balão de conversa -->
+  <path d="M14 16 h36 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 H30 l-8 9 v-9 h-8 a4 4 0 0 1 -4 -4 V20 a4 4 0 0 1 4 -4 z"
+        fill="none" stroke="#10b981" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- pontos de digitação -->
+  <circle cx="24" cy="30" r="2.4" fill="#10b981">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="32" cy="30" r="2.4" fill="#fbbf24">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin="0.25s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="40" cy="30" r="2.4" fill="#10b981">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin="0.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- faísca de IA -->
+  <g stroke="#fbbf24" stroke-width="1.6" stroke-linecap="round">
+    <line x1="53" y1="7" x2="53" y2="13"/>
+    <line x1="50" y1="10" x2="56" y2="10"/>
+  </g>
+</svg>
