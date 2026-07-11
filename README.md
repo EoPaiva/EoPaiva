@@ -8,6 +8,10 @@
 </p>
 
 <p align="center">
+  <samp><b>Full Stack Developer · IA Aplicada · SaaS</b> — São José dos Campos, SP</samp>
+</p>
+
+<p align="center">
   <a href="https://github.com/EoPaiva">
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=720&lines=%3E+Mateus+Paiva%2C+dev+em+S%C3%A3o+Jos%C3%A9+dos+Campos;%3E+Construindo+SaaS%2C+IA+aplicada+e+produto+digital;%3E+Conectando+c%C3%B3digo%2C+estrat%C3%A9gia+e+pessoas" alt="typing animation" />
   </a>
@@ -18,11 +22,16 @@
 [![Portfólio](https://img.shields.io/badge/Portfólio-upaiva.dev-10b981?style=for-the-badge&logo=vercel&logoColor=white)](https://upaiva.dev/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Mateus%20Paiva-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mateus-paiva-19804b284)
 [![Email](https://img.shields.io/badge/Email-mpaiiva21%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mpaiiva21@gmail.com)
-<img src="https://komarev.com/ghpvc/?username=eopaiva&label=Acessos&color=10b981&style=for-the-badge" alt="Acessos ao perfil" />
 
 </div>
 
+<p align="center">
+  <samp>~/mpaiva $ ls&nbsp;&nbsp;<a href="#nav-whoami">whoami/</a>&nbsp;&nbsp;<a href="#nav-projetos">projetos/</a>&nbsp;&nbsp;<a href="#nav-stack">stack/</a>&nbsp;&nbsp;<a href="#nav-status">status/</a>&nbsp;&nbsp;<a href="#nav-contato">contato/</a></samp>
+</p>
+
 ---
+
+<a name="nav-whoami"></a>
 
 ## `whoami.json`
 
@@ -40,6 +49,8 @@ const mateusPaiva = {
 Perfil híbrido entre **tecnologia, produto e pessoas** — uno visão técnica e pensamento estratégico para entregar produtos com clareza, performance e propósito.
 
 ---
+
+<a name="nav-projetos"></a>
 
 ## `projetos_em_destaque = [`
 
@@ -154,6 +165,8 @@ Perfil híbrido entre **tecnologia, produto e pessoas** — uno visão técnica 
 `]`
 
 ---
+
+<a name="nav-stack"></a>
 
 ## `stack.config.ts`
 
@@ -352,7 +365,7 @@ const proficiency = {
 <p align="center">
   <img
     width="100%"
-    src="./assets/github-code-dashboard-20260711193532.svg"
+    src="./assets/github-code-dashboard-20260711081619.svg"
     alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
   />
 </p>
@@ -374,14 +387,16 @@ const proficiency = {
     <td align="center" valign="middle">
       <img
         height="200"
-        src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=EoPaiva&theme=github_dark"
-        alt="Linguagens com mais commits"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username=EoPaiva&layout=donut&bg_color=0a0a0a&title_color=10b981&text_color=e2e8f0&hide_border=true&langs_count=8&locale=pt-br"
+        alt="Linguagens mais usadas"
       />
     </td>
   </tr>
 </table>
 
 ---
+
+<a name="nav-status"></a>
 
 ## `status_atual`
 
@@ -393,6 +408,8 @@ const proficiency = {
 ```
 
 ---
+
+<a name="nav-contato"></a>
 
 ## `contato`
 
