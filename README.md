@@ -335,7 +335,7 @@ const proficiency = {
 <p align="center">
   <img
     width="100%"
-    src="./assets/github-code-dashboard-20260820190529.svg"
+    src="./assets/github-code-dashboard-20260821020042.svg"
     alt="Painel automático de código em produção — linhas, palavras, repositórios e stack principal"
   />
 </p>
