@@ -73,7 +73,7 @@
 
   <text x="74" y="598" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="14" opacity="0.75">MP://DEV_MODE</text>
   <text x="446" y="598" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="14" letter-spacing="8" opacity="0.65">BUILD · AUTOMATE · SCALE</text>
-  <text x="934" y="598" fill="#71847b" font-family="Consolas, 'Courier New', monospace" font-size="14">última sync: 23/08/2026, 04:06</text>
+  <text x="934" y="598" fill="#71847b" font-family="Consolas, 'Courier New', monospace" font-size="14">última sync: 23/08/2026, 10:05</text>
 
   <g filter="url(#glow)">
     <circle cx="1062" cy="160" r="4" fill="#29ff8f"/>
