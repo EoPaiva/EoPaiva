@@ -43,14 +43,14 @@
 
   <g>
     <rect x="72" y="324" width="502" height="124" rx="18" fill="#05100b" fill-opacity="0.76" stroke="#29ff8f" stroke-opacity="0.72"/>
-    <text x="102" y="374" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="44" font-weight="800">290.187</text>
+    <text x="102" y="374" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="44" font-weight="800">307.180</text>
     <text x="104" y="414" fill="#d5ddd8" font-family="Consolas, 'Courier New', monospace" font-size="21">linhas analisadas</text>
     <text x="426" y="352" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="13" opacity="0.75">// LINES.SRC ■</text>
   </g>
 
   <g>
     <rect x="626" y="324" width="502" height="124" rx="18" fill="#05100b" fill-opacity="0.62" stroke="#ffffff" stroke-opacity="0.22"/>
-    <text x="656" y="374" fill="#f2f5f2" font-family="Consolas, 'Courier New', monospace" font-size="44" font-weight="800">1.304.521</text>
+    <text x="656" y="374" fill="#f2f5f2" font-family="Consolas, 'Courier New', monospace" font-size="44" font-weight="800">1.371.487</text>
     <text x="658" y="414" fill="#d5ddd8" font-family="Consolas, 'Courier New', monospace" font-size="21">palavras mapeadas</text>
     <text x="978" y="352" fill="#d5ddd8" font-family="Consolas, 'Courier New', monospace" font-size="13" opacity="0.68">// WORDS.MAP ■</text>
   </g>
@@ -59,7 +59,7 @@
     <rect x="72" y="474" width="502" height="94" rx="18" fill="#05100b" fill-opacity="0.62" stroke="#ffffff" stroke-opacity="0.18"/>
     <text x="102" y="527" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="36" font-weight="800">26</text>
     <text x="185" y="527" fill="#d5ddd8" font-family="Consolas, 'Courier New', monospace" font-size="20">repositórios públicos</text>
-    <text x="104" y="552" fill="#71847b" font-family="Consolas, 'Courier New', monospace" font-size="15">1.100 arquivos analisados • atualizado automaticamente</text>
+    <text x="104" y="552" fill="#71847b" font-family="Consolas, 'Courier New', monospace" font-size="15">1.139 arquivos analisados • atualizado automaticamente</text>
   </g>
 
   <g>
@@ -68,12 +68,12 @@
     <text x="656" y="548" fill="#f2f5f2" font-family="Consolas, 'Courier New', monospace" font-size="22" font-weight="700">TypeScript • JavaScript • CSS • Markdown</text>
   </g>
 
-  <path d="M90.0 360.0 L164.5 377.5 L239.1 382.6 L313.6 387.0 L388.2 395.3 L462.7 395.8 L537.3 399.6 L611.8 401.1 L686.4 401.6 L760.9 401.8 L835.5 402.0 L910.0 402.0" stroke="#29ff8f" stroke-opacity="0.68" stroke-width="2" fill="none"/>
+  <path d="M90.0 360.0 L164.5 378.7 L239.1 384.1 L313.6 388.5 L388.2 396.0 L462.7 396.4 L537.3 399.9 L611.8 401.2 L686.4 401.7 L760.9 401.8 L835.5 402.0 L910.0 402.0" stroke="#29ff8f" stroke-opacity="0.68" stroke-width="2" fill="none"/>
   <circle cx="910" cy="381" r="4" fill="#29ff8f" filter="url(#glow)"/>
 
   <text x="74" y="598" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="14" opacity="0.75">MP://DEV_MODE</text>
   <text x="446" y="598" fill="#29ff8f" font-family="Consolas, 'Courier New', monospace" font-size="14" letter-spacing="8" opacity="0.65">BUILD · AUTOMATE · SCALE</text>
-  <text x="934" y="598" fill="#71847b" font-family="Consolas, 'Courier New', monospace" font-size="14">última sync: 26/08/2026, 17:12</text>
+  <text x="934" y="598" fill="#71847b" font-family="Consolas, 'Courier New', monospace" font-size="14">última sync: 27/08/2026, 06:59</text>
 
   <g filter="url(#glow)">
     <circle cx="1062" cy="160" r="4" fill="#29ff8f"/>
