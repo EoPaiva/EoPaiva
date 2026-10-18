@@ -342,7 +342,7 @@ def card_frame(s, index, category, status, live, title, desc, stack):
 
 def card_azv():
     s = Svg(CW, CH, "AZV Lançamentos — vitrine de lançamentos imobiliários")
-    card_frame(s, "01", "IMOBILIÁRIO", "EM BREVE", False, "AZV Lançamentos",
+    card_frame(s, "01", "IMOBILIÁRIO", "NO AR", True, "AZV Lançamentos",
                "Vitrine de lançamentos imobiliários da AZV Imóveis.", "NEXT.JS · GSAP · LENIS · TYPESCRIPT")
     # parede de cobogó que gira como brise e revela o prédio atrás
     cols, rows, cw, ch, gap = 10, 4, 40, 40, 8

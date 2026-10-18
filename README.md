@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <img src="./assets/profile/card-azv.svg" width="49%" alt="AZV Lançamentos — vitrine de lançamentos imobiliários da AZV Imóveis. Next.js, GSAP, Lenis, TypeScript." />
+  <a href="https://azvlancamentos.com.br/"><img src="./assets/profile/card-azv.svg" width="49%" alt="AZV Lançamentos — vitrine de lançamentos imobiliários da AZV Imóveis. Next.js, GSAP, Lenis, TypeScript." /></a>
   <a href="https://upaiva.dev/"><img src="./assets/profile/card-upaiva.svg" width="49%" alt="upaiva.dev — portfólio interativo com modos Tech, RH e Cliente. Next.js, Tailwind, Framer Motion, Supabase." /></a>
 </p>
 
