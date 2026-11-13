@@ -56,7 +56,7 @@
 
 <!-- CODE_DASHBOARD:START -->
 <p align="center">
-  <img width="100%" src="./assets/github-code-dashboard-20261113065609.svg" alt="Painel automático de código em produção — linhas, palavras, repositórios e linguagens" />
+  <img width="100%" src="./assets/github-code-dashboard-20261113195152.svg" alt="Painel automático de código em produção — linhas, palavras, repositórios e linguagens" />
 </p>
 <!-- CODE_DASHBOARD:END -->
 
