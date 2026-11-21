@@ -574,7 +574,7 @@ def art_azv(s, ox, oy, p="a"):
              f'<path class="{p}rv" d="{d}" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.1" stroke-dasharray="14 6"/>')
 
     # casas e prédios baixos da cidade
-    towers = [("Ares", -85, -55, 62), ("Senses", 5, -100, 48), ("Neori", 80, -60, 40), ("Altus", 95, 20, 56),
+    towers = [("Ares", -55, -55, 62), ("Senses", 5, -100, 48), ("Neori", 80, -60, 40), ("Altus", 95, 20, 56),
               ("Martim", -100, 30, 44), ("Riza", -40, 45, 52), ("Serena", 25, 50, 34)]
     houses = []
     for _ in range(150):
