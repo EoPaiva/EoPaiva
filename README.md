@@ -18,6 +18,7 @@ Desenvolvedor full stack e engenheiro de IA em São José dos Campos, SP. Constr
 - **Sistemas web completos**, com login, painel administrativo, APIs e banco, publicados e em uso.
 - **IA aplicada a produto:** agentes, RAG, LLMs com contexto e ferramentas como MCP, sempre com uma pessoa no controle das decisões.
 - **Automação e ferramentas:** bots, extensões do Chrome e apps de desktop que tiram trabalho manual do caminho.
+- **Sites que são encontrados:** SEO técnico, dados estruturados, sitemap e desempenho medido no celular.
 - **Experiências 3D e interfaces com identidade:** maquetes em Three.js, animação, tipografia e detalhe, sem pesar a página.
 
 ### Como eu trabalho
@@ -34,26 +35,29 @@ Desenvolvedor full stack e engenheiro de IA em São José dos Campos, SP. Constr
 
 ## Projetos em destaque
 
-### [AZV Lançamentos](https://azvlancamentos.com.br) &nbsp;<sub>Imobiliário e 3D · no ar · meu maior projeto</sub>
+### [AZV Lançamentos](https://azvlancamentos.com.br) &nbsp;<sub>Plataforma imobiliária · no ar · meu maior projeto</sub>
 
 <p align="center">
-  <a href="https://azvlancamentos.com.br/maquete"><img src="./assets/profile/feature-azv.svg" width="100%" alt="Maquete 3D da AZV: São José dos Campos em relevo, com o rio Paraíba, as ruas e as casas; as torres dos empreendimentos sobem no lugar certo da cidade e depois saem da rua e se alinham lado a lado por altura." /></a>
+  <a href="https://azvlancamentos.com.br"><img src="./assets/profile/feature-azv.svg" width="100%" alt="O site da AZV em quatro telas: a vitrine com os destaques, as seções de cada empreendimento e as páginas por bairro e tamanho; a Revista AZV com o índice das matérias; a maquete 3D de São José dos Campos com as torres subindo; e o painel com o resultado na busca, sitemap, hreflang, JSON-LD, IndexNow, LCP e CLS." /></a>
 </p>
 
-A plataforma de lançamentos da AZV Imóveis em São José dos Campos, feita do zero e em uso pela equipe de vendas. Cada empreendimento tem página completa, com plantas, lazer, localização e contato direto, e no centro de tudo está uma maquete 3D da cidade que roda no navegador.
+A plataforma de lançamentos da AZV Imóveis em São José dos Campos, feita do zero, no ar e em uso no atendimento. É um produto completo, pensado para vender e para ser encontrado: vitrine, uma página rica para cada empreendimento, revista, SEO de ponta a ponta, painel próprio de dados e uma maquete 3D da cidade.
 
-- **A cidade inteira em 3D:** São José dos Campos e o litoral com relevo real, foto de satélite, ruas e cerca de 320 mil casas, com os 17 empreendimentos no lugar certo. Dá para passear pela cidade, colocar os prédios lado a lado ou descer até o litoral.
-- **Maquetes de perto:** Parque UNA, Ares, Senses e Pátio ganham maquetes próprias em Three.js, com cores, janelas, sacadas e embasamento de cada prédio. São 17,8 mil linhas só de motor 3D.
-- **Dados de verdade:** pipelines em Python transformam relevo SRTM, imagens Sentinel-2 e mapas da Overture e do OpenStreetMap na geometria que o navegador desenha.
-- **Feito para vender e ser achado:** 88 páginas em português e inglês, modo escuro, revista, WhatsApp que já diz de qual prédio a pessoa veio, painel no Supabase com medição própria e IndexNow avisando os buscadores a cada publicação.
+- **17 empreendimentos, cada um com página completa:** tipologias com cotas, lazer, plantas que se desenham e ampliam, localização com mapa que só carrega quando a pessoa pede, vídeos, books para baixar e contato com a corretora pelo WhatsApp, que já diz de qual prédio a pessoa veio.
+- **Revista AZV:** 17 matérias em português e inglês, com capa de revista impressa, índice com filtro por tema e guias de bairro, de compra na planta e de leitura de planta, citando a lei quando o assunto pede.
+- **SEO de ponta a ponta:** 92 páginas em português e inglês com hreflang, títulos e descrições medidos, dados estruturados (RealEstateAgent, FloorPlan, FAQPage, BreadcrumbList), sitemap com as fotos e a data real de cada mudança, páginas por bairro e por tamanho e IndexNow a cada publicação.
+- **Rápido e acessível:** LCP de 0,8 s na home no celular com 4G lento, CLS 0 e nenhuma violação no axe, com modo escuro em todas as páginas e animações que respeitam quem prefere menos movimento.
+- **Painel próprio, sem cookies de terceiros:** páginas, seções vistas, cliques, contatos e Core Web Vitals reais, a jornada de cada visita, a origem (Google, IA, WhatsApp), os leitores da revista, Search Console e PageSpeed integrados e links de campanha com QR code, com login por senha e código do celular.
+- **Maquete 3D da cidade:** São José dos Campos e o litoral em Three.js, com relevo real, satélite e cerca de 320 mil casas, os 17 empreendimentos no lugar certo e maquetes de perto do Parque UNA, Ares, Senses e Pátio, a partir de dados do SRTM, Sentinel-2, Overture e OpenStreetMap.
 
 <p align="center">
-  <a href="https://azvlancamentos.com.br/maquete"><b>Abrir a maquete 3D</b></a> &nbsp;·&nbsp;
-  <a href="https://azvlancamentos.com.br"><b>Ver o site</b></a>
+  <a href="https://azvlancamentos.com.br"><b>Ver o site</b></a> &nbsp;·&nbsp;
+  <a href="https://azvlancamentos.com.br/revista"><b>Ler a revista</b></a> &nbsp;·&nbsp;
+  <a href="https://azvlancamentos.com.br/maquete"><b>Abrir a maquete 3D</b></a>
 </p>
 
 <p align="center">
-  <img src="./assets/profile/stack-azv.svg" width="100%" alt="Stack da AZV Lançamentos: Next.js 16 e React 19, Three.js e WebGL, GSAP e Lenis, TypeScript, Python para os dados da cidade, Sentinel-2 e Overture, Supabase e ECharts, Vercel e IndexNow" />
+  <img src="./assets/profile/stack-azv.svg" width="100%" alt="Stack da AZV Lançamentos: Next.js 16, React 19, TypeScript, GSAP, Lenis, Three.js, WebGL, Supabase, ECharts, Python, Sentinel-2, OpenStreetMap, Search Console, IndexNow e Vercel" />
 </p>
 
 ### [CHOQUE BGR](https://choquebgr.online) &nbsp;<sub>Sistema de gestão · no ar</sub>
@@ -69,7 +73,7 @@ Plataforma de gestão para uma unidade de roleplay, do Discord à web. Um bot fa
 - **Confiável por padrão:** RBAC com cinco perfis, auditoria transacional com outbox, SQLite em WAL com migrations versionadas e mais de mil testes.
 
 <p align="center">
-  <img src="./assets/profile/stack-choque.svg" width="100%" alt="Stack do CHOQUE BGR: discord.py, Python 3.12, FastAPI e Uvicorn, SQLite em WAL, Next.js 16 e React 19, Auth.js com Discord, Tailwind 4 e Zod, Pytest, Vitest, Playwright e Ruff" />
+  <img src="./assets/profile/stack-choque.svg" width="100%" alt="Stack do CHOQUE BGR: discord.py 2.7, Python 3.12, FastAPI, Uvicorn, SQLite em WAL, Next.js 16, React 19, Auth.js, Tailwind 4, Zod, Pytest, Vitest, Playwright e Ruff" />
 </p>
 
 ### [win-toolkit](https://github.com/EoPaiva/win-toolkit) &nbsp;<sub>App para Windows 11 · v1.5</sub>
@@ -85,7 +89,7 @@ Do Windows recém-formatado ao PC pronto para trabalhar, em uma tela só. Você 
 - **Otimizar sem susto:** quatro níveis com mais de 170 ações, simulação antes de aplicar e ponto de restauração. Nenhum nível desliga Defender, Firewall ou Windows Update.
 
 <p align="center">
-  <img src="./assets/profile/stack-wintoolkit.svg" width="100%" alt="Stack do win-toolkit: WPF e XAML, C# 5, .NET Framework 4.8, PowerShell 5.1, winget, npm e uv, Windows Update Agent, Inter e Cascadia Mono, DrawingContext" />
+  <img src="./assets/profile/stack-wintoolkit.svg" width="100%" alt="Stack do win-toolkit: WPF e XAML, C# 5, .NET Framework 4.8, PowerShell 5.1, winget, npm, uv, Windows Update Agent, Inter e Cascadia, DrawingContext" />
 </p>
 
 ### [Instagram Fluxo](https://github.com/EoPaiva/instagram-fluxo) &nbsp;<sub>Extensão do Chrome · v3.1.3</sub>
@@ -101,23 +105,28 @@ Organiza quem você segue no Instagram com uma fila assistida. Lê as sugestões
 - **Seus dados ficam com você:** fila, tentativas e histórico no navegador, e um coletor opcional para Windows que grava diagnósticos em JSONL.
 
 <p align="center">
-  <img src="./assets/profile/stack-instagram.svg" width="100%" alt="Stack do Instagram Fluxo: Chrome Manifest V3, JavaScript, HTML e CSS, chrome.storage, OpenAI, Claude, Gemini e OpenRouter, cofre AES-GCM com PBKDF2, coletor em Python com SQLite, instalação em PowerShell" />
+  <img src="./assets/profile/stack-instagram.svg" width="100%" alt="Stack do Instagram Fluxo: Chrome MV3, JavaScript, HTML e CSS, chrome.storage, OpenAI, Claude, Gemini, OpenRouter, AES-GCM e PBKDF2, Python, SQLite e PowerShell" />
 </p>
 
 ## Também no ar
 
-| Projeto | O que é | Stack |
-|---|---|---|
-| [**upaiva.dev**](https://upaiva.dev/) | Meu portfólio, com partículas em canvas, nove guias públicos sobre IA e um terminal no `Ctrl K`. | `HTML` `CSS` `JavaScript` `GSAP` |
-| [**HumanReply AI**](https://contextual-chat-lab.vercel.app) | IA para atendimento B2B que reescreve respostas no tom da empresa. Em validação. | `TanStack Start` `TypeScript` `LLMs` |
-| [**Studio JM**](https://studiojmarq.com/) | Plataforma para estúdio de arquitetura, com portfólio, briefing e painel administrativo. | `HTML` `Tailwind` `JavaScript` `Supabase` |
+<p align="center">
+  <img src="./assets/profile/also-live.svg" width="100%" alt="Três projetos no ar: upaiva.dev, meu portfólio com planeta de partículas e terminal no Ctrl K; HumanReply AI, em validação, que reescreve respostas de atendimento no tom da empresa; e Studio JM, plataforma para estúdio de arquitetura com a planta se desenhando. Embaixo, três extensões na Chrome Web Store." />
+</p>
 
-Extensões publicadas na Chrome Web Store: [Não Seguidores](https://chromewebstore.google.com/detail/n%C3%A3o-seguidores-upaiva/pggbblnnnofafnnieccbdopeaaafolin?hl=pt-br), [InstaGrowth IA](https://chromewebstore.google.com/detail/instagrowth-ia-upaiva/eopaifcdlgkmmpemkpkdklhaddgllbkc?hl=pt-br) e [Calc Impostos BR](https://chromewebstore.google.com/detail/calculadora-de-impostos-b/cifdfcomjlidngiddbdnhmcakecggehh).
+<p align="center">
+  <a href="https://upaiva.dev/"><b>upaiva.dev</b></a> &nbsp;·&nbsp;
+  <a href="https://contextual-chat-lab.vercel.app"><b>HumanReply AI</b></a> &nbsp;·&nbsp;
+  <a href="https://studiojmarq.com/"><b>Studio JM</b></a> &nbsp;·&nbsp;
+  <a href="https://chromewebstore.google.com/detail/n%C3%A3o-seguidores-upaiva/pggbblnnnofafnnieccbdopeaaafolin?hl=pt-br">Não Seguidores</a> &nbsp;·&nbsp;
+  <a href="https://chromewebstore.google.com/detail/instagrowth-ia-upaiva/eopaifcdlgkmmpemkpkdklhaddgllbkc?hl=pt-br">InstaGrowth IA</a> &nbsp;·&nbsp;
+  <a href="https://chromewebstore.google.com/detail/calculadora-de-impostos-b/cifdfcomjlidngiddbdnhmcakecggehh">Calc Impostos BR</a>
+</p>
 
 ## Stack
 
 <p align="center">
-  <img src="./assets/profile/stack-geral.svg" width="100%" alt="Stack em cards com logos. Frontend: TypeScript, JavaScript, React, Next.js, TanStack, Tailwind CSS. Web, 3D e movimento: HTML, CSS, Three.js, GSAP, Framer Motion, ECharts. Backend e dados: Node.js, NestJS, Python, FastAPI, Supabase, PostgreSQL. IA aplicada: Claude, OpenAI, Gemini, LangChain, MCP, RAG. Automação e desktop: n8n, discord.py, extensões Chrome MV3, .NET e WPF, C#, PowerShell. Infra e qualidade: Vercel, Docker, GitHub Actions, Playwright, Vitest, Pytest." />
+  <img src="./assets/profile/stack-geral.svg" width="100%" alt="Stack. Frontend: TypeScript, JavaScript, React, Next.js, TanStack, Tailwind CSS. 3D e movimento: Three.js, WebGL, GSAP, Framer Motion, ECharts, HTML e CSS. Backend e dados: Node.js, NestJS, Python, FastAPI, Supabase, PostgreSQL. IA aplicada: Claude, OpenAI, Gemini, LangChain, MCP, RAG e agentes. Automação: n8n, discord.py, extensões Chrome, C# e WPF, PowerShell. Infra e qualidade: Vercel, Docker, GitHub Actions, Playwright, Vitest, Pytest." />
 </p>
 
 ## Código em produção
