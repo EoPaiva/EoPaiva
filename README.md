@@ -18,12 +18,13 @@ Desenvolvedor full stack e engenheiro de IA em São José dos Campos, SP. Constr
 - **Sistemas web completos**, com login, painel administrativo, APIs e banco, publicados e em uso.
 - **IA aplicada a produto:** agentes, RAG, LLMs com contexto e ferramentas como MCP, sempre com uma pessoa no controle das decisões.
 - **Automação e ferramentas:** bots, extensões do Chrome e apps de desktop que tiram trabalho manual do caminho.
-- **Interfaces com identidade:** animação, tipografia e detalhe, sem pesar a página.
+- **Experiências 3D e interfaces com identidade:** maquetes em Three.js, animação, tipografia e detalhe, sem pesar a página.
 
 ### Como eu trabalho
 
 | Princípio | Na prática |
 |---|---|
+| **Dado real em vez de ilustração** | A maquete da AZV nasce de relevo, foto de satélite e mapas abertos, com cada prédio no lote certo. |
 | **Mostro o que o software faz** | Comando real de cada etapa, auditoria append-only e logs à vista, em vez de caixa-preta. |
 | **IA com decisão humana** | No CHOQUE a IA analisa e quem decide é uma pessoa; no Instagram Fluxo ela é opcional e roda com a sua chave. |
 | **Teste antes de prometer** | 1.036 testes automatizados no CHOQUE e um status honesto do que ainda falta testar no win-toolkit. |
@@ -33,10 +34,32 @@ Desenvolvedor full stack e engenheiro de IA em São José dos Campos, SP. Constr
 
 ## Projetos em destaque
 
-### [CHOQUE BGR](https://choque.online) &nbsp;<sub>Sistema de gestão · no ar</sub>
+### [AZV Lançamentos](https://azvlancamentos.com.br) &nbsp;<sub>Imobiliário e 3D · no ar · meu maior projeto</sub>
 
 <p align="center">
-  <a href="https://choque.online"><img src="./assets/profile/feature-choque.svg" width="100%" alt="Centro de comando do CHOQUE BGR: ponto por voz com membros mudando de ACTIVE para GRACE e REVIEW, prova de recrutamento com timer no servidor e 24 questões salvas uma a uma, e o registro de auditoria sendo escrito." /></a>
+  <a href="https://azvlancamentos.com.br/maquete"><img src="./assets/profile/feature-azv.svg" width="100%" alt="Maquete 3D da AZV: São José dos Campos em relevo, com o rio Paraíba, as ruas e as casas; as torres dos empreendimentos sobem no lugar certo da cidade e depois saem da rua e se alinham lado a lado por altura." /></a>
+</p>
+
+A plataforma de lançamentos da AZV Imóveis em São José dos Campos, feita do zero e em uso pela equipe de vendas. Cada empreendimento tem página completa, com plantas, lazer, localização e contato direto, e no centro de tudo está uma maquete 3D da cidade que roda no navegador.
+
+- **A cidade inteira em 3D:** São José dos Campos e o litoral com relevo real, foto de satélite, ruas e cerca de 320 mil casas, com os 17 empreendimentos no lugar certo. Dá para passear pela cidade, colocar os prédios lado a lado ou descer até o litoral.
+- **Maquetes de perto:** Parque UNA, Ares, Senses e Pátio ganham maquetes próprias em Three.js, com cores, janelas, sacadas e embasamento de cada prédio. São 17,8 mil linhas só de motor 3D.
+- **Dados de verdade:** pipelines em Python transformam relevo SRTM, imagens Sentinel-2 e mapas da Overture e do OpenStreetMap na geometria que o navegador desenha.
+- **Feito para vender e ser achado:** 88 páginas em português e inglês, modo escuro, revista, WhatsApp que já diz de qual prédio a pessoa veio, painel no Supabase com medição própria e IndexNow avisando os buscadores a cada publicação.
+
+<p align="center">
+  <a href="https://azvlancamentos.com.br/maquete"><b>Abrir a maquete 3D</b></a> &nbsp;·&nbsp;
+  <a href="https://azvlancamentos.com.br"><b>Ver o site</b></a>
+</p>
+
+<p align="center">
+  <img src="./assets/profile/stack-azv.svg" width="100%" alt="Stack da AZV Lançamentos: Next.js 16 e React 19, Three.js e WebGL, GSAP e Lenis, TypeScript, Python para os dados da cidade, Sentinel-2 e Overture, Supabase e ECharts, Vercel e IndexNow" />
+</p>
+
+### [CHOQUE BGR](https://choquebgr.online) &nbsp;<sub>Sistema de gestão · no ar</sub>
+
+<p align="center">
+  <a href="https://choquebgr.online"><img src="./assets/profile/feature-choque.svg" width="100%" alt="Centro de comando do CHOQUE BGR: ponto por voz com membros mudando de ACTIVE para GRACE e REVIEW, prova de recrutamento com timer no servidor e 24 questões salvas uma a uma, e o registro de auditoria sendo escrito." /></a>
 </p>
 
 Plataforma de gestão para uma unidade de roleplay, do Discord à web. Um bot faz cadastro, ponto por voz, carreira, disciplina e treinamentos só com botões, seletores e modais, sem nenhum comando de texto. Um centro de comando web com login Discord mostra tudo isso, e o recrutamento público aplica uma prova cronometrada no servidor.
@@ -85,7 +108,6 @@ Organiza quem você segue no Instagram com uma fila assistida. Lê as sugestões
 
 | Projeto | O que é | Stack |
 |---|---|---|
-| [**AZV Lançamentos**](https://azvlancamentos.com.br/) | Vitrine de lançamentos da AZV Imóveis, com página própria por empreendimento e uma home que se abre como uma parede de cobogó. | `Next.js` `GSAP` `Lenis` `TypeScript` |
 | [**upaiva.dev**](https://upaiva.dev/) | Meu portfólio, com partículas em canvas, nove guias públicos sobre IA e um terminal no `Ctrl K`. | `HTML` `CSS` `JavaScript` `GSAP` |
 | [**HumanReply AI**](https://contextual-chat-lab.vercel.app) | IA para atendimento B2B que reescreve respostas no tom da empresa. Em validação. | `TanStack Start` `TypeScript` `LLMs` |
 | [**Studio JM**](https://studiojmarq.com/) | Plataforma para estúdio de arquitetura, com portfólio, briefing e painel administrativo. | `HTML` `Tailwind` `JavaScript` `Supabase` |
@@ -94,13 +116,9 @@ Extensões publicadas na Chrome Web Store: [Não Seguidores](https://chromewebst
 
 ## Stack
 
-| Área | Ferramentas |
-|---|---|
-| **Frontend** | `TypeScript` `React` `Next.js` `TanStack` `Tailwind` `GSAP` `Framer Motion` `HTML` `CSS` |
-| **Backend e dados** | `Node.js` `NestJS` `Python` `FastAPI` `Supabase` `PostgreSQL` `SQLite` `Prisma` |
-| **IA aplicada** | `Claude` `OpenAI` `Gemini` `RAG` `MCP` `Vercel AI SDK` `LangChain` `Agentes` |
-| **Automação e desktop** | `n8n` `discord.py` `Extensões Chrome (MV3)` `C#` `WPF` `PowerShell` |
-| **Infra e qualidade** | `Vercel` `Docker` `GitHub Actions` `Playwright` `Vitest` `Pytest` |
+<p align="center">
+  <img src="./assets/profile/stack-geral.svg" width="100%" alt="Stack em cards com logos. Frontend: TypeScript, JavaScript, React, Next.js, TanStack, Tailwind CSS. Web, 3D e movimento: HTML, CSS, Three.js, GSAP, Framer Motion, ECharts. Backend e dados: Node.js, NestJS, Python, FastAPI, Supabase, PostgreSQL. IA aplicada: Claude, OpenAI, Gemini, LangChain, MCP, RAG. Automação e desktop: n8n, discord.py, extensões Chrome MV3, .NET e WPF, C#, PowerShell. Infra e qualidade: Vercel, Docker, GitHub Actions, Playwright, Vitest, Pytest." />
+</p>
 
 ## Código em produção
 
