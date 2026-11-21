@@ -516,37 +516,45 @@ def art_choque(s, ox, oy, p="c"):
     return "".join(g)
 
 
-def art_azv(s, ox, oy, p="a"):
-    """Maquete 3D da cidade: as torres da AZV sobem no relevo, depois saem da rua e se alinham lado a lado."""
+def anim(s, name, T, frames, ease="ease", extra=""):
+    """Animação num laço de T segundos com quadros em segundos: [(t ou (t1, t2), css), ...]."""
+    pct = lambda t: f"{max(0.0, min(100.0, t / T * 100)):.2f}%"
+    body = []
+    for t, css in frames:
+        ts = t if isinstance(t, tuple) else (t,)
+        body.append((",".join(pct(x) for x in ts), css))
+    s.css.append(keyframes(name, body) + f".{name}{{{extra}animation:{name} {T}s {ease} infinite}}")
+    return name
+
+
+def wrap(text, key, size, maxw, spacing=0.0):
+    lines, cur = [], ""
+    for word in text.split():
+        cand = f"{cur} {word}".strip()
+        if cur and text_width(cand, key, size, spacing) > maxw:
+            lines.append(cur)
+            cur = word
+        else:
+            cur = cand
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def azv_city(s, p, T, t0, t1):
+    """A maquete 3D da cidade dentro da janela 520 x 250: relevo, ruas, rio, casas e as torres da AZV subindo em t0."""
     import random
-    T = 12.0
     rnd = random.Random(7)
     K = 0.8
-    CX, CY = 262, 176
+    CX, CY = 262, 180
 
     def P(x, y, z=0.0):
         return CX + (x - y) * 0.866 * K, CY + (x + y) * 0.5 * K - z * K
 
-    def poly(pts, fill, extra=""):
-        return f'<polygon points="{" ".join(f"{a:.1f},{b:.1f}" for a, b in pts)}" fill="{fill}"{extra}/>'
+    def poly(pts, fill):
+        return f'<polygon points="{" ".join(f"{a:.1f},{b:.1f}" for a, b in pts)}" fill="{fill}"/>'
 
-    g = [f'<g transform="translate({ox} {oy})">']
-    g.append('<rect width="520" height="250" rx="14" fill="#0a0a0a" stroke="#2a2a2a"/>')
-    g.append(s.text(18, 25, "AZV  ·  MAQUETE 3D", "M", 10, INK, 2.2))
-    tabs = [("A CIDADE", [(0, 5.1), (10.0, 12.0)]), ("LADO A LADO", [(5.1, 10.0)]), ("LITORAL", [])]
-    tx = 300
-    for i, (tab, spans) in enumerate(tabs):
-        w = text_width(tab, "M", 7.5, 1.8) - 1.8
-        g.append(s.text(tx, 24.5, tab, "M", 7.5, "#4a4a4a", 1.8))
-        for j, (a, b) in enumerate(spans):
-            g.append(f'<g class="{vis(s, f"{p}tb{i}{j}", T, a, b, 0.25)}">{s.text(tx, 24.5, tab, "M", 7.5, "#fff", 1.8)}'
-                     f'<rect x="{tx}" y="30" width="{w:.1f}" height="1.2" fill="#fff"/></g>')
-        tx += w + 16
-    g.append('<path d="M0 40 H520" stroke="#1c1c1c"/>')
-    s.defs.append(f'<clipPath id="{p}cl"><rect x="1" y="41" width="518" height="208" rx="13"/></clipPath>')
-    g.append(f'<g clip-path="url(#{p}cl)">')
-
-    # relevo da Mantiqueira ao fundo, em curvas de nível
+    g = []
     for k in range(7):
         pts = []
         for i in range(0, 41):
@@ -556,14 +564,10 @@ def art_azv(s, ox, oy, p="a"):
             pts.append(P(x, yy, max(z, 0)))
         d = "M" + " L".join(f"{a:.1f} {b:.1f}" for a, b in pts)
         g.append(f'<path d="{d}" fill="none" stroke="#fff" stroke-opacity="{0.05 + k * 0.018:.3f}" stroke-width=".8"/>')
-
-    # ruas
     for v in range(-120, 121, 30):
         a, b = P(v, -125), P(v, 125)
         c, d = P(-125, v), P(125, v)
         g.append(f'<path d="M{a[0]:.1f} {a[1]:.1f} L{b[0]:.1f} {b[1]:.1f} M{c[0]:.1f} {c[1]:.1f} L{d[0]:.1f} {d[1]:.1f}" stroke="#1d1d1d" stroke-width=".8"/>')
-
-    # rio Paraíba e o Banhado
     river = [P(-150, 70), P(-95, 52), P(-40, 64), P(10, 40), P(60, 58), P(120, 30), P(170, 44)]
     d = f"M{river[0][0]:.1f} {river[0][1]:.1f} " + " ".join(
         f"Q{river[i][0]:.1f} {river[i][1]:.1f} {(river[i][0] + river[i + 1][0]) / 2:.1f} {(river[i][1] + river[i + 1][1]) / 2:.1f}"
@@ -572,8 +576,6 @@ def art_azv(s, ox, oy, p="a"):
                  + f".{p}rv{{animation:{p}rv 3s linear infinite}}")
     g.append(f'<path d="{d}" fill="none" stroke="#fff" stroke-opacity=".10" stroke-width="7" stroke-linecap="round"/>'
              f'<path class="{p}rv" d="{d}" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.1" stroke-dasharray="14 6"/>')
-
-    # casas e prédios baixos da cidade
     towers = [("Ares", -55, -55, 62), ("Senses", 5, -100, 48), ("Neori", 80, -60, 40), ("Altus", 95, 20, 56),
               ("Martim", -100, 30, 44), ("Riza", -40, 45, 52), ("Serena", 25, 50, 34)]
     houses = []
@@ -585,40 +587,27 @@ def art_azv(s, ox, oy, p="a"):
             continue
         houses.append((x, y, rnd.choice([2, 2, 3, 4, 6, 9]), rnd.uniform(2.2, 3.6)))
     houses.sort(key=lambda h: h[0] + h[1])
-    hs = []
     for x, y, h, a in houses:
         top = [P(x - a, y - a, h), P(x + a, y - a, h), P(x + a, y + a, h), P(x - a, y + a, h)]
         left = [P(x - a, y + a, 0), P(x + a, y + a, 0), P(x + a, y + a, h), P(x - a, y + a, h)]
         right = [P(x + a, y + a, 0), P(x + a, y - a, 0), P(x + a, y - a, h), P(x + a, y + a, h)]
-        hs.append(poly(left, "#161616") + poly(right, "#222") + poly(top, "#2e2e2e"))
-    s.css.append(keyframes(f"{p}hs", [("0%,44%", "opacity:1"), ("50%,80%", "opacity:.35"), ("86%,100%", "opacity:1")])
-                 + f".{p}hs{{animation:{p}hs {T}s ease infinite}}")
-    g.append(f'<g class="{p}hs">{"".join(hs)}</g>')
-
-    # torres da AZV
+        g.append(poly(left, "#161616") + poly(right, "#222") + poly(top, "#2e2e2e"))
     s.defs.append(f'<linearGradient id="{p}fr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/>'
                   f'<stop offset="1" stop-color="#bdbdbd"/></linearGradient>'
                   f'<linearGradient id="{p}fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a8a8a"/>'
                   f'<stop offset="1" stop-color="#4a4a4a"/></linearGradient>'
                   f'<linearGradient id="{p}bm" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/>'
                   f'<stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
-    s.css += [keyframes(f"{p}bp", [("0%,100%", "opacity:.35"), ("50%", "opacity:.9")]),
-              f".{p}bp{{animation:{p}bp 2.4s ease-in-out infinite}}"]
-    line_order = sorted(range(len(towers)), key=lambda i: towers[i][3])
+    order = sorted(range(len(towers)), key=lambda i: towers[i][3])
     a = 6.0
     for i in sorted(range(len(towers)), key=lambda i: towers[i][1] + towers[i][2]):
         name, x, y, h = towers[i]
         cx_, cy_ = P(x, y)
-        slot = line_order.index(i)
-        lx, ly = P(-10 + (slot - 3) * 24, 50 - (slot - 3) * 24)
-        mv = (f"transform:translate({cx_:.1f}px,{cy_:.1f}px)", f"transform:translate({lx:.1f}px,{ly:.1f}px)")
-        s.css.append(keyframes(f"{p}m{i}", [("0%,43%", mv[0]), ("53%,78%", mv[1]), ("88%,100%", mv[0])])
-                     + f".{p}m{i}{{{mv[0]};animation:{p}m{i} {T}s cubic-bezier(.7,0,.25,1) infinite}}")
-        rise0 = (0.3 + slot * 0.18) / T * 100
-        rise1 = rise0 + 1.1 / T * 100
-        s.css.append(keyframes(f"{p}u{i}", [(f"0%,{rise0:.2f}%", "transform:scaleY(0)"), (f"{rise1:.2f}%,95%", "transform:scaleY(1)"),
-                                            ("99%,100%", "transform:scaleY(0)")])
-                     + f".{p}u{i}{{transform-box:fill-box;transform-origin:50% 100%;animation:{p}u{i} {T}s cubic-bezier(.16,1,.3,1) infinite}}")
+        slot = order.index(i)
+        r0 = t0 + 0.15 + slot * 0.16
+        anim(s, f"{p}u{i}", T, [((0, r0), "transform:scaleY(0)"), ((r0 + 1.0, t1), "transform:scaleY(1)"),
+                                 ((min(T, t1 + 0.3), T), "transform:scaleY(0)")],
+             "cubic-bezier(.16,1,.3,1)", "transform-box:fill-box;transform-origin:50% 100%;")
 
         def L(xx, yy, zz):
             return ((xx - yy) * 0.866 * K, (xx + yy) * 0.5 * K - zz * K)
@@ -634,101 +623,479 @@ def art_azv(s, ox, oy, p="a"):
                 + f'<path d="{" ".join(floors)}" fill="none" stroke="#000" stroke-opacity=".28" stroke-width=".6"/>')
         tt = L(0, 0, h)
         lbl_y = tt[1] - (30 if slot % 2 == 0 else 44)
-        lab = vis(s, f"{p}l{i}", T, 0.3 + slot * 0.18 + 1.0, 11.4, 0.3)
-        g.append(f'<g class="{p}m{i}"><g class="{p}u{i}">{body}</g>'
-                 f'<g class="{lab}"><rect class="{p}bp" style="animation-delay:{slot * 0.3:.1f}s" x="-0.6" y="{lbl_y + 6:.1f}" width="1.2" '
-                 f'height="{tt[1] - lbl_y - 6:.1f}" fill="url(#{p}bm)"/>'
+        lab = vis(s, f"{p}l{i}", T, r0 + 0.9, t1 - 0.1, 0.3)
+        g.append(f'<g transform="translate({cx_:.1f} {cy_:.1f})"><g class="{p}u{i}">{body}</g>'
+                 f'<g class="{lab}"><rect x="-0.6" y="{lbl_y + 6:.1f}" width="1.2" height="{tt[1] - lbl_y - 6:.1f}" fill="url(#{p}bm)"/>'
                  f'<circle cx="0" cy="{lbl_y + 6:.1f}" r="1.6" fill="#fff"/>'
                  + s.text(0, lbl_y, name.upper(), "M", 6.4, "#e6e6e6", 1.2, anchor="middle") + "</g></g>")
-    g.append("</g>")
-    g.append(s.text(18, 238, "SÃO JOSÉ DOS CAMPOS  ·  RELEVO REAL", "M", 6.8, "#5a5a5a", 1.4))
-    g.append(s.text(502, 238, "17 EMPREENDIMENTOS", "M", 6.8, "#5a5a5a", 1.4, anchor="end"))
-    g.append("</g>")
     return "".join(g)
 
 
-def stack_logos(name, groups):
-    """Stack geral em cards com a logo de cada tecnologia (simple-icons, CC0), agrupada por área."""
+def art_azv(s, ox, oy, p="a"):
+    """O site da AZV inteiro numa janela: vitrine, revista, maquete 3D e painel com SEO, uma cena por vez."""
+    T = 16.0
+    SC = [("VITRINE", 0.0, 4.0), ("REVISTA", 4.0, 8.0), ("MAQUETE 3D", 8.0, 12.0), ("PAINEL E SEO", 12.0, 16.0)]
+    g = [f'<g transform="translate({ox} {oy})">']
+    g.append('<rect width="520" height="250" rx="14" fill="#0a0a0a" stroke="#2a2a2a"/>')
+    # barra do navegador
+    g.append('<rect x="14" y="11" width="146" height="18" rx="9" fill="#111" stroke="#222"/>'
+             '<rect x="22.5" y="18.6" width="6" height="5" rx="1" fill="none" stroke="#8a8a8a" stroke-width=".8"/>'
+             '<path d="M24 18.6 V17.2 a1.5 1.5 0 0 1 3 0 V18.6" fill="none" stroke="#8a8a8a" stroke-width=".8"/>')
+    g.append(s.text(33, 23.2, "azvlancamentos.com.br", "R", 7.4, "#bdbdbd"))
+    widths = [text_width(t, "M", 6.6, 1.5) - 1.5 for t, _, _ in SC]
+    tx = 504 - sum(widths) - 14 * (len(SC) - 1)
+    for i, (tab, a, b) in enumerate(SC):
+        w = widths[i]
+        g.append(s.text(tx, 23.4, tab, "M", 6.6, "#4a4a4a", 1.5))
+        g.append(f'<g class="{vis(s, f"{p}tb{i}", T, a, b - 0.25, 0.25)}">{s.text(tx, 23.4, tab, "M", 6.6, "#fff", 1.5)}'
+                 f'<rect x="{tx:.1f}" y="29.5" width="{w:.1f}" height="1.2" fill="#fff"/></g>')
+        tx += w + 14
+    g.append('<path d="M0 40 H520" stroke="#1c1c1c"/>')
+    s.defs.append(f'<clipPath id="{p}cl"><rect x="1" y="41" width="518" height="208" rx="13"/></clipPath>')
+    g.append(f'<g clip-path="url(#{p}cl)">')
+
+    def scene(i):
+        _, a, b = SC[i]
+        return vis(s, f"{p}sc{i}", T, a, b - 0.3, 0.3)
+
+    up = "opacity:0;transform:translateY(7px)"
+    on = "opacity:1;transform:translateY(0)"
+
+    # 1. vitrine: a abertura da home passando pelos destaques, as estações da página e as páginas por bairro
+    v = []
+    names = ["Senses", "Albor América", "Reserva Costa Verde", "Martim"]
+    seg = (238 - 18 - 3 * 4) / 4
+    for i in range(4):
+        x = 18 + i * (seg + 4)
+        t_a, t_b = 0.25 + i * 0.9, 0.25 + (i + 1) * 0.9
+        v.append(f'<rect x="{x:.1f}" y="52" width="{seg:.1f}" height="1.6" rx=".8" fill="#262626"/>')
+        cls = anim(s, f"{p}sb{i}", T, [((0, t_a), "transform:scaleX(0)"), ((t_b, 3.75), "transform:scaleX(1)"),
+                                        ((4.0, T), "transform:scaleX(0)")], "linear", "transform-box:fill-box;transform-origin:left center;")
+        v.append(f'<rect class="{cls}" x="{x:.1f}" y="52" width="{seg:.1f}" height="1.6" rx=".8" fill="#fff"/>')
+        size = 24
+        while text_width(names[i], "D", size, -0.4) > 222:
+            size -= 1
+        end = t_b if i < 3 else 3.7
+        c1 = vis(s, f"{p}nm{i}", T, t_a, end - 0.15, 0.2, up, on, "cubic-bezier(.16,1,.3,1)")
+        v.append(f'<g class="{c1}">{s.text(18, 110, names[i], "D", size, INK, -0.4)}'
+                 f'{s.text(238, 68, f"0{i + 1} / 04", "M", 6.2, "#8a8a8a", 1.4, anchor="end")}</g>')
+    v.append(s.text(18, 68, "IMÓVEIS NA PLANTA  ·  SJC", "M", 6.2, "#6a6a6a", 1.4))
+    st = ["FACHADA", "APARTAMENTO", "LAZER", "PLANTAS", "LOCAL", "CONTATO"]
+    sx = 18
+    for i, w_ in enumerate(st):
+        ww = text_width(w_, "M", 5.4, 1.1) - 1.1
+        v.append(s.text(sx, 134, w_, "M", 5.4, "#4a4a4a", 1.1))
+        c2 = vis(s, f"{p}st{i}", T, 0.35 + i * 0.55, 0.35 + (i + 1) * 0.55 - 0.14, 0.12)
+        v.append(f'<g class="{c2}">{s.text(sx, 134, w_, "M", 5.4, "#fff", 1.1)}<rect x="{sx:.1f}" y="138" width="{ww:.1f}" height="1" fill="#fff"/></g>')
+        sx += ww + 7
+    assert sx - 7 < 256, sx
+    cta = "FALAR COM A TATIANE"
+    cw = text_width(cta, "M", 6, 1.2) - 1.2 + 30
+    v.append(f'<rect x="18" y="152" width="{cw:.1f}" height="18" rx="9" fill="#fff"/>'
+             f'<circle cx="29" cy="161" r="2.6" fill="none" stroke="#0a0a0a" stroke-width="1"/>'
+             + s.text(36, 163.2, cta, "M", 6, "#0a0a0a", 1.2))
+    # a imagem do prédio, que abre por uma cortina
+    PX, PY, PW, PH = 262, 52, 240, 122
+    v.append(f'<rect x="{PX}" y="{PY}" width="{PW}" height="{PH}" rx="6" fill="#0f0f0f" stroke="#1e1e1e"/>')
+    s.defs.append(f'<radialGradient id="{p}sky" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#1d1d1d"/>'
+                  f'<stop offset="1" stop-color="#0c0c0c"/></radialGradient>'
+                  f'<clipPath id="{p}ph"><rect x="{PX}" y="{PY}" width="{PW}" height="{PH}" rx="6"/></clipPath>')
+    zoom = anim(s, f"{p}zm", T, [(0, "transform:scale(1.1)"), ((3.9, T), "transform:scale(1)")], "cubic-bezier(.2,.6,.3,1)",
+                "transform-box:fill-box;transform-origin:50% 80%;")
+    K2, CX2, CY2 = 1.05, 382, 160
+
+    def I(x, y, z=0.0):
+        return CX2 + (x - y) * 0.866 * K2, CY2 + (x + y) * 0.5 * K2 - z * K2
+
+    def pg(pts, fill, extra=""):
+        return f'<polygon points="{" ".join(f"{u:.1f},{w:.1f}" for u, w in pts)}" fill="{fill}"{extra}/>'
+
+    def box(x0, x1, y0, y1, z0, z1, cl, cr, ct, lines=0):
+        out = (pg([I(x0, y1, z0), I(x1, y1, z0), I(x1, y1, z1), I(x0, y1, z1)], cl)
+               + pg([I(x1, y1, z0), I(x1, y0, z0), I(x1, y0, z1), I(x1, y1, z1)], cr)
+               + pg([I(x0, y0, z1), I(x1, y0, z1), I(x1, y1, z1), I(x0, y1, z1)], ct))
+        if lines:
+            ds = []
+            for z in range(int(z0) + lines, int(z1) - 1, lines):
+                a1, a2, a3 = I(x0, y1, z), I(x1, y1, z), I(x1, y0, z)
+                ds.append(f"M{a1[0]:.1f} {a1[1]:.1f} L{a2[0]:.1f} {a2[1]:.1f} L{a3[0]:.1f} {a3[1]:.1f}")
+            out += f'<path d="{" ".join(ds)}" fill="none" stroke="#000" stroke-opacity=".25" stroke-width=".6"/>'
+        return out
+
+    ph = [f'<rect x="{PX}" y="{PY}" width="{PW}" height="{PH}" fill="url(#{p}sky)"/>']
+    ph.append(pg([I(-60, -60), I(60, -60), I(60, 60), I(-60, 60)], "#121212", ' stroke="#1f1f1f" stroke-width=".8"'))
+    for k in range(-60, 61, 20):
+        a1, a2, b1, b2 = I(k, -60), I(k, 60), I(-60, k), I(60, k)
+        ph.append(f'<path d="M{a1[0]:.1f} {a1[1]:.1f} L{a2[0]:.1f} {a2[1]:.1f} M{b1[0]:.1f} {b1[1]:.1f} L{b2[0]:.1f} {b2[1]:.1f}" stroke="#181818" stroke-width=".6"/>')
+    ph.append(box(-40, -22, 18, 40, 0, 14, "#1c1c1c", "#262626", "#303030"))
+    ph.append(box(22, 44, -40, -18, 0, 22, "#1c1c1c", "#262626", "#303030"))
+    ph.append(box(-26, 26, -26, 26, 0, 9, "#3a3a3a", "#5c5c5c", "#7a7a7a"))
+    ph.append(box(-12, 12, -12, 12, 9, 84, f"url(#{p}fl)", f"url(#{p}fr)", "#fff", 4))
+    ph.append(box(-14, 14, -14, 14, 84, 87, "#9a9a9a", "#cfcfcf", "#f2f2f2"))
+    cur = anim(s, f"{p}ct", T, [((0, 0.2), "transform:scaleY(1)"), ((1.1, T), "transform:scaleY(0)")],
+               "cubic-bezier(.7,0,.2,1)", "transform-box:fill-box;transform-origin:50% 0;")
+    v.append(f'<g clip-path="url(#{p}ph)"><g class="{zoom}">{"".join(ph)}</g>'
+             f'<rect class="{cur}" x="{PX}" y="{PY}" width="{PW}" height="{PH}" fill="#0f0f0f"/></g>')
+    v.append(s.text(PX, 186, "TIPOLOGIAS · LAZER · PLANTAS · VÍDEOS · BOOKS", "M", 5.2, "#6a6a6a", 1))
+    v.append(s.text(18, 198, "PÁGINAS POR BAIRRO E POR TAMANHO", "M", 5.6, "#5a5a5a", 1.3))
+    cols = ["JARDIM AQUARIUS", "VILA EMA", "JARDIM AMÉRICA", "ZONA SUL", "CARAGUATATUBA", "STUDIOS E 1 DORM.", "3 DORMITÓRIOS"]
+    cx = 18
+    for i, c in enumerate(cols):
+        cw2 = text_width(c, "M", 5.2, 0.8) - 0.8 + 13
+        v.append(f'<rect x="{cx:.1f}" y="206" width="{cw2:.1f}" height="15" rx="7.5" fill="none" stroke="#2a2a2a"/>'
+                 + s.text(cx + 6.5, 215.7, c, "M", 5.2, "#8a8a8a", 0.8))
+        c3 = vis(s, f"{p}co{i}", T, 0.6 + i * 0.45, 0.6 + (i + 1) * 0.45 - 0.12, 0.12)
+        v.append(f'<g class="{c3}"><rect x="{cx:.1f}" y="206" width="{cw2:.1f}" height="15" rx="7.5" fill="#fff"/>'
+                 + s.text(cx + 6.5, 215.7, c, "M", 5.2, "#0a0a0a", 0.8) + "</g>")
+        cx += cw2 + 4.5
+    assert cx < 506, cx
+    g.append(f'<g class="{scene(0)}">{"".join(v)}</g>')
+
+    # 2. revista: o nome subindo letra por letra e o índice das matérias
+    r = []
+    for li, (word, color, y) in enumerate([("Revista", INK, 104), ("AZV", "#5a5a5a", 140)]):
+        x = 18
+        for k, ch in enumerate(word):
+            t = 4.2 + (li * 7 + k) * 0.06
+            c = vis(s, f"{p}rl{li}{k}", T, t, 7.7, 0.35, "opacity:0;transform:translateY(12px)", on, "cubic-bezier(.16,1,.3,1)")
+            r.append(f'<g class="{c}">{s.text(x, y, ch, "D", 36, color, -0.6)}</g>')
+            x += text_width(ch, "D", 36, -0.6)
+    r.append(s.text(18, 164, "17 MATÉRIAS  ·  PORTUGUÊS E INGLÊS", "M", 6, "#6a6a6a", 1.4))
+    r.append(s.text(18, 178, "GUIAS DE BAIRRO, COMPRA NA PLANTA E LAZER", "M", 5.4, "#4a4a4a", 1.2))
+    rd = anim(s, f"{p}rd", T, [((0, 4.3), "transform:scaleX(0)"), ((7.7, T), "transform:scaleX(1)")], "linear",
+              "transform-box:fill-box;transform-origin:left center;")
+    r.append(f'<rect x="18" y="222" width="220" height="1" fill="#222"/><rect class="{rd}" x="18" y="222" width="220" height="1" fill="#fff"/>')
+    r.append(s.text(258, 62, "TODAS AS MATÉRIAS", "M", 6, "#5a5a5a", 1.4))
+    r.append(s.text(502, 62, "PT  ·  EN", "M", 6, "#5a5a5a", 1.4, anchor="end"))
+    arts = ["Guia do Jardim Aquarius", "Como ler a planta de um apartamento", "Comprar apartamento na planta: o passo a passo",
+            "O lazer subiu: os rooftops dos lançamentos", "Do Vale ao mar: o guia de Caraguatatuba", "Apartamento com pet"]
+    for k, title in enumerate(arts):
+        y = 78 + k * 25
+        t = 4.35 + k * 0.12
+        size = 8.4
+        while text_width(title, "R", size) > 222:
+            size -= 0.2
+        c = vis(s, f"{p}ra{k}", T, t, 7.7, 0.4, "opacity:0;transform:translateX(10px)", "opacity:1;transform:translateX(0)", "cubic-bezier(.16,1,.3,1)")
+        hi = vis(s, f"{p}rh{k}", T, 4.9 + k * 0.45, 4.9 + (k + 1) * 0.45 - 0.15, 0.15)
+        r.append(f'<g class="{c}"><path d="M258 {y - 9} H502" stroke="#1c1c1c"/>'
+                 f'<circle cx="262" cy="{y + 3.5}" r="1.4" fill="#4a4a4a"/>'
+                 + s.text(270, y + 6, title, "R", size, "#bdbdbd")
+                 + f'<g class="{hi}"><rect x="258" y="{y - 8.5}" width="244" height="24" fill="#fff" fill-opacity=".05"/>'
+                 f'<rect x="258" y="{y - 8.5}" width="1.4" height="24" fill="#fff"/>'
+                 + s.text(270, y + 6, title, "R", size, INK)
+                 + s.text(500, y + 6, "→", "R", 8, INK, anchor="end") + "</g></g>")
+    g.append(f'<g class="{scene(1)}">{"".join(r)}</g>')
+
+    # 3. maquete 3D da cidade
+    m = [azv_city(s, p, T, 8.0, 11.7)]
+    m.append(s.text(18, 58, "MAQUETE 3D  ·  A CIDADE INTEIRA", "M", 6.2, "#bdbdbd", 1.4))
+    m.append(s.text(18, 238, "SÃO JOSÉ DOS CAMPOS E LITORAL  ·  RELEVO REAL", "M", 5.8, "#5a5a5a", 1.3))
+    m.append(s.text(502, 238, "≈ 320 MIL CASAS  ·  THREE.JS", "M", 5.8, "#5a5a5a", 1.3, anchor="end"))
+    g.append(f'<g class="{scene(2)}">{"".join(m)}</g>')
+
+    # 4. painel e SEO: o resultado na busca, o que o Google recebe e o painel próprio
+    q = []
+    q.append('<rect x="18" y="52" width="232" height="58" rx="6" fill="#0f0f0f" stroke="#1e1e1e"/>'
+             '<circle cx="31" cy="64" r="4.5" fill="#1e1e1e" stroke="#333"/>')
+    q.append(s.text(41, 66.4, "azvlancamentos.com.br", "R", 6.4, "#8a8a8a"))
+    title = "Imóveis na planta em São José dos Campos | AZV Lançamentos"
+    size = 9
+    while text_width(title, "R", size) > 214:
+        size -= 0.2
+    q.append(s.text(27, 83, title, "R", size, "#e6e6e6"))
+    q.append('<rect x="27" y="91" width="200" height="3" rx="1.5" fill="#262626"/><rect x="27" y="99" width="150" height="3" rx="1.5" fill="#262626"/>')
+    rows = [("SITEMAP", "92 páginas e as fotos"), ("HREFLANG", "pt-BR e en"), ("JSON-LD", "RealEstateAgent · FAQPage"),
+            ("INDEXNOW", "a cada publicação"), ("LCP NO CELULAR", "0,8 s"), ("CLS", "0")]
+    for k, (lab, val) in enumerate(rows):
+        y = 128 + k * 16
+        c = vis(s, f"{p}sq{k}", T, 12.25 + k * 0.18, 15.7, 0.3, up, on, "cubic-bezier(.16,1,.3,1)")
+        q.append(f'<g class="{c}"><path d="M18 {y + 5} H250" stroke="#191919"/>'
+                 + s.text(18, y, lab, "M", 5.6, "#6a6a6a", 1.2)
+                 + s.text(238, y, val, "R", 7, "#e6e6e6", anchor="end")
+                 + f'<path d="M242 {y - 3} l2 2 l4 -4.5" fill="none" stroke="#fff" stroke-width="1"/></g>')
+    q.append(s.text(270, 62, "PAINEL PRÓPRIO  ·  SEM COOKIES DE TERCEIROS", "M", 5.6, "#8a8a8a", 1.2))
+    q.append(f'<circle class="fb {p}pp" cx="498" cy="60" r="2.2" fill="#fff"/>')
+    s.css.append(keyframes(f"{p}pp", [("0%,100%", "opacity:.3"), ("50%", "opacity:1")]) + f".{p}pp{{animation:{p}pp 1.6s ease-in-out infinite}}")
+    for k in range(4):
+        q.append(f'<path d="M270 {80 + k * 20} H502" stroke="#161616"/>')
+    pts = [(270, 122), (299, 110), (328, 124), (357, 106), (386, 118), (415, 102), (444, 116), (473, 104), (502, 112)]
+    d = "M" + " L".join(f"{x} {y}" for x, y in pts)
+    ln = anim(s, f"{p}ln", T, [((0, 12.3), "stroke-dashoffset:300"), ((14.2, T), "stroke-dashoffset:0")], "cubic-bezier(.65,0,.35,1)")
+    area = d + " L502 140 L270 140 Z"
+    s.defs.append(f'<linearGradient id="{p}ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".10"/>'
+                  f'<stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
+    q.append(f'<g class="{vis(s, f"{p}af", T, 13.2, 15.7, 0.6)}"><path d="{area}" fill="url(#{p}ar)"/></g>'
+             f'<path class="{ln}" d="{d}" fill="none" stroke="#fff" stroke-width="1.2" stroke-dasharray="300"/>')
+    for row, (label, items, y, t0) in enumerate([("ORIGEM DAS VISITAS", ["GOOGLE", "BING", "IA", "WHATSAPP", "DIRETO"], 156, 12.4),
+                                                ("O QUE O PAINEL MOSTRA", ["JORNADAS", "SEÇÕES VISTAS", "CONTATOS", "REVISTA"], 192, 13.4)]):
+        q.append(s.text(270, y, label, "M", 5.6, "#5a5a5a", 1.2))
+        cx = 270
+        for k, it in enumerate(items):
+            cw = text_width(it, "M", 5.2, 1) - 1 + 14
+            q.append(f'<rect x="{cx:.1f}" y="{y + 6}" width="{cw:.1f}" height="14" rx="7" fill="none" stroke="#2a2a2a"/>'
+                     + s.text(cx + 7, y + 15.4, it, "M", 5.2, "#8a8a8a", 1))
+            c = vis(s, f"{p}pc{row}{k}", T, t0 + k * 0.35, 15.7, 0.25)
+            q.append(f'<g class="{c}"><rect x="{cx:.1f}" y="{y + 6}" width="{cw:.1f}" height="14" rx="7" fill="#fff"/>'
+                     + s.text(cx + 7, y + 15.4, it, "M", 5.2, "#0a0a0a", 1) + "</g>")
+            cx += cw + 5
+        assert cx < 508, (label, cx)
+    q.append(s.text(270, 236, "SEARCH CONSOLE  ·  PAGESPEED  ·  QR CODE", "M", 5.2, "#4a4a4a", 1.1))
+    g.append(f'<g class="{scene(3)}">{"".join(q)}</g>')
+
+    g.append("</g></g>")
+    return "".join(g)
+
+
+def load_icons():
     import json
-    icons = json.load(open(os.path.join(ROOT, "scripts", "stack-icons.json"), encoding="utf-8"))["icones"]
-    W, cols, gap, th, B = 1280, 6, 14, 86, 46
-    tw = (W - gap * (cols - 1)) / cols
-    y = 0
-    items = []
+    return json.load(open(os.path.join(ROOT, "scripts", "stack-icons.json"), encoding="utf-8"))["icones"]
+
+
+def stack_chips(name, title, groups, W=1012, label_w=0):
+    """Stack em chips pequenos e discretos, com a logo de cada tecnologia (simple-icons, CC0) quando existe.
+
+    groups: [(rótulo ou None, [(nome, slug do ícone ou None), ...]), ...]
+    """
+    icons = load_icons()
+    CH, GAP, ROWGAP, GROUPGAP = 28, 8, 8, 14
+    FS = 12.5
+    items, y = [], 0
     for label, techs in groups:
-        rows = (len(techs) + cols - 1) // cols
-        items.append(("label", label, y))
-        y += 40
-        for k, t in enumerate(techs):
-            items.append(("tile", t, (k % cols) * (tw + gap), y + (k // cols) * (th + gap)))
-        y += rows * th + (rows - 1) * gap + 30
-    H = int(y - 30 + 2)
-    s = Svg(W, H, "Stack: " + ", ".join(t[0] for _, ts in groups for t in ts), panel=False)
+        x = label_w
+        if label:
+            items.append(("label", label, y))
+        for tech, icon in techs:
+            has = bool(icon) and icon in icons
+            w = text_width(tech, "R", FS) + (12 + 14 + 7 if has else 12 + 4 + 8) + 12
+            if x + w > W and x > label_w:
+                x = label_w
+                y += CH + ROWGAP
+            items.append(("chip", tech, icon if has else None, x, y, w))
+            x += w + GAP
+        y += CH + GROUPGAP
+    H = int(y - GROUPGAP + 2)
+    s = Svg(W, H, title + ": " + ", ".join(t for _, ts in groups for t, _ in ts), panel=False)
     s.css += [
-        keyframes("cin", [("0%", "opacity:0;transform:translateY(12px)"), ("100%", "opacity:1;transform:translateY(0)")]),
-        ".ci{animation:cin .8s cubic-bezier(.16,1,.3,1) both}",
-        keyframes("dr", [("0%", "transform:scaleX(0)"), ("100%", "transform:scaleX(1)")]),
-        ".dl{animation:dr 1.4s cubic-bezier(.65,0,.35,1) both}",
-        keyframes("sh", [("0%,60%", "transform:translateX(-600px)"), ("100%", "transform:translateX(1900px)")]),
-        ".sh{animation:sh 9s cubic-bezier(.6,0,.3,1) 1.8s infinite both}",
-        keyframes("gl", [("0%,100%", "opacity:0"), ("50%", "opacity:1")]),
-        ".gw{animation:gl 5s ease-in-out infinite}",
+        keyframes("cin", [("0%", "opacity:0;transform:translateY(6px)"), ("100%", "opacity:1;transform:translateY(0)")]),
+        ".ci{animation:cin .7s cubic-bezier(.16,1,.3,1) both}",
     ]
-    s.defs.append('<linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
-                  '<stop offset=".5" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>'
-                  '<radialGradient id="ig" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".16"/>'
-                  '<stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>')
-    clip, n = [], 0
+    n = 0
     for it in items:
         if it[0] == "label":
             _, label, yy = it
-            lw = text_width(label, "M", 12.5, 3)
-            s.add(s.text(0, yy + 18, label, "M", 12.5, MUTED, 3),
-                  f'<rect class="fl dl" x="{lw + 16:.1f}" y="{yy + 13.5}" width="{W - lw - 16:.1f}" height="1" fill="{LINE}"/>')
+            s.add(s.text(0, yy + 18, label, "M", 10, MUTED, 2.4))
             continue
-        _, (tech, icon), x, yy = it
-        d = 0.035 * n
-        n += 1
-        clip.append(f'<rect x="{x:.1f}" y="{yy}" width="{tw:.1f}" height="{th}" rx="16"/>')
-        ix, iy = x + 16, yy + (th - B) / 2
-        if icon in icons:
-            mark = (f'<g transform="translate({ix + (B - 26) / 2} {iy + (B - 26) / 2}) scale({26 / 24:.4f})"><path d="{icons[icon]}" fill="#fff" fill-opacity=".92"/></g>')
+        _, tech, icon, x, yy, w = it
+        parts = [f'<rect x="{x + .5:.1f}" y="{yy + .5}" width="{w - 1:.1f}" height="{CH - 1}" rx="{(CH - 1) / 2}" fill="#0b0b0b" stroke="#242424"/>']
+        if icon:
+            parts.append(f'<g transform="translate({x + 12:.1f} {yy + (CH - 14) / 2}) scale({14 / 24:.4f})">'
+                         f'<path d="{icons[icon]}" fill="#fff" fill-opacity=".88"/></g>')
+            tx = x + 12 + 14 + 7
         else:
-            mono = icon
-            size = 15 if len(mono) <= 2 else 12
-            mark = s.text(ix + B / 2, iy + B / 2 + size * 0.36, mono, "M", size, "#fff", 0.6, anchor="middle")
-        size = 18
-        while text_width(tech, "D", size, -0.3) > tw - (16 + B + 14 + 12):
-            size -= 0.5
-        s.add(
-            f'<g class="ci" style="animation-delay:{d:.2f}s">'
-            f'<rect x="{x + .5:.1f}" y="{yy + .5}" width="{tw - 1:.1f}" height="{th - 1}" rx="15.5" fill="{PANEL}" stroke="{LINE}"/>'
-            f'<circle class="gw" style="animation-delay:{(n * 0.37) % 5:.2f}s" cx="{ix + B / 2}" cy="{iy + B / 2}" r="34" fill="url(#ig)"/>'
-            f'<rect x="{ix + .5}" y="{iy + .5}" width="{B - 1}" height="{B - 1}" rx="12" fill="#0d0d0d" stroke="#262626"/>'
-            + mark
-            + s.text(ix + B + 14, yy + th / 2 + size * 0.36, tech, "D", size, INK, -0.3)
-            + "</g>"
-        )
-    s.defs.append(f'<clipPath id="cc">{"".join(clip)}</clipPath>')
-    s.add(f'<g clip-path="url(#cc)"><rect class="sh" x="0" y="0" width="460" height="{H}" fill="url(#sg)" transform="skewX(-18)"/></g>')
+            parts.append(f'<circle cx="{x + 14:.1f}" cy="{yy + CH / 2}" r="2.2" fill="#6a6a6a"/>')
+            tx = x + 12 + 4 + 8
+        parts.append(s.text(tx, yy + CH / 2 + FS * 0.35, tech, "R", FS, "#d4d4d4"))
+        s.add(f'<g class="ci" style="animation-delay:{0.025 * n:.3f}s">{"".join(parts)}</g>')
+        n += 1
     s.save(name)
 
 
 def stack_geral():
-    stack_logos("stack-geral.svg", [
+    stack_chips("stack-geral.svg", "Stack", [
         ("FRONTEND", [("TypeScript", "typescript"), ("JavaScript", "javascript"), ("React", "react"),
                       ("Next.js", "nextdotjs"), ("TanStack", "tanstack"), ("Tailwind CSS", "tailwindcss")]),
-        ("WEB, 3D E MOVIMENTO", [("HTML", "html5"), ("CSS", "css"), ("Three.js", "threedotjs"),
-                                 ("GSAP", "gsap"), ("Framer Motion", "framer"), ("ECharts", "apacheecharts")]),
+        ("3D E MOVIMENTO", [("Three.js", "threedotjs"), ("WebGL", "webgl"), ("GSAP", "gsap"),
+                            ("Framer Motion", "framer"), ("ECharts", "apacheecharts"), ("HTML e CSS", "html5")]),
         ("BACKEND E DADOS", [("Node.js", "nodedotjs"), ("NestJS", "nestjs"), ("Python", "python"),
                              ("FastAPI", "fastapi"), ("Supabase", "supabase"), ("PostgreSQL", "postgresql")]),
-        ("IA APLICADA", [("Claude", "claude"), ("OpenAI", "AI"), ("Gemini", "googlegemini"),
-                         ("LangChain", "langchain"), ("MCP", "modelcontextprotocol"), ("RAG", "RAG")]),
-        ("AUTOMAÇÃO E DESKTOP", [("n8n", "n8n"), ("discord.py", "discord"), ("Chrome MV3", "googlechrome"),
-                                 (".NET · WPF", "dotnet"), ("C#", "C#"), ("PowerShell", "PS")]),
+        ("IA APLICADA", [("Claude", "claude"), ("OpenAI", None), ("Gemini", "googlegemini"),
+                         ("LangChain", "langchain"), ("MCP", "modelcontextprotocol"), ("RAG e agentes", None)]),
+        ("AUTOMAÇÃO", [("n8n", "n8n"), ("discord.py", "discord"), ("Extensões Chrome", "googlechrome"),
+                       ("C# e WPF", "dotnet"), ("PowerShell", None)]),
         ("INFRA E QUALIDADE", [("Vercel", "vercel"), ("Docker", "docker"), ("GitHub Actions", "githubactions"),
-                               ("Playwright", "PW"), ("Vitest", "vitest"), ("Pytest", "pytest")]),
-    ])
+                               ("Playwright", None), ("Vitest", "vitest"), ("Pytest", "pytest")]),
+    ], label_w=196)
+
+
+# ---------------------------------------------------------------- também no ar
+
+
+def art_upaiva(s, ox, oy, p="u"):
+    """Planeta de partículas com órbita e o terminal do Ctrl K."""
+    g = [f'<g transform="translate({ox} {oy})">']
+    cx, cy, R = 214, 92, 52
+    dots = []
+    N = 260
+    for i in range(N):
+        yv = 1 - (i / (N - 1)) * 2
+        rr = math.sqrt(max(0.0, 1 - yv * yv))
+        th = math.pi * (3 - math.sqrt(5)) * i
+        xv, zv = math.cos(th) * rr, math.sin(th) * rr
+        if zv < -0.15:
+            continue
+        lx = (xv * -0.5 + yv * -0.6 + zv * 0.62)
+        op = 0.18 + 0.75 * max(0.0, lx)
+        dots.append(f'<circle cx="{cx + xv * R:.1f}" cy="{cy + yv * R:.1f}" r="{0.7 + 0.6 * max(zv, 0):.2f}" fill="#fff" fill-opacity="{op:.2f}"/>')
+    s.css.append(keyframes(f"{p}sp", [("0%", "transform:rotate(0deg)"), ("100%", "transform:rotate(360deg)")])
+                 + f".{p}sp{{transform-box:fill-box;transform-origin:center;animation:{p}sp 60s linear infinite}}")
+    g.append(f'<circle cx="{cx}" cy="{cy}" r="{R + 30}" fill="url(#{p}gl)"/>')
+    s.defs.append(f'<radialGradient id="{p}gl"><stop offset="0" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>')
+    g.append(f'<g class="{p}sp">{"".join(dots)}</g>')
+    orbit = f"M{cx - 84} {cy + 6} A84 20 -14 1 0 {cx + 84} {cy - 6} A84 20 -14 1 0 {cx - 84} {cy + 6}"
+    g.append(f'<path d="{orbit}" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width=".8" stroke-dasharray="1.5 3"/>')
+    g.append(f'<circle r="3" fill="#fff"><animateMotion dur="7s" repeatCount="indefinite" path="{orbit}"/></circle>')
+    g.append(s.text(18, 44, "PORTFÓLIO / 2026", "M", 7, "#6a6a6a", 1.8))
+    g.append(s.text(18, 70, "Código,", "D", 20, INK, -0.4))
+    g.append(s.text(18, 92, "produto.", "D", 20, INK, -0.4))
+    cmd = "guias --ia"
+    g.append('<rect x="18" y="122" width="120" height="24" rx="6" fill="#0f0f0f" stroke="#262626"/>')
+    g.append(s.text(27, 137.6, "Ctrl K", "M", 7, "#6a6a6a", 1))
+    tx = 27 + text_width("Ctrl K", "M", 7, 1) + 8
+    T = 6.0
+    xs = tx
+    for k, ch in enumerate(cmd):
+        c = vis(s, f"{p}ty{k}", T, 0.4 + k * 0.12, 5.2, 0.05)
+        g.append(f'<g class="{c}">{s.text(xs, 137.6, ch, "R", 8.5, "#e6e6e6")}</g>')
+        xs += text_width(ch, "R", 8.5)
+    s.css.append(keyframes(f"{p}cu", [("0%,49%", "opacity:1"), ("50%,100%", "opacity:0")]) + f".{p}cu{{animation:{p}cu 1s steps(1) infinite}}")
+    g.append(f'<rect class="{p}cu" x="{xs + 1:.1f}" y="130" width="4.5" height="9" fill="#fff"/>')
+    g.append("</g>")
+    return "".join(g)
+
+
+def art_humanreply(s, ox, oy, p="h"):
+    """A mensagem do cliente chega, a resposta crua é reescrita no tom da empresa."""
+    T = 9.0
+    g = [f'<g transform="translate({ox} {oy})">']
+    msg = "Quero cancelar. O atendimento foi péssimo."
+    w = text_width(msg, "R", 8.6) + 22
+    c0 = vis(s, f"{p}m0", T, 0.2, 8.6, 0.35, "opacity:0;transform:translateY(6px)", "opacity:1;transform:translateY(0)")
+    g.append(f'<g class="{c0}"><rect x="18" y="30" width="{w:.1f}" height="24" rx="12" fill="none" stroke="#3a3a3a"/>'
+             + s.text(29, 45.4, msg, "R", 8.6, "#9a9a9a") + "</g>")
+    # rascunho cru, riscado
+    draft = "Ok. Vou ver isso."
+    dw = text_width(draft, "R", 8.6) + 22
+    x0 = 310 - dw
+    c1 = vis(s, f"{p}d0", T, 1.3, 3.6, 0.3)
+    strike = anim(s, f"{p}sk", T, [((0, 2.3), "transform:scaleX(0)"), ((2.8, T), "transform:scaleX(1)")], "cubic-bezier(.65,0,.35,1)",
+                  "transform-box:fill-box;transform-origin:left center;")
+    g.append(f'<g class="{c1}"><rect x="{x0:.1f}" y="66" width="{dw:.1f}" height="24" rx="12" fill="#151515"/>'
+             + s.text(x0 + 11, 81.4, draft, "R", 8.6, "#8a8a8a")
+             + f'<rect class="{strike}" x="{x0 + 10:.1f}" y="78" width="{dw - 20:.1f}" height="1" fill="#bdbdbd"/></g>')
+    # reescrita no tom da empresa
+    lines = ["Sinto muito pela experiência.", "Já estou resolvendo isso para você."]
+    lw = max(text_width(l, "R", 8.6) for l in lines) + 22
+    x1 = 310 - lw
+    c2 = vis(s, f"{p}r0", T, 3.7, 8.6, 0.4, "opacity:0;transform:translateY(6px)", "opacity:1;transform:translateY(0)", "cubic-bezier(.16,1,.3,1)")
+    g.append(f'<g class="{c2}"><rect x="{x1:.1f}" y="64" width="{lw:.1f}" height="38" rx="12" fill="#fff"/>'
+             + s.text(x1 + 11, 79.4, lines[0], "R", 8.6, "#0a0a0a") + s.text(x1 + 11, 92.4, lines[1], "R", 8.6, "#0a0a0a") + "</g>")
+    c3 = vis(s, f"{p}tg", T, 4.3, 8.6, 0.4)
+    g.append(f'<g class="{c3}">' + s.text(310, 120, "TOM: EMPÁTICO  ·  CONTEXTO: RETENÇÃO", "M", 6.4, "#8a8a8a", 1.4, anchor="end") + "</g>")
+    # digitando
+    dots = []
+    for k in range(3):
+        c = anim(s, f"{p}dt{k}", T, [((0, 0.9 + k * 0.1), "opacity:.2"), (1.05 + k * 0.1, "opacity:1"), ((1.2 + k * 0.1, T), "opacity:.2")])
+        dots.append(f'<circle class="{c}" cx="{282 + k * 7}" cy="78" r="2" fill="#bdbdbd"/>')
+    g.append(f'<g class="{vis(s, f"{p}tp", T, 0.7, 1.3, 0.15)}"><rect x="272" y="66" width="38" height="24" rx="12" fill="#151515"/>{"".join(dots)}</g>')
+    g.append(f'<g class="{vis(s, f"{p}tp2", T, 3.0, 3.7, 0.15)}"><rect x="272" y="66" width="38" height="24" rx="12" fill="#151515"/>'
+             + "".join(d.replace(f"{p}dt", f"{p}dt") for d in dots) + "</g>")
+    g.append(s.text(18, 168, "REESCRITO NO TOM DA EMPRESA", "M", 6.4, "#4a4a4a", 1.4))
+    g.append("</g>")
+    return "".join(g)
+
+
+def art_studiojm(s, ox, oy, p="j"):
+    """A planta de um projeto se desenhando, com cotas, ambientes e a assinatura do estúdio."""
+    T = 8.0
+    g = [f'<g transform="translate({ox + 4} {oy + 6})">']
+    walls = [
+        "M40 30 H260 V140 H40 Z",
+        "M140 30 V96", "M140 112 V140", "M200 30 V70", "M200 86 V140", "M40 92 H112", "M200 96 H260",
+    ]
+    for k, d in enumerate(walls):
+        c = anim(s, f"{p}w{k}", T, [((0, 0.2 + k * 0.25), "stroke-dashoffset:700"), ((1.6 + k * 0.25, 7.4), "stroke-dashoffset:0"),
+                                    ((7.9, T), "stroke-dashoffset:700")], "cubic-bezier(.65,0,.35,1)")
+        g.append(f'<path class="{c}" d="{d}" fill="none" stroke="#e6e6e6" stroke-width="{2.2 if k == 0 else 1.4}" stroke-dasharray="700"/>')
+    # portas
+    for k, (x, y, r, a0) in enumerate([(140, 96, 16, 0), (200, 70, 16, 1)]):
+        c = vis(s, f"{p}dr{k}", T, 2.4 + k * 0.2, 7.4, 0.4)
+        arc = f"M{x} {y} A{r} {r} 0 0 1 {x + r} {y + r}" if a0 == 0 else f"M{x} {y} A{r} {r} 0 0 0 {x - r} {y + r}"
+        g.append(f'<path class="{c}" d="{arc}" fill="none" stroke="#6a6a6a" stroke-width=".8" stroke-dasharray="2 2"/>')
+    rooms = [(90, 66, "ESTAR"), (90, 120, "COZINHA"), (170, 56, "SUÍTE"), (230, 56, "BANHO"), (230, 122, "VARANDA"), (170, 122, "HALL")]
+    for k, (x, y, t) in enumerate(rooms):
+        c = vis(s, f"{p}rm{k}", T, 2.8 + k * 0.15, 7.4, 0.35)
+        g.append(f'<g class="{c}">' + s.text(x, y, t, "M", 6, "#8a8a8a", 1.4, anchor="middle") + "</g>")
+    c = vis(s, f"{p}dm", T, 3.6, 7.4, 0.4)
+    g.append(f'<g class="{c}"><path d="M40 158 H260 M40 154 V162 M260 154 V162" stroke="#6a6a6a" stroke-width=".8"/>'
+             + s.text(150, 172, "21,00 m", "M", 6.6, "#8a8a8a", 1.4, anchor="middle") + "</g>")
+    g.append(s.text(306, 166, "JM", "D", 18, INK, 1, anchor="end"))
+    g.append(s.text(306, 177, "ARQUITETURA", "M", 5.2, "#5a5a5a", 1.3, anchor="end"))
+    g.append("</g>")
+    return "".join(g)
+
+
+def also_live():
+    """Também no ar: três cards com arte animada, nome, uma linha e a stack, e as extensões publicadas."""
+    W = 1012
+    gap = 16
+    cw = (W - 2 * gap) / 3
+    ART_H = 186
+    H = 362
+    cards = [
+        ("upaiva.dev", "PORTFÓLIO", "NO AR", "Meu portfólio, com partículas em canvas, nove guias públicos sobre IA e um terminal no Ctrl K.",
+         ["HTML", "CSS", "JavaScript", "GSAP"], art_upaiva),
+        ("HumanReply AI", "IA PARA ATENDIMENTO", "EM VALIDAÇÃO",
+         "IA para atendimento B2B que reescreve respostas no tom da empresa e guarda o contexto de cada conversa.",
+         ["TanStack Start", "TypeScript", "LLMs"], art_humanreply),
+        ("Studio JM", "ARQUITETURA", "NO AR",
+         "Plataforma para estúdio de arquitetura, com portfólio, briefing com referências e painel administrativo.",
+         ["HTML", "Tailwind", "Supabase"], art_studiojm),
+    ]
+    s = Svg(W, H + 58, "Também no ar: upaiva.dev, HumanReply AI e Studio JM, e extensões na Chrome Web Store", panel=False)
+    s.css += [
+        keyframes("cin", [("0%", "opacity:0;transform:translateY(10px)"), ("100%", "opacity:1;transform:translateY(0)")]),
+        ".ci{animation:cin .9s cubic-bezier(.16,1,.3,1) both}",
+        keyframes("pulse", [("0%", "transform:scale(1);opacity:.8"), ("100%", "transform:scale(3);opacity:0")]),
+        ".pl{animation:pulse 2s cubic-bezier(.2,.6,.3,1) infinite}",
+    ]
+    for i, (title, cat, status, desc, tags, art) in enumerate(cards):
+        x = i * (cw + gap)
+        p = "abc"[i]
+        s.defs.append(f'<clipPath id="ca{p}"><rect x="{x + 1:.1f}" y="1" width="{cw - 2:.1f}" height="{ART_H}" rx="15"/></clipPath>')
+        body = [f'<rect x="{x + .5:.1f}" y=".5" width="{cw - 1:.1f}" height="{H - 1}" rx="16" fill="#060606" stroke="#1f1f1f"/>',
+                f'<g clip-path="url(#ca{p})"><rect x="{x:.1f}" y="0" width="{cw:.1f}" height="{ART_H}" fill="#0a0a0a"/>'
+                f'{art(s, x, 0, "t" + p)}</g>',
+                f'<path d="M{x:.1f} {ART_H + .5} H{x + cw:.1f}" stroke="#1c1c1c"/>']
+        sw = text_width(status, "M", 7, 1.6) - 1.6
+        px = x + cw - 18 - sw - 22
+        body.append(f'<rect x="{px:.1f}" y="14" width="{sw + 22:.1f}" height="18" rx="9" fill="#0a0a0a" stroke="#2a2a2a"/>'
+                    f'<circle class="fb pl" cx="{px + 10:.1f}" cy="23" r="2.2" fill="#fff"/><circle cx="{px + 10:.1f}" cy="23" r="2.2" fill="#fff"/>'
+                    + s.text(px + 17, 25.6, status, "M", 7, "#cfcfcf", 1.6))
+        ty = ART_H + 30
+        body.append(s.text(x + 20, ty, cat, "M", 8, DIM, 2))
+        body.append(s.text(x + 20, ty + 32, title, "D", 26, INK, -0.5))
+        for k, line in enumerate(wrap(desc, "R", 12.5, cw - 40)[:3]):
+            body.append(s.text(x + 20, ty + 58 + k * 18, line, "R", 12.5, "#9a9a9a"))
+        tx = x + 20
+        for t in tags:
+            tw = text_width(t, "M", 7.4, 1) - 1 + 18
+            body.append(f'<rect x="{tx:.1f}" y="{H - 40}" width="{tw:.1f}" height="20" rx="10" fill="none" stroke="#2a2a2a"/>'
+                        + s.text(tx + 9, H - 27, t, "M", 7.4, "#9a9a9a", 1))
+            tx += tw + 6
+        s.add(f'<g class="ci" style="animation-delay:{0.12 * i:.2f}s">{"".join(body)}</g>')
+    # extensões publicadas
+    y = H + 22
+    lab = "EXTENSÕES NA CHROME WEB STORE"
+    s.add(s.text(0, y + 14, lab, "M", 8.5, MUTED, 2.2))
+    x = text_width(lab, "M", 8.5, 2.2) + 20
+    icons = load_icons()
+    for t in ["Não Seguidores", "InstaGrowth IA", "Calc Impostos BR"]:
+        w = text_width(t, "R", 12) + 12 + 14 + 7 + 14
+        s.add(f'<g class="ci" style="animation-delay:.5s"><rect x="{x + .5:.1f}" y="{y + .5}" width="{w - 1:.1f}" height="27" rx="13.5" fill="#0b0b0b" stroke="#242424"/>'
+              f'<g transform="translate({x + 12:.1f} {y + 7}) scale({14 / 24:.4f})"><path d="{icons["googlechrome"]}" fill="#fff" fill-opacity=".85"/></g>'
+              + s.text(x + 33, y + 18.2, t, "R", 12, "#d4d4d4") + "</g>")
+        x += w + 8
+    s.save("also-live.svg")
 
 
 def showcase(name, idx, title, category, status, numbers, art):
@@ -768,126 +1135,36 @@ def showcase(name, idx, title, category, status, numbers, art):
     s.save(name)
 
 
-GLYPHS = {
-    "window": '<rect x="1" y="3" width="22" height="18" rx="3"/><path d="M1 8 H23"/><circle cx="4.5" cy="5.5" r=".6"/>',
-    "code": '<path d="M8 6 L2 12 L8 18 M16 6 L22 12 L16 18 M14 4 L10 20"/>',
-    "layers": '<path d="M12 3 L22 8 L12 13 L2 8 Z M2 12 L12 17 L22 12 M2 16 L12 21 L22 16"/>',
-    "term": '<rect x="1" y="3" width="22" height="18" rx="3"/><path d="M5 9 L9 12 L5 15"/><path class="gb" d="M11 16 H17"/>',
-    "box": '<path d="M12 2 L22 7 V17 L12 22 L2 17 V7 Z M2 7 L12 12 L22 7 M12 12 V22"/>',
-    "chip": '<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 1 V5 M15 1 V5 M9 19 V23 M15 19 V23 M1 9 H5 M1 15 H5 M19 9 H23 M19 15 H23"/>',
-    "type": '<path d="M2 20 L8 4 L14 20 M4.3 14 H11.7"/><circle cx="19" cy="16.5" r="3.5"/><path d="M22.5 13 V20"/>',
-    "planet": '<circle cx="12" cy="12" r="6"/><g class="gr"><ellipse cx="12" cy="12" rx="11" ry="3.6" transform="rotate(-18 12 12)"/></g>',
-    "puzzle": '<path d="M4 7 H9 a3 3 0 1 1 6 0 H20 V12 a3 3 0 1 0 0 6 V21 H4 Z"/>',
-    "db": '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5 V19 a9 3 0 0 0 18 0 V5 M3 12 a9 3 0 0 0 18 0"/>',
-    "spark": '<path class="gp" d="M12 2 C13 9 15 11 22 12 C15 13 13 15 12 22 C11 15 9 13 2 12 C9 11 11 9 12 2 Z"/>',
-    "lock": '<rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10 V7 a4 4 0 0 1 8 0 V10 M12 15 V17"/>',
-    "log": '<path d="M7 6 H22 M7 12 H22 M7 18 H16"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/>',
-}
-
-
-def stack_cards(name, title, items):
-    """Cards da stack: camada, tecnologia e o porquê, com entrada em cascata e um brilho que atravessa."""
-    W, cols, gap, th = 1280, 4, 16, 140
-    tw = (W - gap * (cols - 1)) / cols
-    rows = (len(items) + cols - 1) // cols
-    H = rows * th + (rows - 1) * gap
-    s = Svg(W, H, title, panel=False)
-    s.css += [
-        keyframes("cin", [("0%", "opacity:0;transform:translateY(14px)"), ("100%", "opacity:1;transform:translateY(0)")]),
-        ".ci{animation:cin .9s cubic-bezier(.16,1,.3,1) both}",
-        keyframes("top", [("0%", "transform:scaleX(0)"), ("100%", "transform:scaleX(1)")]),
-        ".tl{animation:top 1.4s cubic-bezier(.65,0,.35,1) both}",
-        keyframes("sh", [("0%,62%", "transform:translateX(-500px)"), ("100%", "transform:translateX(1800px)")]),
-        ".sh{animation:sh 8s cubic-bezier(.6,0,.3,1) 1.6s infinite both}",
-        keyframes("gb", [("0%,49%", "opacity:1"), ("50%,100%", "opacity:0")]), ".gb{animation:gb 1.05s steps(1) infinite}",
-        keyframes("gr", [("0%", "transform:rotate(0)"), ("100%", "transform:rotate(360deg)")]),
-        ".gr{transform-box:fill-box;transform-origin:center;animation:gr 9s linear infinite}",
-        keyframes("gp", [("0%,100%", "transform:scale(.82);opacity:.6"), ("50%", "transform:scale(1);opacity:1")]),
-        ".gp{transform-box:fill-box;transform-origin:center;animation:gp 2.6s ease-in-out infinite}",
-    ]
-    s.defs.append('<linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
-                  '<stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>'
-                  '<linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
-                  '<stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
-    clip = []
-    for i, (layer, tech, why, glyph) in enumerate(items):
-        x, y = (i % cols) * (tw + gap), (i // cols) * (th + gap)
-        clip.append(f'<rect x="{x:.1f}" y="{y}" width="{tw:.1f}" height="{th}" rx="18"/>')
-        size = 25
-        while text_width(tech, "D", size, -0.5) > tw - 48:
-            size -= 1
-        assert text_width(why, "R", 12.5) < tw - 44, why
-        d = 0.08 * i
-        s.add(
-            f'<g class="ci" style="animation-delay:{d:.2f}s">'
-            f'<rect x="{x + .5:.1f}" y="{y + .5}" width="{tw - 1:.1f}" height="{th - 1}" rx="17.5" fill="{PANEL}" stroke="{LINE}"/>'
-            f'<rect class="fl tl" style="animation-delay:{d + .2:.2f}s" x="{x + 24:.1f}" y="{y}" width="{tw - 48:.1f}" height="1" fill="url(#tg)"/>'
-            + s.text(x + 24, y + 38, f"{i + 1:02d} · {layer}", "M", 9.5, DIM, 2.4)
-            + f'<g transform="translate({x + tw - 46:.1f} {y + 20})" fill="none" stroke="#fff" stroke-opacity=".75" '
-              f'stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">{GLYPHS[glyph]}</g>'
-            + s.text(x + 24, y + 90, tech, "D", size, INK, -0.5)
-            + s.text(x + 24, y + 116, why, "R", 12.5, MUTED)
-            + "</g>"
-        )
-    s.defs.append(f'<clipPath id="cc">{"".join(clip)}</clipPath>')
-    s.add(f'<g clip-path="url(#cc)"><rect class="sh" x="0" y="0" width="420" height="{H}" fill="url(#sg)" '
-          f'transform="skewX(-18)"/></g>')
-    s.save(name)
-
-
 def recent():
-    showcase("feature-azv.svg", "01", "AZV Lançamentos", "IMOBILIÁRIO  ·  3D", "NO AR",
-             [("17", "EMPREENDIMENTOS"), ("5", "MAQUETES 3D EM THREE.JS"),
-              ("320 mil", "CASAS NA MAQUETE DA CIDADE"), ("88", "PÁGINAS EM PORTUGUÊS E INGLÊS")], art_azv)
-    stack_cards("stack-azv.svg", "Stack da AZV Lançamentos", [
-        ("SITE", "Next.js 16 · React 19", "App Router com HTML indexável", "window"),
-        ("3D", "Three.js · WebGL", "5 maquetes e 17,8 mil linhas de motor", "planet"),
-        ("MOVIMENTO", "GSAP · Lenis", "ScrollTrigger, SplitText e cobogó", "spark"),
-        ("LINGUAGEM", "TypeScript", "Quase 59 mil linhas no site", "code"),
-        ("DADOS DA CIDADE", "Python", "Relevo, satélite, ruas e casas", "layers"),
-        ("MAPAS", "Sentinel-2 · Overture", "Foto de satélite e OpenStreetMap", "box"),
-        ("PAINEL", "Supabase · ECharts", "Admin e medição própria", "db"),
-        ("PUBLICAÇÃO", "Vercel · IndexNow", "Deploy e aviso aos buscadores", "term"),
-    ])
+    showcase("feature-azv.svg", "01", "AZV Lançamentos", "PLATAFORMA IMOBILIÁRIA", "NO AR",
+             [("17", "EMPREENDIMENTOS"), ("92", "PÁGINAS EM PORTUGUÊS E INGLÊS"),
+              ("17", "MATÉRIAS NA REVISTA"), ("5", "MAQUETES 3D EM THREE.JS")], art_azv)
+    stack_chips("stack-azv.svg", "Stack da AZV Lançamentos", [(None, [
+        ("Next.js 16", "nextdotjs"), ("React 19", "react"), ("TypeScript", "typescript"), ("GSAP", "gsap"), ("Lenis", None),
+        ("Three.js", "threedotjs"), ("WebGL", "webgl"), ("Supabase", "supabase"), ("ECharts", "apacheecharts"),
+        ("Python", "python"), ("Sentinel-2", None), ("OpenStreetMap", "openstreetmap"), ("Search Console", "googlesearchconsole"),
+        ("IndexNow", None), ("Vercel", "vercel")])])
     showcase("feature-choque.svg", "02", "CHOQUE BGR", "SISTEMA DE GESTÃO", "NO AR",
              [("1.036", "TESTES AUTOMATIZADOS"), ("24", "QUESTÕES NA PROVA"),
               ("5", "PERFIS DE ACESSO (RBAC)"), ("0", "COMANDOS DE TEXTO")], art_choque)
-    stack_cards("stack-choque.svg", "Stack do CHOQUE BGR", [
-        ("BOT", "discord.py 2.7", "Botões, seletores e modais", "puzzle"),
-        ("LINGUAGEM", "Python 3.12", "Domínio único para bot e API", "code"),
-        ("API", "FastAPI · Uvicorn", "O mesmo domínio do bot, na web", "layers"),
-        ("BANCO", "SQLite em WAL", "Migrations versionadas e backup", "db"),
-        ("WEB", "Next.js 16 · React 19", "App Router e Server Components", "window"),
-        ("LOGIN", "Auth.js · Discord", "OAuth com BFF, sem banco no front", "lock"),
-        ("INTERFACE", "Tailwind 4 · Zod", "Layout e validação tipados", "type"),
-        ("QUALIDADE", "Pytest · Vitest", "Playwright e Ruff no fluxo", "term"),
-    ])
+    stack_chips("stack-choque.svg", "Stack do CHOQUE BGR", [(None, [
+        ("discord.py 2.7", "discord"), ("Python 3.12", "python"), ("FastAPI", "fastapi"), ("Uvicorn", None),
+        ("SQLite em WAL", "sqlite"), ("Next.js 16", "nextdotjs"), ("React 19", "react"), ("Auth.js", None),
+        ("Tailwind 4", "tailwindcss"), ("Zod", "zod"), ("Pytest", "pytest"), ("Vitest", "vitest"), ("Playwright", None), ("Ruff", "ruff")])])
     showcase("feature-wintoolkit.svg", "03", "win-toolkit", "WINDOWS  ·  DESKTOP", "V1.5  ·  EM TESTES",
              [("106 KB", "UM .EXE, SEM RUNTIME EXTRA"), ("102", "ITENS NO CATÁLOGO"),
               ("170+", "AÇÕES EM 4 NÍVEIS"), ("4×", "INSTALAÇÕES EM PARALELO")], art_wintoolkit)
-    stack_cards("stack-wintoolkit.svg", "Stack do win-toolkit", [
-        ("INTERFACE", "WPF · XAML", "Nativo, renderizado por hardware", "window"),
-        ("LINGUAGEM", "C# 5", "Compila com o csc.exe do Windows", "code"),
-        ("RUNTIME", ".NET Framework 4.8", "Já vem no Windows 11", "layers"),
-        ("MOTOR", "PowerShell 5.1", "O shell garantido no PC novo", "term"),
-        ("PACOTES", "winget · npm · uv", "Sempre a versão mais nova", "box"),
-        ("DRIVERS", "Windows Update Agent", "Fonte oficial da Microsoft", "chip"),
-        ("TIPOGRAFIA", "Inter · Cascadia", "A identidade do upaiva.dev", "type"),
-        ("GRÁFICOS", "DrawingContext", "Planeta de partículas, sem libs", "planet"),
-    ])
+    stack_chips("stack-wintoolkit.svg", "Stack do win-toolkit", [(None, [
+        ("WPF e XAML", "dotnet"), ("C# 5", None), (".NET Framework 4.8", None), ("PowerShell 5.1", None),
+        ("winget", None), ("npm", "npm"), ("uv", "uv"), ("Windows Update Agent", None),
+        ("Inter e Cascadia", None), ("DrawingContext", None)])])
     showcase("feature-instagram.svg", "04", "Instagram Fluxo", "EXTENSÃO CHROME  ·  IA", "V3.1.3  ·  USO LOCAL",
              [("3", "REFERÊNCIAS CONFIGURÁVEIS"), ("4", "PROVEDORES DE IA"),
               ("0", "SERVIDORES PRÓPRIOS"), ("MV3", "MANIFEST DO CHROME")], art_instagram)
-    stack_cards("stack-instagram.svg", "Stack do Instagram Fluxo", [
-        ("PLATAFORMA", "Chrome MV3", "Service worker e permissões sob demanda", "puzzle"),
-        ("LINGUAGEM", "JavaScript", "Sem framework e sem build", "code"),
-        ("INTERFACE", "HTML · CSS", "Painel, carrossel e cards", "window"),
-        ("DADOS", "chrome.storage", "Fila, tentativas e histórico locais", "db"),
-        ("IA OPCIONAL", "OpenAI · Claude · Gemini", "BYOK com fallback e OpenRouter", "spark"),
-        ("COFRE", "AES-GCM · PBKDF2", "Chaves cifradas no navegador", "lock"),
-        ("COLETOR", "Python · SQLite", "Native messaging e logs JSONL", "log"),
-        ("INSTALAÇÃO", "PowerShell", "Registra o coletor no Windows", "term"),
-    ])
+    stack_chips("stack-instagram.svg", "Stack do Instagram Fluxo", [(None, [
+        ("Chrome MV3", "googlechrome"), ("JavaScript", "javascript"), ("HTML e CSS", "html5"), ("chrome.storage", None),
+        ("OpenAI", None), ("Claude", "claude"), ("Gemini", "googlegemini"), ("OpenRouter", "openrouter"),
+        ("AES-GCM e PBKDF2", None), ("Python", "python"), ("SQLite", "sqlite"), ("PowerShell", None)])])
 
 
 def site_card(path, title, art):
@@ -917,4 +1194,5 @@ if __name__ == "__main__":
     hero()
     recent()
     stack_geral()
+    also_live()
     dashboard_fonts()
