@@ -33,10 +33,10 @@ Desenvolvedor full stack e engenheiro de IA em São José dos Campos, SP. Constr
 
 ## Projetos em destaque
 
-### [CHOQUE BGR](https://choque.online) &nbsp;<sub>Sistema de gestão · no ar</sub>
+### [CHOQUE BGR](https://choquebgr.online) &nbsp;<sub>Sistema de gestão · no ar</sub>
 
 <p align="center">
-  <a href="https://choque.online"><img src="./assets/profile/feature-choque.svg" width="100%" alt="Centro de comando do CHOQUE BGR: ponto por voz com membros mudando de ACTIVE para GRACE e REVIEW, prova de recrutamento com timer no servidor e 24 questões salvas uma a uma, e o registro de auditoria sendo escrito." /></a>
+  <a href="https://choquebgr.online"><img src="./assets/profile/feature-choque.svg" width="100%" alt="Centro de comando do CHOQUE BGR: ponto por voz com membros mudando de ACTIVE para GRACE e REVIEW, prova de recrutamento com timer no servidor e 24 questões salvas uma a uma, e o registro de auditoria sendo escrito." /></a>
 </p>
 
 Plataforma de gestão para uma unidade de roleplay, do Discord à web. Um bot faz cadastro, ponto por voz, carreira, disciplina e treinamentos só com botões, seletores e modais, sem nenhum comando de texto. Um centro de comando web com login Discord mostra tudo isso, e o recrutamento público aplica uma prova cronometrada no servidor.
