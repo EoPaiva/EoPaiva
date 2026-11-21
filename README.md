@@ -23,13 +23,9 @@ Desenvolvedor full stack e engenheiro de IA em São José dos Campos, SP. Constr
 
 ### Como eu trabalho
 
-| Princípio | Na prática |
-|---|---|
-| **Dado real em vez de ilustração** | A maquete da AZV nasce de relevo, foto de satélite e mapas abertos, com cada prédio no lote certo. |
-| **Mostro o que o software faz** | Comando real de cada etapa, auditoria append-only e logs à vista, em vez de caixa-preta. |
-| **IA com decisão humana** | No CHOQUE a IA analisa e quem decide é uma pessoa; no Instagram Fluxo ela é opcional e roda com a sua chave. |
-| **Teste antes de prometer** | 1.036 testes automatizados no CHOQUE e um status honesto do que ainda falta testar no win-toolkit. |
-| **Leve de propósito** | Um `.exe` de 106 KB sem runtime extra, uma extensão sem framework e um site em HTML, CSS e JavaScript. |
+<p align="center">
+  <img src="./assets/profile/como-eu-trabalho.svg" width="100%" alt="Como eu trabalho. 01, Dado real em vez de ilustração: a maquete da AZV nasce de relevo, foto de satélite e mapas abertos, com cada prédio no lote certo. 02, Mostro o que o software faz: comando real de cada etapa, auditoria append-only e logs à vista, em vez de caixa-preta. 03, IA com decisão humana: no CHOQUE a IA analisa e quem decide é uma pessoa; no Instagram Fluxo ela é opcional e roda com a sua chave. 04, Teste antes de prometer: 1.036 testes automatizados no CHOQUE e um status honesto do que ainda falta testar no win-toolkit. 05, Leve de propósito: um .exe de 106 KB sem runtime extra, uma extensão sem framework e um site em HTML, CSS e JavaScript." />
+</p>
 
 <a name="projetos"></a>
 

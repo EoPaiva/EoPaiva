@@ -879,24 +879,42 @@ def stack_chips(name, title, groups, W=1012, label_w=0):
         keyframes("cin", [("0%", "opacity:0;transform:translateY(6px)"), ("100%", "opacity:1;transform:translateY(0)")]),
         ".ci{animation:cin .7s cubic-bezier(.16,1,.3,1) both}",
     ]
-    n = 0
+    n, mask = 0, []
     for it in items:
         if it[0] == "label":
             _, label, yy = it
             s.add(s.text(0, yy + 18, label, "M", 10, MUTED, 2.4))
             continue
         _, tech, icon, x, yy, w = it
-        parts = [f'<rect x="{x + .5:.1f}" y="{yy + .5}" width="{w - 1:.1f}" height="{CH - 1}" rx="{(CH - 1) / 2}" fill="#0b0b0b" stroke="#242424"/>']
+        pill = f'x="{x + .5:.1f}" y="{yy + .5}" width="{w - 1:.1f}" height="{CH - 1}" rx="{(CH - 1) / 2}"'
+        parts = [f'<rect {pill} fill="#0b0b0b" stroke="#242424"/>']
+        mask.append(f'<rect {pill} fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="1.4"/>')
         if icon:
-            parts.append(f'<g transform="translate({x + 12:.1f} {yy + (CH - 14) / 2}) scale({14 / 24:.4f})">'
-                         f'<path d="{icons[icon]}" fill="#fff" fill-opacity=".88"/></g>')
+            ic = (f'<g transform="translate({x + 12:.1f} {yy + (CH - 14) / 2}) scale({14 / 24:.4f})">'
+                  f'<path d="{icons[icon]}" fill="#fff"/></g>')
+            parts.append(ic.replace('fill="#fff"', 'fill="#fff" fill-opacity=".88"'))
+            mask.append(ic)
             tx = x + 12 + 14 + 7
         else:
             parts.append(f'<circle cx="{x + 14:.1f}" cy="{yy + CH / 2}" r="2.2" fill="#6a6a6a"/>')
+            mask.append(f'<circle cx="{x + 14:.1f}" cy="{yy + CH / 2}" r="2.2" fill="#fff"/>')
             tx = x + 12 + 4 + 8
         parts.append(s.text(tx, yy + CH / 2 + FS * 0.35, tech, "R", FS, "#d4d4d4"))
+        mask.append(s.text(tx, yy + CH / 2 + FS * 0.35, tech, "R", FS, "#fff"))
         s.add(f'<g class="ci" style="animation-delay:{0.025 * n:.3f}s">{"".join(parts)}</g>')
         n += 1
+    # brilho: uma faixa diagonal atravessa todos os chips ao mesmo tempo, da esquerda para a direita.
+    # Todos os SVGs de stack usam o mesmo ciclo, então os brilhos passam juntos pela página.
+    band, T, sweep, start = 130, 6.0, 1.9, 1.6
+    s.defs.append('<linearGradient id="shg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+                  '<stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>'
+                  f'<mask id="shm" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">{"".join(mask)}</mask>')
+    pad = 300  # folga fixa para a inclinação: assim a faixa fica na mesma posição em todos os SVGs de stack
+    run = W + band * 2 + pad
+    s.css.append(keyframes("shine", [("0%", "transform:translateX(0) skewX(-24deg)"),
+                                     (f"{sweep / T * 100:.2f}%,100%", f"transform:translateX({run}px) skewX(-24deg)")])
+                 + f".sh{{transform-box:view-box;transform-origin:0 0;animation:shine {T}s cubic-bezier(.45,0,.25,1) {start}s infinite both}}")
+    s.add(f'<g mask="url(#shm)"><rect class="sh" x="{-band - pad}" y="0" width="{band}" height="{H}" fill="url(#shg)"/></g>')
     s.save(name)
 
 
@@ -915,6 +933,180 @@ def stack_geral():
         ("INFRA E QUALIDADE", [("Vercel", "vercel"), ("Docker", "docker"), ("GitHub Actions", "githubactions"),
                                ("Playwright", None), ("Vitest", "vitest"), ("Pytest", "pytest")]),
     ], label_w=196)
+
+
+# ---------------------------------------------------------------- como eu trabalho
+
+PRINCIPIOS = [
+    ("Dado real em vez de ilustração",
+     "A maquete da AZV nasce de relevo, foto de satélite e mapas abertos, com cada prédio no lote certo."),
+    ("Mostro o que o software faz",
+     "Comando real de cada etapa, auditoria append-only e logs à vista, em vez de caixa-preta."),
+    ("IA com decisão humana",
+     "No CHOQUE a IA analisa e quem decide é uma pessoa; no Instagram Fluxo ela é opcional e roda com a sua chave."),
+    ("Teste antes de prometer",
+     "1.036 testes automatizados no CHOQUE e um status honesto do que ainda falta testar no win-toolkit."),
+    ("Leve de propósito",
+     "Um .exe de 106 KB sem runtime extra, uma extensão sem framework e um site em HTML, CSS e JavaScript."),
+]
+
+
+def g_relevo(s, gx, my, T, t0, p):
+    """Curvas de nível se desenhando e um prédio subindo no ponto certo."""
+    cx, cy = gx + 66, my
+    out = []
+    for k in range(4):
+        r = 7 + k * 6.5
+        pts = []
+        for j in range(49):
+            a = j / 48 * 2 * math.pi
+            rr = r * (1 + 0.13 * math.sin(3 * a + k * 0.9) + 0.06 * math.cos(5 * a + k))
+            pts.append((cx + rr * 1.75 * math.cos(a), cy + rr * 0.78 * math.sin(a)))
+        d = "M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in pts) + "Z"
+        ln = sum(math.dist(pts[j], pts[j + 1]) for j in range(48))
+        name = f"{p}c{k}"
+        st = t0 + k * 0.18
+        anim(s, name, T, [(0, f"stroke-dashoffset:{ln:.0f}"), (st, f"stroke-dashoffset:{ln:.0f}"),
+                          (st + 1.1, "stroke-dashoffset:0"), (T - 0.5, "stroke-dashoffset:0;opacity:1"),
+                          (T, "stroke-dashoffset:0;opacity:0")], ease="cubic-bezier(.65,0,.35,1)")
+        out.append(f'<path d="{d}" fill="none" stroke="#1c1c1c"/>'
+                   f'<path class="{name}" d="{d}" fill="none" stroke="#6a6a6a" stroke-dasharray="{ln:.0f}"/>')
+    rise = anim(s, f"{p}t", T, [(0, "transform:scaleY(0)"), (t0 + 0.9, "transform:scaleY(0)"),
+                                (t0 + 1.6, "transform:scaleY(1)"), (T - 0.5, "transform:scaleY(1);opacity:1"),
+                                (T, "transform:scaleY(1);opacity:0")], ease="cubic-bezier(.16,1,.3,1)",
+                extra="transform-box:fill-box;transform-origin:50% 100%;")
+    out.append(f'<rect class="{rise}" x="{cx - 3:.1f}" y="{cy - 20:.1f}" width="6" height="20" fill="#fff"/>'
+               f'<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="5" ry="1.6" fill="#fff" fill-opacity=".35"/>')
+    return "".join(out)
+
+
+def g_log(s, gx, my, T, t0, p):
+    """Linhas de log entrando uma a uma, cada uma marcada OK, e o cursor piscando."""
+    out = []
+    widths = [58, 86, 70, 44]
+    for k, w in enumerate(widths):
+        y = my - 19 + k * 12
+        st = t0 + k * 0.32
+        bar = anim(s, f"{p}b{k}", T, [(0, "transform:scaleX(0)"), (st, "transform:scaleX(0)"), (st + 0.35, "transform:scaleX(1)"),
+                                      (T - 0.5, "transform:scaleX(1);opacity:1"), (T, "transform:scaleX(1);opacity:0")],
+                   ease="cubic-bezier(.16,1,.3,1)", extra="transform-box:fill-box;transform-origin:left center;")
+        ok = vis(s, f"{p}o{k}", T, st + 0.35, T - 0.5, fade=0.2)
+        out.append(f'<rect x="{gx + 14}" y="{y - 1.5:.1f}" width="{w}" height="3" rx="1.5" fill="#161616"/>'
+                   f'<circle cx="{gx + 5}" cy="{y:.1f}" r="1.6" fill="#333"/>'
+                   f'<rect class="{bar}" x="{gx + 14}" y="{y - 1.5:.1f}" width="{w}" height="3" rx="1.5" fill="#4a4a4a"/>'
+                   f'<g class="{ok}"><circle cx="{gx + 5}" cy="{y:.1f}" r="1.6" fill="#fff"/>'
+                   + s.text(gx + 14 + w + 8, y + 2.6, "OK", "M", 7.5, "#bdbdbd", 1.2) + "</g>")
+    blink = anim(s, f"{p}k", 1.1, [(0, "opacity:1"), (0.55, "opacity:1"), (0.56, "opacity:0"), (1.1, "opacity:0")], ease="linear")
+    out.append(f'<rect class="{blink}" x="{gx + 14}" y="{my + 26:.1f}" width="6" height="8" fill="#fff"/>')
+    return "".join(out)
+
+
+def g_ia(s, gx, my, T, t0, p):
+    """A IA manda a análise e a pessoa confirma."""
+    ax, bx = gx + 16, gx + 128
+    trip = anim(s, f"{p}m", T, [(0, "transform:translateX(0);opacity:0"), (t0, "transform:translateX(0);opacity:0"),
+                                (t0 + 0.15, "opacity:1"), (t0 + 1.1, f"transform:translateX({bx - ax - 32}px);opacity:1"),
+                                (t0 + 1.25, f"transform:translateX({bx - ax - 32}px);opacity:0"), (T, f"transform:translateX({bx - ax - 32}px);opacity:0")],
+                ease="cubic-bezier(.65,0,.35,1)")
+    ring = vis(s, f"{p}r", T, t0 + 1.1, T - 0.5, fade=0.25)
+    pop = anim(s, f"{p}p", T, [(0, "transform:scale(0)"), (t0 + 1.25, "transform:scale(0)"), (t0 + 1.6, "transform:scale(1)"),
+                               (T - 0.5, "transform:scale(1);opacity:1"), (T, "transform:scale(1);opacity:0")],
+               ease="cubic-bezier(.34,1.56,.64,1)", extra="transform-box:fill-box;transform-origin:center;")
+    return (f'<path d="M{ax + 18} {my} H{bx - 18}" stroke="#2a2a2a" stroke-dasharray="2 4"/>'
+            f'<circle cx="{ax}" cy="{my}" r="13" fill="#000" stroke="#3a3a3a"/>'
+            + s.text(ax, my + 3, "IA", "M", 8.5, "#d4d4d4", 0.6, anchor="middle")
+            + f'<circle class="{trip}" cx="{ax + 16}" cy="{my}" r="2.6" fill="#fff"/>'
+            f'<circle cx="{bx}" cy="{my}" r="13" fill="#000" stroke="#3a3a3a"/>'
+            f'<circle class="{ring}" cx="{bx}" cy="{my}" r="13" fill="none" stroke="#fff"/>'
+            f'<circle cx="{bx}" cy="{my - 3.5}" r="3.4" fill="#d4d4d4"/>'
+            f'<path d="M{bx - 6.5} {my + 7.5} Q{bx} {my - 1} {bx + 6.5} {my + 7.5}" fill="none" stroke="#d4d4d4" stroke-width="1.6" stroke-linecap="round"/>'
+            f'<g class="{pop}"><circle cx="{bx + 10}" cy="{my - 10}" r="5.5" fill="#fff"/>'
+            f'<path d="M{bx + 7.6} {my - 10} l1.7 1.8 l3.2 -3.6" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></g>')
+
+
+def g_testes(s, gx, my, T, t0, p):
+    """Grade de testes acendendo em sequência e o total."""
+    out = []
+    cols, rows, step = 9, 3, 8.5
+    n = 0
+    for r in range(rows):
+        for c in range(cols):
+            x, y = gx + 6 + c * step, my - step + r * step
+            lit = vis(s, f"{p}d{n}", T, t0 + n * 0.035, T - 0.5, fade=0.12, ease="linear")
+            out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="1.9" fill="#262626"/>'
+                       f'<circle class="{lit}" cx="{x:.1f}" cy="{y:.1f}" r="1.9" fill="#fff"/>')
+            n += 1
+    num = vis(s, f"{p}n", T, t0 + n * 0.035, T - 0.5, fade=0.3, frm="opacity:.25", to="opacity:1")
+    out.append(f'<g class="{num}">' + s.text(gx + 148, my + 8, "1.036", "T", 24, INK, -0.5, anchor="end") + "</g>")
+    return "".join(out)
+
+
+def g_leve(s, gx, my, T, t0, p):
+    """Uma barra de tamanho encolhendo até caber em 106 KB."""
+    shrink = anim(s, f"{p}s", T, [(0, "transform:scaleX(1)"), (t0, "transform:scaleX(1)"), (t0 + 1.1, "transform:scaleX(.16)"),
+                                  (T - 0.5, "transform:scaleX(.16);opacity:1"), (T, "transform:scaleX(.16);opacity:0")],
+                  ease="cubic-bezier(.65,0,.35,1)", extra="transform-box:fill-box;transform-origin:left center;")
+    lab = vis(s, f"{p}l", T, t0 + 1.0, T - 0.5, fade=0.3)
+    return (f'<rect x="{gx + 4}" y="{my - .5}" width="144" height="1" fill="#1c1c1c"/>'
+            f'<rect class="{shrink}" x="{gx + 4}" y="{my - 3}" width="144" height="6" rx="3" fill="#fff"/>'
+            f'<g class="{lab}">' + s.text(gx + 36, my + 3.2, "106 KB", "M", 9, "#e6e6e6", 1.6) + "</g>")
+
+
+def como_trabalho():
+    """Os princípios como uma linha do tempo aberta: um fio vertical com um pulso de luz, cada princípio
+    com título e frase, e um desenho pequeno que se anima quando o pulso passa pelo item."""
+    W, PX, PY = 1012, 40, 30
+    LX, X0, GX = PX + 12, PX + 46, 1012 - PX - 150
+    T, TRAVEL = 7.0, 4.0
+    glyphs = [g_relevo, g_log, g_ia, g_testes, g_leve]
+    rows, y = [], PY
+    for title, desc in PRINCIPIOS:
+        maxw = 560  # medida fixa: todos os princípios ficam com a mesma coluna de texto
+        lines = wrap(desc, "R", 15, maxw)
+        # quebra equilibrada: a menor largura que mantém o mesmo número de linhas, para não sobrar uma palavra solta
+        while len(lines) > 1 and len(wrap(desc, "R", 15, maxw - 8)) == len(lines):
+            maxw -= 8
+        lines = wrap(desc, "R", 15, maxw)
+        h = 84 + 22 * (len(lines) - 1) + 24
+        rows.append((y, h, title, lines))
+        y += h
+    H = int(y + PY - 20)
+    alt = "Como eu trabalho. " + " ".join(f"{t}: {d}" for t, d in PRINCIPIOS)
+    s = Svg(W, H, alt)
+    s.css += [
+        keyframes("rin", [("0%", "opacity:0;transform:translateY(10px)"), ("100%", "opacity:1;transform:translateY(0)")]),
+        ".rw{animation:rin 1s cubic-bezier(.16,1,.3,1) both}",
+        keyframes("hl", [("0%", "transform:scaleX(0)"), ("100%", "transform:scaleX(1)")]),
+        ".hl{animation:hl 1.4s cubic-bezier(.65,0,.35,1) both}",
+    ]
+    nodes = [ry + 45 for ry, _, _, _ in rows]
+    n0, n4 = nodes[0], nodes[-1]
+    times = [TRAVEL * (ny - n0) / (n4 - n0) for ny in nodes]
+    # o fio e o pulso que desce por ele
+    s.defs.append('<linearGradient id="pz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+                  '<stop offset=".7" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
+    s.add(f'<path d="M{LX} {n0} V{n4}" stroke="#1f1f1f"/>')
+    dy = n4 - n0
+    pz = anim(s, "pz", T, [(0, "transform:translateY(0);opacity:0"), (0.25, "opacity:1"), (TRAVEL, f"transform:translateY({dy}px);opacity:1"),
+                           (TRAVEL + 0.4, f"transform:translateY({dy}px);opacity:0"), (T, f"transform:translateY({dy}px);opacity:0")],
+              ease="linear")
+    s.add(f'<rect class="{pz}" x="{LX - 1}" y="{n0 - 46}" width="2" height="50" fill="url(#pz)"/>')
+    for i, ((ry, h, title, lines), ny, t0) in enumerate(zip(rows, nodes, times)):
+        p = "abcde"[i]
+        glow = anim(s, f"n{p}", T, [(0, "opacity:0"), (max(0.0, t0 - 0.05), "opacity:0"), (t0 + 0.1, "opacity:1"),
+                                    (T - 0.5, "opacity:1"), (T, "opacity:0")], ease="ease-out")
+        s.add(f'<circle cx="{LX}" cy="{ny}" r="4.5" fill="#000" stroke="#3a3a3a"/>'
+              f'<g class="{glow}"><circle cx="{LX}" cy="{ny}" r="11" fill="#fff" fill-opacity=".08"/>'
+              f'<circle cx="{LX}" cy="{ny}" r="4.5" fill="#fff"/></g>')
+        body = [s.text(X0, ry + 22, f"0{i + 1}", "M", 9, DIM, 2.4),
+                s.text(X0, ry + 53, title, "D", 25, INK, -0.4)]
+        for k, line in enumerate(lines):
+            body.append(s.text(X0, ry + 82 + k * 22, line, "R", 15, "#9a9a9a"))
+        s.add(f'<g class="rw" style="animation-delay:{0.1 * i:.1f}s">{"".join(body)}'
+              f'{glyphs[i](s, GX, ry + 45, T, t0, p)}</g>')
+        if i < len(rows) - 1:
+            s.add(f'<rect class="fl hl" style="animation-delay:{0.15 + 0.1 * i:.2f}s" x="{X0}" y="{ry + h - .5:.1f}" width="{W - PX - X0}" height="1" fill="#171717"/>')
+    s.save("como-eu-trabalho.svg")
 
 
 # ---------------------------------------------------------------- também no ar
@@ -1192,6 +1384,7 @@ def dashboard_fonts():
 
 if __name__ == "__main__":
     hero()
+    como_trabalho()
     recent()
     stack_geral()
     also_live()
