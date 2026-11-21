@@ -333,9 +333,16 @@ def card_frame(s, index, category, status, live, title, desc, stack):
         s.text(40, 360, title, "D", 42, INK, -1.1),
         s.text(40, 392, desc, "R", 15, MUTED, 0),
         f'<rect x="40" y="414" width="{CW - 80}" height="1" fill="{LINE}"/>',
-        s.text(40, 444, stack, "M", 10.5, DIM, 2.6),
         arrow(CW - 54, 432, 13, "#ffffff", 1.5),
     )
+    # stack em pílulas
+    px = 40
+    for item in stack.split(" · "):
+        w = text_width(item, "M", 9, 1.8) - 1.8 + 26
+        s.add(f'<rect x="{px:.1f}" y="429.5" width="{w:.1f}" height="25" rx="12.5" fill="#0c0c0c" stroke="#2a2a2a"/>',
+              s.text(px + w / 2, 445.6, item, "M", 9, "#bdbdbd", 1.8, anchor="middle"))
+        px += w + 8
+    assert px < CW - 80, stack
     assert text_width(desc, "R", 15) < CW - 80, desc
     assert text_width(title, "D", 42, -1.1) < CW - 80, title
 
@@ -379,9 +386,9 @@ def card_azv():
 
 
 def card_upaiva():
-    s = Svg(CW, CH, "upaiva.dev — portfólio interativo com modos Tech, RH e Cliente")
+    s = Svg(CW, CH, "upaiva.dev — portfólio com partículas, guias de IA e terminal Ctrl K")
     card_frame(s, "02", "IDENTIDADE DIGITAL", "NO AR", True, "upaiva.dev",
-               "Portfólio interativo com modos Tech, RH e Cliente.", "NEXT.JS · TAILWIND · FRAMER MOTION · SUPABASE")
+               "Portfólio com partículas, guias de IA e terminal Ctrl K.", "HTML · CSS · JAVASCRIPT · GSAP")
     x, y, w, h = 120, 92, 400, 212
     s.add(
         f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="#0b0b0b" stroke="#2a2a2a"/>',
@@ -390,14 +397,14 @@ def card_upaiva():
         f'<rect x="{x + w / 2 - 62}" y="{y + 8}" width="124" height="18" rx="9" fill="#141414"/>',
         s.text(x + w / 2, y + 21, "upaiva.dev", "R", 10.5, MUTED, 0.3, anchor="middle"),
     )
-    tabs = ["TECH", "RH", "CLIENTE"]
+    tabs = ["TRABALHO", "GUIAS", "CTRL K"]
     total = 9.0
     tx = x + 28
     positions = []
     for t in tabs:
         positions.append((tx, text_width(t, "M", 10, 2.2) - 2.2))
         tx += positions[-1][1] + 26
-    heads = ["Arquitetura & código", "Perfil & trajetória", "Soluções & resultados"]
+    heads = ["Projetos reais, no ar", "Entenda a IA em 9 guias", "› abrir trabalho"]
     bars = [[300, 236, 270], [250, 300, 190], [280, 210, 320]]
     for i, t in enumerate(tabs):
         a, b = i / 3 * 100, (i + 1) / 3 * 100
@@ -574,7 +581,7 @@ def outro():
     ]
     l1, l2 = "Vamos construir algo", "que marque."
     s.add(
-        s.text(64, 92, "04   CONTATO", "M", 12.5, DIM, 3),
+        s.text(64, 92, "05   CONTATO", "M", 12.5, DIM, 3),
         s.text(60, 196, l1, "D", 76, INK, -2.4),
         s.text(60, 282, l2, "D", 76, "#4d4d4d", -2.4),
     )
@@ -599,6 +606,375 @@ def outro():
     s.save("outro.svg")
 
 
+# ---------------------------------------------------------------- lançamentos recentes
+
+
+def vis(s, name, total, start, end, fade=0.25, frm="opacity:0", to="opacity:1", ease="ease"):
+    """Elemento visível de `start` a `end` (segundos) dentro de um laço de `total` segundos."""
+    pct = lambda t: f"{max(0.0, min(100.0, t / total * 100)):.2f}%"
+    a, b, c, d = pct(start), pct(start + fade), pct(end), pct(min(total, end + fade))
+    s.css.append(
+        keyframes(name, [(f"0%,{a}", frm), (f"{b},{c}", to), (f"{d},100%", frm)])
+        + f".{name}{{animation:{name} {total}s {ease} infinite}}"
+    )
+    return name
+
+
+def art_wintoolkit(s, ox, oy, p="w"):
+    """Janela do app: fila em paralelo, planeta cuja órbita acende com o progresso e terminal real."""
+    T = 10.0
+    g = [f'<g transform="translate({ox} {oy})">']
+    g.append('<rect width="520" height="250" rx="14" fill="#0a0a0a" stroke="#2a2a2a"/>')
+    g.append(s.text(18, 25, "upaiva.dev", "R", 11.5, INK, -0.2))
+    tx = 168
+    for i, tab in enumerate(["INSTALAR", "DRIVERS", "ANALISAR", "OTIMIZAR"]):
+        g.append(s.text(tx, 24.5, tab, "M", 7.5, "#fff" if i == 0 else "#4a4a4a", 1.8))
+        if i == 0:
+            g.append(f'<rect x="{tx}" y="30" width="{text_width(tab, "M", 7.5, 1.8) - 1.8:.1f}" height="1.2" fill="#fff"/>')
+        tx += text_width(tab, "M", 7.5, 1.8) + 14
+    g.append('<rect x="452" y="13" width="52" height="17" rx="8.5" fill="none" stroke="#2e2e2e"/>')
+    g.append(s.text(478, 24.5, "CTRL K", "M", 7, MUTED, 1.4, anchor="middle"))
+    g.append('<path d="M0 40 H520" stroke="#1c1c1c"/>')
+
+    # fila com instalação simultânea; o último é MSI e espera a vez
+    g.append(s.text(18, 60, "FILA  ·  4 EM PARALELO", "M", 7.5, DIM, 1.8))
+    rows = [("Visual C++ 2015+ x64", 0.5, 3.4), ("Git", 0.6, 2.2), ("Node.js LTS", 0.7, 4.6),
+            ("Claude Code", 0.8, 3.0), ("Office · MSI", 4.9, 2.6)]
+    for i, (name, start, dur) in enumerate(rows):
+        y = 84 + i * 24
+        done = start + dur
+        g.append(s.text(18, y, name, "R", 10.5, "#cfcfcf"))
+        g.append(f'<rect x="150" y="{y - 5}" width="82" height="2.5" rx="1.25" fill="#1d1d1d"/>')
+        a, b = start / T * 100, done / T * 100
+        s.css.append(keyframes(f"{p}q{i}", [(f"0%,{a:.2f}%", "transform:scaleX(0)"), (f"{b:.2f}%,94%", "transform:scaleX(1)"),
+                                            ("97%,100%", "transform:scaleX(0)")])
+                     + f".{p}q{i}{{animation:{p}q{i} {T}s cubic-bezier(.5,0,.3,1) infinite}}")
+        g.append(f'<rect class="fl {p}q{i}" x="150" y="{y - 5}" width="82" height="2.5" rx="1.25" fill="#fff"/>')
+        wait = "NA FILA" if i == 4 else "AGUARDA"
+        g.append(f'<g class="{vis(s, f"{p}w{i}", T, 0, start - 0.2)}">{s.text(300, y, wait, "M", 7, "#4a4a4a", 1.4, anchor="end")}</g>')
+        g.append(f'<g class="{vis(s, f"{p}r{i}", T, start, done - 0.15)}">{s.text(300, y, "INSTALANDO", "M", 7, MUTED, 1.4, anchor="end")}</g>')
+        g.append(f'<g class="{vis(s, f"{p}k{i}", T, done, 9.3)}">{s.text(300, y, "OK", "M", 7, "#fff", 1.4, anchor="end")}</g>')
+
+    # terminal com o comando real de cada etapa, digitado
+    g.append('<rect x="18" y="196" width="282" height="38" rx="7" fill="#050505" stroke="#1c1c1c"/>')
+    lines = [("› winget install Git.Git", "pid 4812 · exit 0 · 2,1 s", 0.3, 3.2),
+             ("› winget install OpenJS.NodeJS.LTS", "pid 5120 · exit 0 · 4,6 s", 3.3, 6.4),
+             ("› npm i -g @anthropic-ai/claude-code", "pid 6044 · exit 0 · 3,0 s", 6.5, 9.4)]
+    for i, (cmd, meta, a, b) in enumerate(lines):
+        s.defs.append(f'<clipPath id="{p}tc{i}"><rect class="fl {p}ty{i}" x="28" y="200" width="264" height="14"/></clipPath>')
+        aa, bb = a / T * 100, (a + 1.1) / T * 100
+        s.css.append(keyframes(f"{p}ty{i}", [(f"0%,{aa:.2f}%", "transform:scaleX(0)"), (f"{bb:.2f}%,100%", "transform:scaleX(1)")])
+                     + f".{p}ty{i}{{animation:{p}ty{i} {T}s steps(18) infinite}}")
+        g.append(f'<g class="{vis(s, f"{p}tl{i}", T, a, b, 0.15)}"><g clip-path="url(#{p}tc{i})">'
+                 + s.text(28, 211, cmd, "M", 7.5, "#e6e6e6", 0.4) + "</g>"
+                 + s.text(28, 226, meta, "M", 7, "#5a5a5a", 0.8) + "</g>")
+
+    # planeta de partículas com a órbita acendendo junto com o progresso
+    cx, cy, r = 412, 112, 46
+    s.defs.append(
+        f'<pattern id="{p}dt" width="5.5" height="5.5" patternUnits="userSpaceOnUse">'
+        '<circle cx="1.4" cy="1.4" r=".9" fill="#fff"/></pattern>'
+        f'<radialGradient id="{p}sh" cx="36%" cy="32%" r="70%"><stop offset="0" stop-color="#fff"/>'
+        '<stop offset=".55" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>'
+        f'<mask id="{p}pm"><circle cx="{cx}" cy="{cy}" r="{r}" fill="url(#{p}sh)"/></mask>'
+    )
+    s.css += [
+        keyframes(f"{p}spin", [("0%", "transform:translateX(0)"), ("100%", "transform:translateX(-11px)")]),
+        f".{p}sp{{animation:{p}spin 1.6s linear infinite}}",
+        keyframes(f"{p}orb", [("0%,4%", "stroke-dashoffset:1"), ("74%,93%", "stroke-dashoffset:0"), ("97%,100%", "stroke-dashoffset:1")]),
+        f".{p}ob{{animation:{p}orb {T}s cubic-bezier(.45,0,.4,1) infinite}}",
+    ]
+    ring = f"M{cx - 84} {cy} a84 19 0 1 0 168 0 a84 19 0 1 0 -168 0"
+    g.append(f'<g transform="rotate(-14 {cx} {cy})">'
+             f'<path d="{ring}" fill="none" stroke="#fff" stroke-opacity=".16" stroke-dasharray="1 4"/></g>')
+    g.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="#0a0a0a"/>')
+    g.append(f'<g mask="url(#{p}pm)"><rect class="{p}sp" x="{cx - r - 12}" y="{cy - r}" width="{2 * r + 24}" height="{2 * r}" fill="url(#{p}dt)"/></g>')
+    g.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#fff" stroke-opacity=".08"/>')
+    g.append(f'<g transform="rotate(-14 {cx} {cy})"><path class="{p}ob" d="{ring}" pathLength="1" stroke-dasharray="1" '
+             f'fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/>'
+             f'<circle r="2.6" fill="#fff"><animateMotion dur="{T}s" repeatCount="indefinite" keyPoints="0;0;1;1;0" '
+             f'keyTimes="0;.04;.74;.97;1" calcMode="linear" path="{ring}"/></circle></g>')
+    # porcentagem ponderada
+    steps = [("0%", 0, 1.2), ("18%", 1.2, 2.4), ("41%", 2.4, 3.6), ("63%", 3.6, 5.0), ("86%", 5.0, 6.6), ("100%", 6.6, 9.3)]
+    for i, (val, a, b) in enumerate(steps):
+        g.append(f'<g class="{vis(s, f"{p}pc{i}", T, a, b, 0.12)}">{s.text(cx, 192, val, "T", 26, INK, -0.6, anchor="middle")}</g>')
+    g.append(s.text(cx, 208, "PROGRESSO PONDERADO", "M", 6.8, DIM, 1.8, anchor="middle"))
+    g.append(s.text(502, 231, "cpu 19%   ram 52%   net 48 Mbps", "M", 6.8, "#4a4a4a", 0.8, anchor="end"))
+    g.append("</g>")
+    return "".join(g)
+
+
+def art_instagram(s, ox, oy, p="i"):
+    """Painel da extensão: a fila percorre seis perfis, confirma, pula e pausa para conferir."""
+    T = 10.5
+    g = [f'<g transform="translate({ox} {oy})">']
+    g.append('<rect width="520" height="250" rx="14" fill="#0a0a0a" stroke="#2a2a2a"/>')
+    # logo orbital
+    g.append('<circle cx="27" cy="21" r="8" fill="none" stroke="#fff" stroke-opacity=".9"/>'
+             '<ellipse cx="27" cy="21" rx="13" ry="3.4" transform="rotate(-18 27 21)" fill="none" stroke="#fff" stroke-opacity=".45"/>')
+    g.append(s.text(46, 25, "Instagram Fluxo", "R", 11.5, INK, -0.2))
+    g.append(s.text(502, 24.5, "SEGUIR  ·  REFERÊNCIAS", "M", 7, DIM, 1.6, anchor="end"))
+    g.append('<path d="M0 40 H520" stroke="#1c1c1c"/>')
+    g.append(s.text(18, 70, "Sua fila, perfil por perfil.", "D", 21, INK, -0.5))
+    g.append(s.text(18, 90, "6 perfis na fila", "R", 10, "#cfcfcf"))
+
+    tw, gap, x0, y0, th = 74, 8, 18, 102, 54
+    order = ["ok", "ok", "skip", "ok", "ok", "check"]
+    step, first = 1.15, 0.6
+    resolve = [first + i * step + 0.75 for i in range(6)]
+    status = [("Seguindo @referência_1", 0.0, resolve[2] - 0.05), ("Aguardando intervalo · 38 s", resolve[2], resolve[5] - 0.05),
+              ("Pausada para conferência", resolve[5], 9.9)]
+    for i, (txt, a, b) in enumerate(status):
+        g.append(f'<g class="{vis(s, f"{p}st{i}", T, a, b, 0.2)}">{s.text(502, 90, txt, "R", 10, "#d9d9d9" if i < 2 else "#fff", 0, anchor="end")}</g>')
+
+    for i, kind in enumerate(order):
+        x = x0 + i * (tw + gap)
+        cx = x + tw / 2
+        g.append(f'<rect x="{x}" y="{y0}" width="{tw}" height="{th}" rx="9" fill="#0f0f0f" stroke="#242424"/>'
+                 f'<circle cx="{cx}" cy="{y0 + 22}" r="7" fill="#2a2a2a"/>'
+                 f'<path d="M{cx - 12} {y0 + 42} a12 10 0 0 1 24 0" fill="#2a2a2a"/>')
+        t = resolve[i]
+        if kind == "ok":
+            body = (f'<rect x="{x}" y="{y0}" width="{tw}" height="{th}" rx="9" fill="#fff"/>'
+                    f'<path d="M{cx - 9} {y0 + 27} l6 6 l12 -13" fill="none" stroke="#000" stroke-width="2.2" '
+                    'stroke-linecap="round" stroke-linejoin="round"/>')
+        elif kind == "skip":
+            body = (f'<rect x="{x}" y="{y0}" width="{tw}" height="{th}" rx="9" fill="#262626"/>'
+                    f'<path d="M{cx - 8} {y0 + 27} H{cx + 8}" stroke="#9a9a9a" stroke-width="2.2" stroke-linecap="round"/>')
+        else:
+            body = (f'<rect x="{x + .5}" y="{y0 + .5}" width="{tw - 1}" height="{th - 1}" rx="8.5" fill="#0f0f0f" stroke="#fff" stroke-dasharray="3 3"/>'
+                    + s.text(cx, y0 + 33, "?", "D", 20, INK, 0, anchor="middle"))
+        name = vis(s, f"{p}t{i}", T, t, 9.9, 0.3, "opacity:0;transform:scale(.86)", "opacity:1;transform:scale(1)",
+                   "cubic-bezier(.16,1,.3,1)")
+        g.append(f'<g class="fb {name}">{body}</g>')
+
+    # foco que caminha de perfil em perfil
+    frames = [("0%", "transform:translateX(0);opacity:0")]
+    for i in range(6):
+        a = (first + i * step) / T * 100
+        frames.append((f"{a:.2f}%,{a + 6:.2f}%", f"transform:translateX({i * (tw + gap)}px);opacity:1"))
+    end = (resolve[5] + 0.4) / T * 100
+    frames.append((f"{end:.2f}%,100%", f"transform:translateX({5 * (tw + gap)}px);opacity:0"))
+    s.css.append(keyframes(f"{p}fc", frames) + f".{p}fc{{animation:{p}fc {T}s cubic-bezier(.7,0,.25,1) infinite}}")
+    g.append(f'<rect class="{p}fc" x="{x0 - 4}" y="{y0 - 4}" width="{tw + 8}" height="{th + 8}" rx="12" fill="none" stroke="#fff" stroke-opacity=".55"/>')
+
+    # intervalo entre ações: a linha esvazia antes de cada passo
+    s.css.append(keyframes(f"{p}iv", [("0%", "transform:scaleX(1)"), ("100%", "transform:scaleX(0)")])
+                 + f".{p}iv{{animation:{p}iv {step}s linear infinite}}")
+    g.append(f'<rect x="{x0}" y="{y0 + th + 12}" width="484" height="1" fill="#1d1d1d"/>'
+             f'<rect class="fl {p}iv" x="{x0}" y="{y0 + th + 12}" width="484" height="1" fill="#fff" fill-opacity=".6"/>')
+
+    # contadores
+    counts = {
+        "Confirmados": [0, 1, 2, 2, 3, 4, 4],
+        "Para conferir": [0, 0, 0, 0, 0, 0, 1],
+        "Pendentes": [6, 5, 4, 3, 2, 1, 0],
+        "Pulados": [0, 0, 0, 1, 1, 1, 1],
+    }
+    marks = {
+        "Confirmados": '<rect width="9" height="9" rx="2" fill="#fff"/>',
+        "Para conferir": '<rect x=".5" y=".5" width="8" height="8" rx="2" fill="none" stroke="#fff" stroke-dasharray="2 1.5"/>',
+        "Pendentes": '<rect width="9" height="9" rx="2" fill="#1f1f1f"/>',
+        "Pulados": '<rect width="9" height="9" rx="2" fill="#5a5a5a"/>',
+    }
+    times = [0] + resolve + [9.9]
+    for k, (label, vals) in enumerate(counts.items()):
+        col, row = k % 2, k // 2
+        x, y = 18 + col * 252, 194 + row * 26
+        g.append(f'<g transform="translate({x} {y - 8.5})">{marks[label]}</g>')
+        g.append(s.text(x + 16, y, label, "R", 10.5, "#cfcfcf"))
+        g.append(f'<path d="M{x} {y + 9} H{x + 232}" stroke="#1a1a1a"/>')
+        # cada valor fica visível entre duas resoluções; valores repetidos se fundem
+        spans, cur = [], None
+        for j, v in enumerate(vals):
+            a, b = times[j], times[j + 1]
+            if spans and spans[-1][0] == v:
+                spans[-1][2] = b
+            else:
+                spans.append([v, a, b])
+        for j, (v, a, b) in enumerate(spans):
+            last = j == len(spans) - 1
+            g.append(f'<g class="{vis(s, f"{p}c{k}{j}", T, a, b if not last else 9.9, 0.12)}">'
+                     + s.text(x + 232, y + 1, str(v), "T", 17, INK, 0, anchor="end") + "</g>")
+    g.append("</g>")
+    return "".join(g)
+
+
+def feature(name, idx, category, status, title, lead, desc, numbers, art, foot_l, foot_r):
+    W, H = 1280, 640
+    s = Svg(W, H, f"{title} — {lead}")
+    s.css += [
+        keyframes("pulse", [("0%", "transform:scale(1);opacity:.8"), ("100%", "transform:scale(3);opacity:0")]),
+        ".pl{animation:pulse 2s cubic-bezier(.2,.6,.3,1) infinite}",
+        keyframes("up", [("0%", "opacity:0;transform:translateY(18px)"), ("100%", "opacity:1;transform:translateY(0)")]),
+        ".u1{animation:up 1s cubic-bezier(.16,1,.3,1) .1s both}.u2{animation:up 1s cubic-bezier(.16,1,.3,1) .25s both}"
+        ".u3{animation:up 1s cubic-bezier(.16,1,.3,1) .4s both}.u4{animation:up 1s cubic-bezier(.16,1,.3,1) .6s both}"
+        ".u5{animation:up 1.2s cubic-bezier(.16,1,.3,1) .3s both}",
+        keyframes("draw", [("0%", "transform:scaleX(0)"), ("100%", "transform:scaleX(1)")]),
+        ".dr{animation:draw 1.6s cubic-bezier(.65,0,.35,1) .1s both}",
+        keyframes("sweep", [("0%,60%", "transform:translateX(-300px)"), ("100%", "transform:translateX(900px)")]),
+        ".sw{animation:sweep 7s cubic-bezier(.6,0,.3,1) 1.2s infinite both}",
+    ]
+    s.add(s.text(64, 84, f"{idx}   {category}", "M", 11.5, DIM, 3))
+    sw = text_width(status, "M", 10, 2.4) - 2.4
+    pw = sw + 42
+    px = W - 64 - pw
+    s.add(f'<rect x="{px:.1f}" y="62.5" width="{pw:.1f}" height="29" rx="14.5" fill="none" stroke="#2e2e2e"/>',
+          f'<circle class="fb pl" cx="{px + 17:.1f}" cy="77" r="3.2" fill="#fff"/><circle cx="{px + 17:.1f}" cy="77" r="3.2" fill="#fff"/>',
+          s.text(px + 29, 80.6, status, "M", 10, "#cfcfcf", 2.4))
+    s.add(f'<rect class="fl dr" x="64" y="112" width="1152" height="1" fill="{LINE}"/>')
+
+    size = 72
+    while text_width(title, "D", size, -2.2) > 500:
+        size -= 2
+    s.add(f'<g class="u1">{s.text(60, 200, title, "D", size, INK, -2.2)}</g>')
+    s.defs.append(f'<clipPath id="tt">{s.text(60, 200, title, "D", size, INK, -2.2)}</clipPath>')
+    s.defs.append('<linearGradient id="shine" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/>'
+                  '<stop offset=".5" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>')
+    s.add('<g clip-path="url(#tt)"><rect class="sw" x="0" y="120" width="240" height="100" fill="url(#shine)"/></g>')
+    s.add(f'<g class="u2">{s.text(64, 240, lead, "D", 24, "#5a5a5a", -0.5)}</g>')
+    body = []
+    for i, line in enumerate(desc):
+        assert text_width(line, "R", 15) < 500, line
+        body.append(s.text(64, 290 + i * 25, line, "R", 15, MUTED))
+    s.add(f'<g class="u3">{"".join(body)}</g>')
+    nums = []
+    for i, (big, label) in enumerate(numbers):
+        x, y = 64 + (i % 2) * 250, 438 + (i // 2) * 76
+        nums.append(f'<rect x="{x}" y="{y - 40}" width="1" height="52" fill="#262626"/>')
+        nums.append(s.text(x + 16, y, big, "T", 40, INK, -1))
+        nums.append(s.text(x + 18, y + 20, label, "M", 9.5, DIM, 2.2))
+    s.add(f'<g class="u4">{"".join(nums)}</g>')
+    s.add(f'<g class="u5"><g transform="translate(596 196) scale(1.19)">{art(s, 0, 0)}</g></g>')
+    s.add(f'<rect class="fl dr" x="64" y="578" width="1152" height="1" fill="{LINE}"/>',
+          s.text(64, 612, foot_l, "M", 10.5, MUTED, 2.6),
+          s.text(1190, 612, foot_r, "M", 10.5, MUTED, 2.6, anchor="end"),
+          arrow(1200, 600, 12, "#fff", 1.5))
+    s.save(name)
+
+
+GLYPHS = {
+    "window": '<rect x="1" y="3" width="22" height="18" rx="3"/><path d="M1 8 H23"/><circle cx="4.5" cy="5.5" r=".6"/>',
+    "code": '<path d="M8 6 L2 12 L8 18 M16 6 L22 12 L16 18 M14 4 L10 20"/>',
+    "layers": '<path d="M12 3 L22 8 L12 13 L2 8 Z M2 12 L12 17 L22 12 M2 16 L12 21 L22 16"/>',
+    "term": '<rect x="1" y="3" width="22" height="18" rx="3"/><path d="M5 9 L9 12 L5 15"/><path class="gb" d="M11 16 H17"/>',
+    "box": '<path d="M12 2 L22 7 V17 L12 22 L2 17 V7 Z M2 7 L12 12 L22 7 M12 12 V22"/>',
+    "chip": '<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 1 V5 M15 1 V5 M9 19 V23 M15 19 V23 M1 9 H5 M1 15 H5 M19 9 H23 M19 15 H23"/>',
+    "type": '<path d="M2 20 L8 4 L14 20 M4.3 14 H11.7"/><circle cx="19" cy="16.5" r="3.5"/><path d="M22.5 13 V20"/>',
+    "planet": '<circle cx="12" cy="12" r="6"/><g class="gr"><ellipse cx="12" cy="12" rx="11" ry="3.6" transform="rotate(-18 12 12)"/></g>',
+    "puzzle": '<path d="M4 7 H9 a3 3 0 1 1 6 0 H20 V12 a3 3 0 1 0 0 6 V21 H4 Z"/>',
+    "db": '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5 V19 a9 3 0 0 0 18 0 V5 M3 12 a9 3 0 0 0 18 0"/>',
+    "spark": '<path class="gp" d="M12 2 C13 9 15 11 22 12 C15 13 13 15 12 22 C11 15 9 13 2 12 C9 11 11 9 12 2 Z"/>',
+    "lock": '<rect x="4" y="10" width="16" height="12" rx="2"/><path d="M8 10 V7 a4 4 0 0 1 8 0 V10 M12 15 V17"/>',
+    "log": '<path d="M7 6 H22 M7 12 H22 M7 18 H16"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/>',
+}
+
+
+def stack_cards(name, title, items):
+    """Cards da stack: camada, tecnologia e o porquê, com entrada em cascata e um brilho que atravessa."""
+    W, cols, gap, th = 1280, 4, 16, 140
+    tw = (W - gap * (cols - 1)) / cols
+    rows = (len(items) + cols - 1) // cols
+    H = rows * th + (rows - 1) * gap
+    s = Svg(W, H, title, panel=False)
+    s.css += [
+        keyframes("cin", [("0%", "opacity:0;transform:translateY(14px)"), ("100%", "opacity:1;transform:translateY(0)")]),
+        ".ci{animation:cin .9s cubic-bezier(.16,1,.3,1) both}",
+        keyframes("top", [("0%", "transform:scaleX(0)"), ("100%", "transform:scaleX(1)")]),
+        ".tl{animation:top 1.4s cubic-bezier(.65,0,.35,1) both}",
+        keyframes("sh", [("0%,62%", "transform:translateX(-500px)"), ("100%", "transform:translateX(1800px)")]),
+        ".sh{animation:sh 8s cubic-bezier(.6,0,.3,1) 1.6s infinite both}",
+        keyframes("gb", [("0%,49%", "opacity:1"), ("50%,100%", "opacity:0")]), ".gb{animation:gb 1.05s steps(1) infinite}",
+        keyframes("gr", [("0%", "transform:rotate(0)"), ("100%", "transform:rotate(360deg)")]),
+        ".gr{transform-box:fill-box;transform-origin:center;animation:gr 9s linear infinite}",
+        keyframes("gp", [("0%,100%", "transform:scale(.82);opacity:.6"), ("50%", "transform:scale(1);opacity:1")]),
+        ".gp{transform-box:fill-box;transform-origin:center;animation:gp 2.6s ease-in-out infinite}",
+    ]
+    s.defs.append('<linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+                  '<stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>'
+                  '<linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>'
+                  '<stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>')
+    clip = []
+    for i, (layer, tech, why, glyph) in enumerate(items):
+        x, y = (i % cols) * (tw + gap), (i // cols) * (th + gap)
+        clip.append(f'<rect x="{x:.1f}" y="{y}" width="{tw:.1f}" height="{th}" rx="18"/>')
+        size = 25
+        while text_width(tech, "D", size, -0.5) > tw - 48:
+            size -= 1
+        assert text_width(why, "R", 12.5) < tw - 44, why
+        d = 0.08 * i
+        s.add(
+            f'<g class="ci" style="animation-delay:{d:.2f}s">'
+            f'<rect x="{x + .5:.1f}" y="{y + .5}" width="{tw - 1:.1f}" height="{th - 1}" rx="17.5" fill="{PANEL}" stroke="{LINE}"/>'
+            f'<rect class="fl tl" style="animation-delay:{d + .2:.2f}s" x="{x + 24:.1f}" y="{y}" width="{tw - 48:.1f}" height="1" fill="url(#tg)"/>'
+            + s.text(x + 24, y + 38, f"{i + 1:02d} · {layer}", "M", 9.5, DIM, 2.4)
+            + f'<g transform="translate({x + tw - 46:.1f} {y + 20})" fill="none" stroke="#fff" stroke-opacity=".75" '
+              f'stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">{GLYPHS[glyph]}</g>'
+            + s.text(x + 24, y + 90, tech, "D", size, INK, -0.5)
+            + s.text(x + 24, y + 116, why, "R", 12.5, MUTED)
+            + "</g>"
+        )
+    s.defs.append(f'<clipPath id="cc">{"".join(clip)}</clipPath>')
+    s.add(f'<g clip-path="url(#cc)"><rect class="sh" x="0" y="0" width="420" height="{H}" fill="url(#sg)" '
+          f'transform="skewX(-18)"/></g>')
+    s.save(name)
+
+
+def recent():
+    feature(
+        "feature-wintoolkit.svg", "01", "WINDOWS  ·  DESKTOP", "V1.5  ·  EM TESTES", "win-toolkit",
+        "Do Windows formatado ao PC pronto.",
+        ["Programas, dependências, drivers, análise de segurança e",
+         "otimização em um único app, com o comando real de cada etapa",
+         "à vista. Retoma de onde parou, simula antes de aplicar e nunca",
+         "desliga Defender, Firewall ou Windows Update."],
+        [("106 KB", "UM .EXE, SEM RUNTIME EXTRA"), ("102", "ITENS NO CATÁLOGO"),
+         ("170+", "AÇÕES EM 4 NÍVEIS"), ("4×", "INSTALAÇÕES EM PARALELO")],
+        art_wintoolkit, "GITHUB.COM/EOPAIVA/WIN-TOOLKIT", "WPF  ·  C#  ·  POWERSHELL",
+    )
+    stack_cards("stack-wintoolkit.svg", "Stack do win-toolkit", [
+        ("INTERFACE", "WPF · XAML", "Nativo, renderizado por hardware", "window"),
+        ("LINGUAGEM", "C# 5", "Compila com o csc.exe do Windows", "code"),
+        ("RUNTIME", ".NET Framework 4.8", "Já vem no Windows 11", "layers"),
+        ("MOTOR", "PowerShell 5.1", "O shell garantido no PC novo", "term"),
+        ("PACOTES", "winget · npm · uv", "Sempre a versão mais nova", "box"),
+        ("DRIVERS", "Windows Update Agent", "Fonte oficial da Microsoft", "chip"),
+        ("TIPOGRAFIA", "Inter · Cascadia", "A identidade do upaiva.dev", "type"),
+        ("GRÁFICOS", "DrawingContext", "Planeta de partículas, sem libs", "planet"),
+    ])
+    feature(
+        "feature-instagram.svg", "02", "EXTENSÃO CHROME  ·  IA", "V3.1.3  ·  USO LOCAL", "Instagram Fluxo",
+        "Sua fila, perfil por perfil.",
+        ["Segue perfis a partir de três referências e para de seguir em",
+         "fila, um perfil por vez, com intervalos, pausas e conferência",
+         "de cada resultado. Fila e histórico ficam no seu navegador,",
+         "e o agente de IA é opcional, com a sua própria chave."],
+        [("3", "REFERÊNCIAS CONFIGURÁVEIS"), ("4", "PROVEDORES DE IA"),
+         ("0", "SERVIDORES PRÓPRIOS"), ("MV3", "MANIFEST DO CHROME")],
+        art_instagram, "GITHUB.COM/EOPAIVA/INSTAGRAM-FLUXO", "JAVASCRIPT  ·  MV3  ·  PYTHON",
+    )
+    stack_cards("stack-instagram.svg", "Stack do Instagram Fluxo", [
+        ("PLATAFORMA", "Chrome MV3", "Service worker e permissões sob demanda", "puzzle"),
+        ("LINGUAGEM", "JavaScript", "Sem framework e sem build", "code"),
+        ("INTERFACE", "HTML · CSS", "Painel, carrossel e cards", "window"),
+        ("DADOS", "chrome.storage", "Fila, tentativas e histórico locais", "db"),
+        ("IA OPCIONAL", "OpenAI · Claude · Gemini", "BYOK com fallback e OpenRouter", "spark"),
+        ("COFRE", "AES-GCM · PBKDF2", "Chaves cifradas no navegador", "lock"),
+        ("COLETOR", "Python · SQLite", "Native messaging e logs JSONL", "log"),
+        ("INSTALAÇÃO", "PowerShell", "Registra o coletor no Windows", "term"),
+    ])
+
+
+def site_card(path, title, art):
+    """Mesma arte, recortada para os cards do upaiva.dev (1040 x 500, viewBox 60 80 520 250)."""
+    s = Svg(520, 250, title, panel=False)
+    s.add(art(s, 60, 80))
+    svg = s.render().replace('width="520" height="250" viewBox="0 0 520 250"', 'width="1040" height="500" viewBox="60 80 520 250"', 1)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(svg)
+    print(f"{os.path.basename(path)}: {os.path.getsize(path) / 1024:.1f} KB")
+
+
 # ---------------------------------------------------------------- fontes para o painel automático
 
 
@@ -619,9 +995,11 @@ if __name__ == "__main__":
     button("btn-site.svg", "UPAIVA.DEV", dark=True)
     button("btn-linkedin.svg", "LINKEDIN", dark=False)
     button("btn-email.svg", "E-MAIL", dark=False)
-    section("sec-projetos.svg", "01", "Projetos selecionados", "SELECTED WORK")
-    section("sec-stack.svg", "02", "Stack & ferramentas", "TOOLKIT")
-    section("sec-numeros.svg", "03", "Código em produção", "LIVE DATA")
+    section("sec-recentes.svg", "01", "Lançamentos recentes", "NEW RELEASES")
+    section("sec-projetos.svg", "02", "Projetos selecionados", "SELECTED WORK")
+    section("sec-stack.svg", "03", "Stack & ferramentas", "TOOLKIT")
+    section("sec-numeros.svg", "04", "Código em produção", "LIVE DATA")
+    recent()
     card_azv()
     card_upaiva()
     card_humanreply()
