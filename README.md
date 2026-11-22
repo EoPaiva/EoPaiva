@@ -131,7 +131,7 @@ Atualizado sozinho a cada seis horas por um workflow deste repositório.
 
 <!-- CODE_DASHBOARD:START -->
 <p align="center">
-  <img width="100%" src="./assets/github-code-dashboard-20261121192820.svg" alt="Painel automático de código em produção — linhas, palavras, repositórios e linguagens" />
+  <img width="100%" src="./assets/github-code-dashboard-20261122070450.svg" alt="Painel automático de código em produção — linhas, palavras, repositórios e linguagens" />
 </p>
 <!-- CODE_DASHBOARD:END -->
 
